@@ -1,6 +1,70 @@
 \chapter{Rudiments de théorie des modèles}
 
-\begin{defi}
-test
+\section{Structures et théories}
+
+\subsection{Langages et structures}
+
+\todo[inline]{blabla}
+
+L'objectif n'étant pas de faire un cours de logique, on se contente de donner
+les définitions indispensables pour la suite et de nombreux exemples, le lecteur
+pressé peut se contenter des exemples et se référer aux définitions en cas de
+doute sur le vocabulaire utilisé. On suit de près le plan de \cite{Marker_2002}
+dans lequel on pourra trouver plus de détails.
+
+\begin{defi}[Langage]
+Un langage $\cL$ est la donné de:
+    \begin{enumerate}[label= (\roman*)]
+        \item Un ensemble $\cF$ de fonctions et une arité $n_f \in \bNe$ pour chaque $f \in \cF$.
+        \item Un ensemble $\cR$ de relations et une arité $n_R \in \bNe$ pour
+        chaque $R \in \cR$.
+        \item Un ensemble $\cC$ de constantes.
+    \end{enumerate}
+Les éléments de ces ensembles sont appelés les symboles de $\cL$.
 \end{defi}
+
+\begin{defi}[Structure]
+Une $\cL$-structure $\cM$ est la donnée d'un ensemble non vide $M$ appelé
+domaine et des interprétations des symboles de $\cL$:
+    \begin{enumerate}[label= (\roman*)]
+        \item Une fonction $f^{\cM}:M^{n_f} \mapsto M$ pour chaque $f\in \cF$.
+        \item Une ensemble $R^{\cM} \subset M^{n_R}$ pour chaque $R \in \cR$.
+        \item Un élément $c^{\cM} \in M$ pour chaque $c \in \cC$.
+    \end{enumerate}
+\end{defi}
+
+\begin{exem}[Langage des groupes]
+Si on étudie les groupes, on peut utiliser le langage $\cL_{gp} =
+\{\cdot,{}^{-1},e\}$ où $\cdot$ est une fonction binaire ${}^{-1}$ une fonction unaire et $e$ une constante.
+Une $\cL_{gp}$-structure $\cG = (G,\cdot^{\cG},{}^{{-1}^{\cG}},e^{\cG})$ sera un ensemble $G$
+muni d'une opération binaire $\cdot^{\cG}$, d'une opération unaire
+${}^{{-1}^{\cG}}$ et d'un élément distingué $e^{\cG}$. \\
+Par exemple $(\bR,\cdot,{}^{-1},1)$ est une $\cL_{gp}$-structure où on interprète
+$\cdot$ comme la multiplication usuelle, ${}^{-1}$ comme l'inversion usuelle et
+$e$ comme $1$.  \\
+Il faut faire attention au fait qu'il n'y a pour le moment aucune règle
+sémantique à vérifier, par exemple $\cN = (\bN,+,s,0)$  avec $\cdot^{\cN} = +$ l'addition usuelle, ${}^{{-1}^{\cN}}
+= s$ le successeur et $e^{\cG} = 0$ est bien une
+$\cL_{gp}$-structure même si ce n'est évidemment par un groupe.
+\end{exem}
+
+\begin{defi}[Extensions, Réductions]
+
+\end{defi}
+
+\begin{exem}[Langage des anneaux]
+
+\end{exem}
+
+\subsection{Formules et modèles}
+
+\section{Théories et axiomes}
+
+\section{Ensembles définissables}
+
+\section{Satisfaisabilité et consistence}
+
+\section{Le théorème de compacité}
+
+
 

@@ -1,8 +1,25 @@
-\newtheorem{theo}{Théoreme}
-\newtheorem{lemm}{Lemme}
-\newtheorem{prop}{Proposition}
-\newtheorem{nota}{Notation}
-\newtheorem{rema}{Remarque}
-\newtheorem{defi}{Définition}
-\newtheorem{coro}{Corollaire}
-\newtheorem{exem}{Exemple}
+
+\theoremstyle{plain}
+\newtheorem{theo}{Théorème}
+\newtheorem{lemm}[theo]{Lemme}
+\newtheorem{coro}[theo]{Corollaire}
+\newtheorem{prop}[theo]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defi}[theo]{Définition}
+\newtheorem{exem}[theo]{Exemple}
+\newtheorem{rema}[theo]{Remarque}
+\newtheorem{exer}[theo]{Exercice}
+
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cR}{\mathcal{R}}
+
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bNe}{\mathbb{N}^{*}} %N*%
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bRe}{\mathbb{N}^{*}} %R*%

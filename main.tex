@@ -4,6 +4,7 @@
 \usepackage[french]{babel}
 \usepackage[T1]{fontenc}
 
+
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -15,7 +16,14 @@
 \usepackage{arydshln}
 \usepackage{tikz}
 
-\usepackage{biblatex}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage[
+backend=biber,
+style=alphabetic-verb,
+]{biblatex}
+\usepackage{csquotes}
+
 \addbibresource{biblio.bib}
 
 \usepackage[colorlinks=true]{hyperref}
@@ -45,9 +53,9 @@
 \input{chapitres/chap3}
 \input{chapitres/conclusion}
 
+
+\addcontentsline{toc}{chapter}{Bibliographie}
 \nocite{*}
-
 \printbibliography
-
 \end{document}
 
