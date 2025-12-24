@@ -1,1 +1,105 @@
-\chapter{ACF}
+\chapter{Corps algébriquement clos}
+
+Dans cette partie, toutes les structures sont des anneaux considérés comme
+$\cL_{ring}$-structures donc plutôt que de noter $\cA_{ring}$ ou $\cA$, on
+désignera par la même lettre $A$ à la fois le modèle et le domaine. 
+
+Pour des raisons de convenances, on rappelle ici le langage et les axiomes pour
+les anneaux et les corps qui avaient été donné plus haut.
+
+\begin{defi}[Anneaux, corps]
+Le language naturel des anneaux est $\cL_{ring} = (+,\cdot,-,0,1)$.
+
+On a les axiomes des groupes abéliens (dans le language des groupes additifs
+$\cL_{agp} =(+,-,0))$
+
+\begin{enumerate}[label=\textbf{R\arabic*}]
+    \item $\forall x,y,z [(x+y)+z = x+(y+z)]$,
+    \item $\forall x [x+0 \wedge 0+x = x]$,
+    \item $\forall x [x+(-x)=0 \wedge (-x)+x=0]$,
+    \item $\forall x,y [x+y = y+x]$.
+\end{enumerate}
+
+Ensuite les axiomes de monoïde commutatif (dans le language $\cL_{mon} = (\cdot,
+1))$
+
+\begin{enumerate}[label=\textbf{R\arabic*},start=5]
+    \item $\forall x,y,z [(x\cdot y)\cdot z = x\cdot(y\cdot z)]$,
+    \item $\forall x [x\cdot 1 \wedge 1\cdot x = x]$,
+    \item $\forall x,y [x\cdot y = y\cdot x]$.
+\end{enumerate}
+
+et la distributivité
+
+\begin{enumerate}[label=\textbf{R\arabic*},start=8]
+    \item $\forall x,y,z [x \cdot (y+z) = (x \cdot y) + (x \cdot z)]$.
+\end{enumerate}
+
+Ces huit phrases axiomatisent la théorie des anneaux commutatifs.
+
+On rajoute ensuite les axiomes 
+
+\begin{enumerate}[label=\textbf{F\arabic*}]
+    \item $0 \neq 1$,
+    \item $\forall x [x = 0 \vee \exists y [x\cdot y = 1]]$.
+\end{enumerate}
+
+pour obtenir les axiomes de la théorie des corps.
+
+\end{defi}
+
+\section{Propriétés de base}
+
+On rappelle ensuite quelques définitions et propriétés qui nous seront utiles
+par la suite. On donne certaines démonstrations, on pourra trouver les autres
+dans n'importe quel livre d'algèbre, par exemple dans \cite{Berhuy_2025}.
+
+\begin{defi}[Anneau intègre]
+Un anneau est \kw{intègre} si il est sans diviseur de zéro, c'est à dire si
+c'est un modèle pour la phrase \[ \forall x,y [x \cdot y = 0 \rightarrow (x=0
+\vee y=0) ] \].
+\end{defi}
+
+\begin{prop}
+    Si $A$ est un anneau intègre, il possède un corps des fractions $K_A$ qui
+    vérifie la propriété universelle suivante:
+    Pour tout plongement $f : A \inj{} F$ de $A$ dans un corps $F$, il existe un
+    unique plongement $\tilde{f} : K_A \inj{} F$ tel que le diagramme suivant commute.
+
+    % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQBGclVqMWbANIB9Tjz7Y8BIqOHj6zVohAAxbuJhQA5vCKgAZgCcIAWyRkQOCElEgGdAEYwGABX4VIQ8YSxwQai0pXSwI5zosBjYACwgIAGtuXhAbezdqFyQAJmoGLDAdECg6OGTjOM8ff0DBNgZQ8MjJSoAdHpgADyw4HDgAAgBCPrwGWGBLLjicBKTdVIysq1sHRCdCxBKJbTZLBu9fAOVW3WssE2TO+MSUtMyuCi4gA
+    \[
+    \begin{tikzcd}
+    A \arrow[r, "i", hook] \arrow[rd, "f"', hook] & K_A \arrow[d, "\exists !\tilde{f}", dashed, hook] \\
+                                                & F                                                
+    \end{tikzcd}
+    \]
+\end{prop}
+
+\begin{exem}
+On note $A[X_1, \ldots, X_n]$ l'anneau des polynômes à coefficients dans $A$ en
+$n$ indéterminées dans un anneau $A$. Si $A$ est intègre, $A[X_1, \ldots, X_n]$
+également. Si $A$ est un corps, le corps des fractions de $A[X_1, \ldots, X_n]$
+est noté $A(X_1, \ldots, X_n)$ et on l'appelle le corps des fractions
+rationnelles.
+\end{exem}
+
+\todo[inline]{defs: Morphisme d'anneau,noyau, idéal, idéal engendré,idéal
+propre, idéal premier, idéal principal, idéal maximal, caractéristique,
+sous-corps premier
+}
+
+\todo[inline]{props: noyau d'un morphisme est un idéal, quotient par un idéal, 
+R/I intègre ssi I premier, R/I corps ssi I maximal,}
+
+\section{Extensions de corps}
+
+\todo[inline]{defs : extension, extension simple, extension finie, anneau
+principal, polynome minimal, extension algébriquement,
+ }
+\todo[inline]{prop: th de la base de Hilbert,si F c K c L, K algébrique sur F et L algébrique sur K alors L algébrique sur F, nombre de racines dans K[X]}
+
+\section{Cloture algébrique d'un corps}
+
+\section{Catégoricité, complétude}
+
+\section{Ensembles définissables, variétés}
