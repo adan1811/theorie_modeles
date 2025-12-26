@@ -50,6 +50,8 @@ pour obtenir les axiomes de la théorie des corps.
 
 \section{Propriétés de base}
 
+\todo[inline]{ajouter des exemples?}
+
 On rappelle ensuite quelques définitions et propriétés qui nous seront utiles
 par la suite. On donne certaines démonstrations, on pourra trouver les autres
 dans n'importe quel livre d'algèbre, par exemple dans~\cite{Berhuy_2025}.
@@ -129,6 +131,8 @@ Un idéal $I$ d'une anneau $A$ est :
     \item \kw{maximal} si $I \neq A$ et pour tout idéal $J$ tel que $I \subset J
     \subset A$, on a $J = I \vee J = A$.
 \end{itemize}
+
+Si tout idéal de $A$ et principal, on dit que $A$ est un anneau \kw{principal}.
 \end{defi}
 
 \begin{defi}[Caractéristique,Sous-corps premier]
@@ -178,10 +182,10 @@ En particulier, tout idéal maximal est premier.
     \in I$ c'est à dire $\overline{a} = 0 \vee \overline{b} = 0$ donc $A/I$ est intègre.
     \item Supposons que $A/I$ est un corps, comme précédemment on a $I \neq A$.
     Soit $J$ un idéal de $A$ tel que $I \subset J \subset A$, supposons $I \neq
-    J$ et montrons qu'alors $J=A$. Soit $a \in A \backslash I$, on a $\overline{a} \neq
+    J$ et montrons qu'alors $J=A$. Soit $a \in J \backslash I$, on a $\overline{a} \neq
     \overline{0}$ donc il existe $\overline{b}\in A/I$ tel que
-    $\overline{a}\overline{b} = 1$ et donc $\overline{ab-1} = \overline{0}$ donc
-    $ab-1 \in I \subset J$ et donc $1 = (ab-1) + ab \in J$ ainsi, $J$ contient un
+    $\overline{a}\overline{b} = 1$ et donc $\overline{1-ab} = \overline{0}$ donc
+    $ab-1 \in I \subset J$ et donc $1 = (1-ab) + ab \in J$ ainsi, $J$ contient un
     élément inversible et donc $J=A$ et par suite, $I$ est maximal.
     Réciproquement, si $I$ est maximal, $I \neq A$ et $A/I$ est non trivial.
     Soit $\overline{a} \in (A/I) \backslash \{0\}$, soit $J = (a,I)$ l'idéal
@@ -199,12 +203,126 @@ Comme un corps est un anneau intègre, par ce qui précède, tout idéal maximal
 
 \section{Extensions de corps}
 
-\todo[inline]{defs : extension, extension simple, extension finie, anneau
-principal, polynome minimal, extension algébriquement,
- }
-\todo[inline]{prop: th de la base de Hilbert,si F c K c L, K algébrique sur F et L algébrique sur K alors L algébrique sur F, nombre de racines dans K[X]}
+\todo[inline]{ajouter des exemples?}
 
-\section{Cloture algébrique d'un corps}
+Les corps algébriquement clos se manifestent comme des extensions de corps, on a
+donc besoin de quelques résultats les concernant. On comment par les extensions
+simples puis on passe aux extensions finies.
+
+\begin{defi}[Extension de corps]
+Soit $K$ un corps, une \kw{extension} de $K$ est un corps $L$ qui contient $K$
+comme sous-corps. On le note $L/K$. Le corps $L$ muni de son produit et de la
+loi externe $K \times L \rightarrow L:(\lambda,x)\mapsto \lambda x$ est une
+$K$-algèbre. La dimension de $L$ comme $K$-espace vectoriel est appelé
+\kw{degré} de $L/K$ et noté $[L:K]$. Une \kw{sous-extension} de $L/K$ est un
+sous-corps de $L$ contenant $K$.
+\end{defi}
+
+\begin{defi}[Sous-extension engendrée, extension simple]
+Soit $L/K$ une extension de corps, et soit $E \subset L$, on note $K(E)$ l'intersection
+des sous-corps contenant $K$ et $E$, c'est donc la plus petite sous-extension de
+$L/K$ qui contient $E$. L'extension $K(E)/K$ est la \kw{sous-extension} de $L/K$
+\kw{engendrée} par $E$. Si il existe $a \in L$ tel que $L=K(a)$, on
+dit que l'extension $L/K$ est \kw{simple} ou \kw{monogène}.
+\end{defi}
+
+\begin{lemm}
+Soit $K(a)/K$ une extension simple, il existe un unique morphisme (dit
+d'évaluation) $ev_a : K[X] \rightarrow K(a)$ tel que $\forall b \in K,
+ev_a(b)=b$ et $ev_a(X) = a$.
+\end{lemm}
+
+\begin{defi}[Idéal annulateur]
+Le noyau du morphisme d'évaluation $ev_b$ du lemme précédent est appelé
+\kw{idéal anulteur} et noté $I(b)$, on a donc \[ I(b) := \{ f \in K[x] | f(b) =
+0 \}. \]
+Plus généralement, si $V\subset K$ est un ensemble (algébrique), l'\kw{idéal
+annulateur} de $V$ est l'ensemble \[ I(b) := \{ f \in K[x] | f(b) =
+0 \forall b \in V \}. \]
+\end{defi}  
+
+
+\begin{prop}[K[X] est principal]
+Soit $K$ un corps et $I$ un idéal de $K[X]$, alors $I$ est engendré par un
+unique polynôme unitaire $P$ et $I$ est premier si et seulement si
+$P$ est irréductible.
+\end{prop}
+
+\begin{defi}[Polynome minimal]
+Soit $K(a)/K$ une extension simple, un polynôme $P$ qui engendre $I(a)$ est
+appelé \kw{polynome minimal} de $a$.
+\end{defi}
+
+\begin{prop}[Classification des extensions simples]
+Soit $K(a)/K$ une extension simple. De ce qui précède, on déduit que l'extension
+est entièrement déterminée, à isomorphisme près, par le choix d'un polynôme
+minimal de $a$ qui est irréductible. Donc classifier les extensions simples
+revient à classifier les idéaux premiers de $K[X]$.
+\end{prop}
+
+\begin{exem}
+Prenons $K=\bQ$ et $a = \sqrt{2} \in \bQ(\sqrt{2})$. Le polynôme minimal de
+$\sqrt{2}$ est $X^2-2$. 
+Prenons maintenant $a = \pi$, comme $\pi$ est transcendant, son polynôme minimal
+est le polynôme nul et $I(\pi) = \{0\}$ donc $ev_{\pi}: \bQ[X] \rightarrow
+\bQ(\pi)$ est injectif et par suite, $\bQ(r) \simeq \bQ(X)$. 
+\end{exem}
+
+\begin{defi}[Extension finie]
+Soit $L/K$ une extension de corps, si il existe $\overline{a} =
+(a_1,\ldots,a_n) \in L^n$ tel que $L = K(\overline{a})$, on dit que l'extension est \kw{finie}.
+\end{defi}
+
+\begin{prop}[Classification des extensions finies]
+Soit $K(a_1,\ldots,a_n)/K$ une extension finie. Comme dans le cas simple, on a
+$K(a_1,\ldots,a_n) \simeq K[X_1,\ldots,X_n]/I(a_1,\ldots,a_n)$ donc pour classifier
+les extensions finies, il suffit de classifier les idéaux premiers de
+$K[X_1,\ldots,X_n]$ pour tout $n \in \bNe$.
+\end{prop}
+
+\begin{theo}[Base de Hilbert]
+Soit $K$ un corps et $n\in \bNe$ alors tout idéal de $K[X_1, \ldots, X_n ]$ est
+engendré par un nombre fini de polynômes.
+\end{theo}
+
+\begin{defi}[Extension algébrique]
+Soit $L/K$ une extension de corps, si tout élément de $F$ est algébrique sur
+$K$, on dit que $L/K$ est une \kw{extension algébrique}.
+\end{defi}
+
+\begin{prop}
+Si $L/K$ est une extension algébrique finie, alors c'est une extension simple.
+\end{prop}
+
+\begin{lemm}
+Si $L/K$ et  $K/F$ sont des extensions algébriques, alors $L/F$ également.
+\end{lemm}
+
+\section{Clôture algébrique d'un corps}
+
+\begin{defi}[Corps algébriquement clos,clôture algébrique]
+On dit qu'un corps $K$ est \kw{algébriquement clos} si tout polynôme non constant de
+$K[X]$ admet une racine dans $K$. On dit que $L$ est une \kw{clôture algébrique}
+de $K$ si $L/K$ est une extension algébrique et $L$ est algébriquement clos.
+\end{defi}
+
+\begin{prop}
+Pour tout corps $K$, il existe une extension $L/K$ telle que $L$ soit
+algébriquement clos.
+\end{prop}
+
+\begin{proof}
+\todo[inline]{Preuve existence L/K algébriquement clos (par théorie des modèles)}
+\end{proof}
+
+
+\begin{theo}[Théorème de Steinitz]
+Tout corps $K$ admet une clôture algébrique, unique à isomorphisme près.
+\end{theo}
+
+\begin{proof}
+\todo[inline]{Preuve Steinitz}
+\end{proof}
 
 \section{Catégoricité, complétude}
 
