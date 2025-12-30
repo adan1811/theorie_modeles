@@ -279,9 +279,55 @@ A^l$, tels que $\phi(\overline{v},\overline{b})$ définit X.
 
 \section{Théories et axiomes}
 
-\section{Satisfaisabilité et consistence}
-
 \section{Le théorème de compacité}
+
+\begin{defi}[Preuve]
+Soient $\phi$ une $\mathcal{L}$-formule, $T$ une $\mathcal{L}$-théorie. Une \kw{preuve de $\phi$ à partir de $T$}
+est une suite finie $\psi_1,\dots,\psi_n$ de $\mathcal{L}$-formules telle que $\psi_n = \phi$ et, pour chaque i, $\psi_i$ est soit un axiome de T, soit déduite de
+$\psi_1,\dots,\psi_{i-1}$ par des règles logiques simples. Nous notons $T \vdash \phi$ s'il existe une preuve de $\phi$ à partir de $T$. 
+Nous donnons des exemples de ce qu'on entend par "règles logiques simples":
+\begin{enumerate}[label= (\roman*)]
+\item De $\phi \wedge \psi$, nous concluons $\phi$.
+\item De $\phi$ et $\psi$, nous concluons $\phi \wedge \psi$.
+\item De $\phi$ et $\phi \rightarrow \psi$, nous concluons $\psi$.
+\end{enumerate}
+\end{defi}
+
+\begin{defi}[Théorie cohérente/incohérente]
+Soit $T$ une $\mathcal{L}$-théorie. T est incohérente s'il existe une $\mathcal{L}$-phrase $\phi$ telle que $T \vdash (\phi \wedge \neg\phi)$, autrement,
+nous dirons que $T$ est cohérente.
+\end{defi}
+
+\begin{rema}
+Nous allons voir qu'une théorie est satisfiable si et seulement si elle est cohérente. L'implication directe repose sur le théorème de correction, énoncant que
+notre système de preuve est correct: si $T \vdash \phi$, alors $T \models \phi$. Nous omettons la vérification de ce résultat pour nous concentrer sur l'implication réciproque.
+\end{rema}
+
+\begin{theo}[Théorème de complétude de Gödel]
+Soit $T$ une $\mathcal{L}$-théorie et $\phi$ une $\mathcal{L}$-phrase, alors $T \models \phi$ si et seulement si $T \vdash \phi$.
+\end{theo}
+
+\begin{coro}
+T est cohérente si et seulement si T est satisfiable.
+\end{coro}
+\begin{proof}
+Nous prouvons la contraposée. Supposons que T est insatisfiable, par définition il n'existe pas de modèles de T, donc pour $\phi$ une phrase quelconque,
+$T \models (\phi \wedge \neg\phi)$ est trivialement verifié, et par théorème de complétude de Gödel, $T \vdash (\phi \wedge \neg\phi)$.
+\end{proof}
+
+\begin{theo}[Théorème de compacité]
+Soit $T$ une $\mathcal{L}$-théorie. $T$ est satisfiable si et seulement si tout sous-ensemble fini de $T$ est satisfiable. 
+\end{theo}
+
+\begin{proof}
+L'implication directe est claire: un modèle $M$ satisfaisant $T$ satisfait tout sous-ensemble $T_0 \subset T$. Réciproquement,
+nous prouvons la contraposée: supposons que $T$ est insatisfiable. D'après le corollaire précédent, $T$ est incohérente. Il existe donc $\sigma$ une preuve d'une contradiction à partir de $T$.
+$\sigma$ étant par définition finie, elle fait appel à un nombre fini d'axiomes de $T$. Ainsi on a l'existence de $T_0 \subset T$ un sous-ensemble 
+fini de $T$ tel que $\sigma$ est une preuve d'une contradiction à partir de $T_0$. $T_0$ est donc incohérent. On conclut en utilisant à nouveau le corollaire précédent:
+$T_0$ est insatisfiable.
+\end{proof}
+
+
 
 \label{defi:completude}
 
