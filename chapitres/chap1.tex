@@ -306,6 +306,8 @@ notre système de preuve est correct: si $T \vdash \phi$, alors $T \models \phi$
 \begin{theo}[Théorème de complétude de Gödel]
 Soit $T$ une $\mathcal{L}$-théorie et $\phi$ une $\mathcal{L}$-phrase, alors $T \models \phi$ si et seulement si $T \vdash \phi$.
 \end{theo}
+construction de henkin en annexe ?
+
 
 \begin{coro}
 T est cohérente si et seulement si T est satisfiable.
@@ -322,7 +324,7 @@ Soit $T$ une $\mathcal{L}$-théorie. $T$ est satisfiable si et seulement si tout
 \begin{proof}
 L'implication directe est claire: un modèle $M$ satisfaisant $T$ satisfait tout sous-ensemble $T_0 \subset T$. Réciproquement,
 nous prouvons la contraposée: supposons que $T$ est insatisfiable. D'après le corollaire précédent, $T$ est incohérente. Il existe donc $\sigma$ une preuve d'une contradiction à partir de $T$.
-$\sigma$ étant par définition finie, elle fait appel à un nombre fini d'axiomes de $T$. Ainsi on a l'existence de $T_0 \subset T$ un sous-ensemble 
+$\sigma$ étant par définition finie, elle invoque un nombre fini d'axiomes de $T$. Ainsi on a l'existence de $T_0 \subset T$ un sous-ensemble 
 fini de $T$ tel que $\sigma$ est une preuve d'une contradiction à partir de $T_0$. $T_0$ est donc incohérent. On conclut en utilisant à nouveau le corollaire précédent:
 $T_0$ est insatisfiable.
 \end{proof}
