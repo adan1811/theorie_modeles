@@ -13,7 +13,7 @@ doute sur le vocabulaire utilisé. On suit de près le plan de \cite{Marker_2002
 dans lequel on pourra trouver plus de détails.
 
 \begin{defi}[Langage]
-Un \kw{langage} $\cL$ est la donné de:
+Un \kw{langage} $\cL$ est la donnée de:
     \begin{enumerate}[label= (\roman*)]
         \item Un ensemble $\cF$ de \kw{fonctions} et une arité $n_f \in \bNe$ pour chaque $f \in \cF$.
         \item Un ensemble $\cR$ de \kw{relations} et une arité $n_R \in \bNe$ pour
@@ -21,6 +21,8 @@ Un \kw{langage} $\cL$ est la donné de:
         \item Un ensemble $\cC$ de \kw{constantes}.
     \end{enumerate}
 Les éléments de ces ensembles sont appelés les \kw{symboles} de $\cL$.
+Rappelons que l'arité d'un symbole est le nombre d'arguments qu'il prend.
+Par convention, les constantes sont d'arité 0.
 \end{defi}
 
 \begin{defi}[Structure]
@@ -54,6 +56,7 @@ sémantique à vérifier, par exemple $\cN = (\bN,+,s,0)$  avec $\cdot^{\cN} = +
 $\cL_{gp}$-structure même si ce n'est évidemment par un groupe.
 \end{exem}
 
+exemple ci dessous à placer après la def
 \begin{exem}[Langage des anneaux]
 Il arrive souvent qu'on ne parte pas de zéro mais qu'on rajoute ou enlève des
 symboles à un langage existant ou alors qu'on augmente ou diminue la taille du
@@ -239,8 +242,8 @@ Une formule sans variable libre est appelée une \kw{phrase} ou un \kw{énoncé}
 \todo[inline]{prop: formule et plongement, formule et isomorphisme}
 
 \begin{rema}[Abréviations]
-Notre langage formel est très restreint, on va donc utiliser des abréviations usuelles
-pour rendre les choses plus lisibles, par exemple on va écrire:
+Notre langage formel est très restreint, nous utiliserons des abréviations usuelles
+pour alléger les formules. Nous écrirons:
 
 \begin{alignat*}{2}
 \text{différent: } &(t_1 \neq t_2) && \text{ pour } \neg(t_1 = t_2), \\
@@ -250,9 +253,11 @@ pour rendre les choses plus lisibles, par exemple on va écrire:
 \text{pour tout: } &\forall x[\varphi] && \text{ pour } \neg{\exists}x[\neg\varphi].
 \end{alignat*}
 
-On aurait bien sûr pu ajouter ces symboles dans le language mais les preuves
-auraient aussi été allongées $\ldots$ on les utilise donc comme abréviations.
-
+On préfère restreindre notre langage au strict minimum tout en utilisant ces
+autres symboles comme de simples abréviations pour ne pas alourdir nos preuves.
+En effet, comme le quantificateur universel ou la disjonction sont définis comme 
+des combinaisons de symboles de notre langage restreint, nous pourrons les utiliser
+dans nos formules sans avoir à traiter leurs cas spécifiques lors des preuves par induction.
 \end{rema}
 
 
@@ -269,6 +274,9 @@ sur $A$}, si le paramètre choisi peut être pris dans $A$, c'est-à-dire s'il
 existe une formule $\phi(\overline{v},w_1,\dots,w_l)$ et $\overline{b} \in 
 A^l$, tels que $\phi(\overline{v},\overline{b})$ définit X.
 \end{defi}
+
+
+
 \section{Théories et axiomes}
 
 \section{Satisfaisabilité et consistence}
@@ -276,10 +284,4 @@ A^l$, tels que $\phi(\overline{v},\overline{b})$ définit X.
 \section{Le théorème de compacité}
 
 \label{defi:completude}
-
-test 
-test
-test
-$a=2$
-
 
