@@ -58,7 +58,7 @@ dans n'importe quel livre d'algèbre, par exemple dans~\cite{Berhuy_2025}.
 
 \begin{defi}[Anneau intègre]
 Un anneau est \kw{intègre} si il est sans diviseur de zéro, c'est à dire si
-c'est un modèle pour la phrase \[ \forall x,y [x \cdot y = 0 \rightarrow (x=0
+c'est un modèle pour la phrase \[ \forall x,y [x \cdot y = 0 \implies (x=0
 \vee y=0) ]. \]
 \end{defi}
 
@@ -111,7 +111,7 @@ Si un idéal $I$ est tel que $I \subsetneq A$, on dit que l'idéal est \kw{propr
 \end{defi}
 
 \begin{prop}
-Soit $f :A \rightarrow B$ un morphisme d'anneaux et $J$ un idéal de $B$, alors
+Soit $f :A \implies B$ un morphisme d'anneaux et $J$ un idéal de $B$, alors
 $I = f^{-1}(J)$ est un idéal de $A$. En particulier, $\ker(f)$ est un idéal de $A$.
 \end{prop}
 
@@ -146,10 +146,10 @@ $\bZnZ{p}$, sinon c'est $\bQ$.
 \end{defi}
 
 \begin{prop}[Anneau quotient, propriété universelle]
-Soit $I$ un idéal d'un anneau $A$; on note $\pi : A \rightarrow A/I$ la
-projection canonique et soit $f : A \rightarrow B$ un morphisme d'anneau qui
+Soit $I$ un idéal d'un anneau $A$; on note $\pi : A \implies A/I$ la
+projection canonique et soit $f : A \implies B$ un morphisme d'anneau qui
 d'annule sur $I$, alors il existe un unique morphisme $\overline{f} : A/I
-\rightarrow B$ tel que le diagramme suivant commute.
+\implies B$ tel que le diagramme suivant commute.
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRRkAjFVqMWbdgHoAkt14gM2PASIjy4+s1aIQAIW7iYUAObwioAGYAnCAFskZEDghJNIABYw6UNjgA7hA+fgjUOlL6ADrRaFgg1Ax0AEYwDAAK-GpCILZYZl44ijb2ToiebkgATElYYHogUHRwPv4Rko2xMAAeWHA4cACEAASxEDQwtgz1MMCx9LZoXlhciSDJaZnZgmz5hcU8pY7O1FWItRK6bAt0SyvGXEA
 \[
 \begin{tikzcd}
@@ -212,7 +212,7 @@ simples puis on passe aux extensions finies.
 \begin{defi}[Extension de corps]
 Soit $K$ un corps, une \kw{extension} de $K$ est un corps $L$ qui contient $K$
 comme sous-corps. On le note $L/K$. Le corps $L$ muni de son produit et de la
-loi externe $K \times L \rightarrow L:(\lambda,x)\mapsto \lambda x$ est une
+loi externe $K \times L \implies L:(\lambda,x)\mapsto \lambda x$ est une
 $K$-algèbre. La dimension de $L$ comme $K$-espace vectoriel est appelé
 \kw{degré} de $L/K$ et noté $[L:K]$. Une \kw{sous-extension} de $L/K$ est un
 sous-corps de $L$ contenant $K$.
@@ -228,7 +228,7 @@ dit que l'extension $L/K$ est \kw{simple} ou \kw{monogène}.
 
 \begin{lemm}
 Soit $K(a)/K$ une extension simple, il existe un unique morphisme (dit
-d'évaluation) $ev_a : K[X] \rightarrow K(a)$ tel que $\forall b \in K,
+d'évaluation) $ev_a : K[X] \implies K(a)$ tel que $\forall b \in K,
 ev_a(b)=b$ et $ev_a(X) = a$.
 \end{lemm}
 
@@ -264,7 +264,7 @@ revient à classifier les idéaux premiers de $K[X]$.
 Prenons $K=\bQ$ et $a = \sqrt{2} \in \bQ(\sqrt{2})$. Le polynôme minimal de
 $\sqrt{2}$ est $X^2-2$. 
 Prenons maintenant $a = \pi$, comme $\pi$ est transcendant, son polynôme minimal
-est le polynôme nul et $I(\pi) = \{0\}$ donc $ev_{\pi}: \bQ[X] \rightarrow
+est le polynôme nul et $I(\pi) = \{0\}$ donc $ev_{\pi}: \bQ[X] \implies
 \bQ(\pi)$ est injectif et par suite, $\bQ(r) \simeq \bQ(X)$. 
 \end{exem}
 
@@ -317,8 +317,11 @@ algébriquement clos.
 
 
 \begin{theo}[Théorème de Steinitz]
-Tout corps $K$ admet une clôture algébrique, unique à isomorphisme près.
+Tout corps $K$ admet une clôture algébrique, unique à isomorphisme près. On la
+notera $\overline{K}$
 \end{theo}
+
+
 
 \begin{proof}
 \todo[inline]{Preuve Steinitz}
@@ -368,7 +371,7 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
     algébriquement clos de caractéristique $n$ pour $n \in \bP \cup \{0\}$. 
 \end{defi}
 
-\begin{prop}[Elimination des quantificateurs]
+\begin{prop}[Elimination des quantificateurs]\label{prop:acf_elim}
     La théorie $\ACF_n$ admet l'élimination des quantificateurs
 \end{prop}
 
@@ -376,11 +379,50 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
 
 \end{proof}
 
-\begin{prop}[Complétude]
+\begin{prop}[Complétude]\label{prop:acf_complet}
     La théorie $\ACF_n$ est complète.
 \end{prop}
 
 \begin{proof}
+
+\end{proof}
+
+\begin{coro}[Principe de Lefschetz]\label{coro:Lefschetz}
+    Soit $\varphi$ une phrase du l'language des anneaux. On a alors les
+    équivalences suivantes
+
+    \begin{enumerate}[label= (\roman*)]
+        \item $\varphi$ est vraie sur  $\bC$.
+        \item Il existe un corps algébriquement clos de caractéristique $0$ sur
+        lequel $\varphi$ est vraie.
+        \item $\varphi$ est vraie sur tout corps algébriquement clos de
+        caractéristique $0$.
+        \item Il existe $M>0$ tel que pour tout premier $p>M$, il existe un
+        corps algébriquement clos de caractéristique $p$ sur lequel $\varphi$
+        est vraie.
+        \item Il existe des premiers $p$ arbitrairement grands et des corps
+        algébriquement clos de caractéristique $p$ sur lesquels $\varphi$ est
+        vraie.
+    \end{enumerate}
+
+\end{coro}
+
+\begin{proof}
+On montre que $1 \implies 2 \implies 3 \implies 1$ puis $3 \implies
+4 \implies 5 \implies 2$. \\
+Il est clair que $1 \implies 2$ et  $3 \implies 1$, $2 \implies 3$
+est une conséquence immédiate de la complétude \ref{prop:acf_complet}.\\
+$(3 \implies 4)$: On a $\ACF_0 \models \varphi$ donc par compacité
+\ref{th:compacite}, il existe $\Sigma \subset \ACF_0$ fini tel que $\Sigma
+\models \varphi$. Comme $\Sigma$ est fini, l'ensemble $E= \{ p \in \bP \mid \neg
+\chi_p \in \Sigma$ aussi. En posant $M = \max(E)$ (et $M=0$ si $E = \emptyset)$,
+pour $p > M$, on a $ \ACF_p \models \Sigma$ et donc $\ACF_p \models \varphi$. \\
+$4 \implies 5$ est claire et enfin, \\
+$(5 \implies 2)$: Supposons que $\ACF_0 \not\models \varphi$,
+par \ref{prop:acf_complet} $\ACF_0$ est complète ainsi $\ACF_0 \models \neg
+\varphi$ donc par ce qui précède, $\ACF_p \models \neg\varphi$ pour $p$
+suffisamment grand ce qui contredit $4$ d'où le résultat.
+
 
 \end{proof}
 
