@@ -1,5 +1,68 @@
 \chapter{Applications}
 
+\todo[inline]{lots of blabla}
+
 \section{Ax-Grothendieck}
+
+On présente dans un premier temps le cas particulier de $\bC^n$ et sa preuve
+détaillée avant de passer au cas général d'une variété algébrique sur un corps
+algébriquement clos dont l'idée est la même.
+
+On va avoir besoin du lemme suivant: 
+
+\begin{lemm} \label{lem-phrase-corps}
+Pour tout couple $(n,d)$ d'entiers positifs, il existe une phrase
+$\varphi_{n,d}$ dans le language des anneaux qui exprime que dans un corps $K$,
+toute famille $(f_1, \ldots, f_n)$ de polynômes en $n$ variables de degré
+inférieur ou égal à $d$, si l'application associée est injective, alors elle est surjective.
+\end{lemm}
+
+\begin{theo}[Ax-Grothendieck]\label{th-Ax-Grothendieck}
+Soit $f : \bC^n \rightarrow \bC^n$ une application polynomiale. Si $f$ est
+injective, alors elle est bijective. 
+\end{theo}
+
+\begin{proof}
+D'après le \cref{lem-phrase-corps} et par principe de Lefschetz (\cref{coro-Lefschetz}), il suffit de
+montrer le résultat
+pour $\Fpalg$ pour tout $p \in \bP$. Par le \cref{th-structure-corps-fini}, toute partie finie de $\Fpalg$ est contenue dans
+un sous-corps fini de $\Fpalg$. Soit $f = (f_1, \ldots, f_n) : \Fpalg^n
+\rightarrow \Fpalg^n$ ,  une application polynomiale injective. Supposons qu'il
+existe $y \in \Fpalg^n$ qui n'est pas dans l'image de $f$. Soit $K$ le sous-corps
+fini de $\Fpalg$ qui contient toutes les composantes de $y$ et tous les
+coefficients des $f_i$, alors $f$ induit une application $K^n \rightarrow K^n$
+qui est injective et non surjective, ce qui est absurde car $K$ est fini. 
+\end{proof}
+
+
+\begin{lemm} \label{lem-phrase_variete}
+Pour tout quadruplet d'entiers $(n, m, d, \delta)$, il existe une phrase $\varphi_{n,m,d,\delta}$ dans le langage des anneaux qui exprime la propriété suivante :
+Pour tout corps $K$, pour toute variété algébrique $V \subset K^n$ définie par $m$ équations de degré au plus $\delta$, et pour toute application polynomiale $f: V \to V$ définie par des polynômes de degré au plus $d$, si $f$ est injective alors elle est surjective.
+\end{lemm}
+
+\begin{theo}[Ax-Grothendieck]\label{th-Ax-Grothendieck-variete}
+Soit $K$ un corps algébriquement clos, $V$ une variété algébrique sur $K$ et $f
+: V \rightarrow V$ une application polynomiale. Si $f$ est
+injective, alors elle est bijective. 
+\end{theo}
+
+\begin{proof}
+La preuve suit exactement le même schéma que pour le cas affine $V=\bC^n$ (\cref{th-Ax-Grothendieck}).
+Par le lemme et par principe de Lefschetz, il suffit de démontrer le résultat pour $K=\Fpalg$.
+
+La seule adaptation nécessaire concerne la construction du sous-corps fini. Si
+l'on suppose qu'il existe $y \in V$ hors de l'image de $f$,
+on considère le sous-corps fini $k \subset \Fpalg$ engendré par: les
+coefficients de l'application $f$ et les coordonnées de $y$ (comme
+précédemment) ET les coefficients des polynômes définissant la variété $V$.
+
+Alors l'ensemble des points rationnels $V(k) = V \cap k^n$ est fini (car inclus dans $k^n$).
+Par stabilité, $f$ induit une application $f: V(k) \to V(k)$ injective et non
+surjective, ce qui est exclu.
+\end{proof}
+
+
+
+
 \section{Nullstellensatz}
 

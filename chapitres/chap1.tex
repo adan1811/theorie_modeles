@@ -150,7 +150,7 @@ mais \kw{vraie} dans $\bZnZ{2}_{ring}$, $\exists x [(x\cdot x) = (1+1)]$ affirme
 $2$ est un carré, elle est fausse dans $\bZ_{ring}$ mais vraie dans $\bR_{ring}$.
 \end{exem}
 
-\begin{defi}[Terme]\label{defi:terme}
+\begin{defi}[Terme]\label{defi-terme}
 L'ensemble des termes d'un langage $\cL$ est défini de la manière récursive
 suivante:
 \begin{enumerate}[label= (\roman*)]
@@ -174,7 +174,7 @@ $t^{\cM} : M^n \rightarrow M$ comme suit:
 \end{enumerate}
 \end{defi}
 
-\begin{prop}\label{prop:terme_plongement}
+\begin{prop}\label{prop:terme-plongement}
 Soit $\eta : \cM \rightarrow \cN$ un plongement de $\cL$-structures, $t$ un terme et $\overline{x} = (x_1, \ldots,
 x_n)$ des variables incluant toutes celles qui apparaissent dans $t$ et
 $\overline{a} = (a_1, \ldots, a_n) \in M^n$. Alors \[
@@ -187,11 +187,11 @@ $\overline{a} = (a_1, \ldots, a_n) \in M^n$. Alors \[
     On procède par récurrence sur la construction des termes. \\
     Si $t=c$ avec $c$ constante, on a 
     \begin{align*}
-    \eta(t^{\cM}(\overline{a})) &= \eta(c^{\cM}) && \text{par la Définition~\ref{defi:terme},} \\
+    \eta(t^{\cM}(\overline{a})) &= \eta(c^{\cM}) && \text{par la Définition~\ref{defi-terme},} \\
     &= \eta(c^{\cN}) && \text{par définition d'un plongement,} \\
-    &= t^{\cN}(\eta(\overline{a}))  && \text{encore par~\ref{defi:terme}}
+    &= t^{\cN}(\eta(\overline{a}))  && \text{encore par~\ref{defi-terme}}
     \end{align*}
-    Si $t=x_i$, alors en utilisant~\ref{defi:terme} deux fois, on a \[
+    Si $t=x_i$, alors en utilisant~\ref{defi-terme} deux fois, on a \[
     t^{\cM}(\overline{a})  = \eta(a_i) = t^{\cN}(\eta(\overline{a}))\]
     Si $t=f(t_1, \ldots, t_r)$, alors
     \begin{align*}
@@ -320,7 +320,7 @@ Nous prouvons la contraposée. Supposons que T est insatisfiable, par définitio
 $T \models (\phi \wedge \neg\phi)$ est trivialement verifié, et par théorème de complétude de Gödel, $T \vdash (\phi \wedge \neg\phi)$.
 \end{proof}
 
-\begin{theo}[Théorème de compacité]\label{th:compacite}
+\begin{theo}[Théorème de compacité]\label{th-compacite}
 Soit $T$ une $\mathcal{L}$-théorie. $T$ est satisfiable si et seulement si tout sous-ensemble fini de $T$ est satisfiable. 
 \end{theo}
 
@@ -336,5 +336,5 @@ $T_0$ est insatisfiable.
 \section{Categoricité et test de Vaught}
 
 
-\label{defi:completude}
+\label{defi-completude}
 

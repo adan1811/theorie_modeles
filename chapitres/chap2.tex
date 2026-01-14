@@ -7,7 +7,7 @@ désignera par la même lettre $A$ à la fois le modèle et le domaine.
 Pour des raisons de convenances, on rappelle ici le langage et les axiomes pour
 les anneaux (unitaires et commutatifs) et les corps qui avaient été donné plus haut.
 
-\begin{defi}[Anneaux, corps] \label{defi:ring}
+\begin{defi}[Anneaux, corps] \label{defi-ring}
 Le language naturel des anneaux est $\cL_{ring} = (+,\cdot,-,0,1)$.
 
 On a les axiomes des groupes abéliens (dans le language des groupes additifs
@@ -342,10 +342,19 @@ transcendance d'une extension ont un même cardinal appelé le \kw{degré de
 transcendance} de l'extension.
 \end{prop}
 
-\begin{prop}\label{prop:alg_clos_isom}
+\begin{prop}\label{prop-alg-clos-isom}
 Deux corps algébriquement clos sont isomorphes si et seulement si ils ont même
 caractéristique et même degré de transcendance 
 \end{prop}
+
+\begin{theo}[Théorème de structure des corps finis]\label{th-structure-corps-fini}
+Soit $p \in \bP, k \in \bNe$. 
+L'ensemble des racines du polynôme $P(X) = X^{p^k} - X$ dans $\Fpalg$
+est un sous-corps de $\Fpalg$ noté $\bF_{p^k}$ et c'est l'unique corps
+de cardinal $p^k$ à isomorphisme près et de plus, $\Fpalg = \bigcup_{k
+\ge 1} \bF_{p^k}$.
+\end{theo}
+
 
 \section{???}
 
@@ -354,7 +363,7 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
 
 \begin{defi}[Théorie des corps algébriquement clos]
     On se place dans le language des anneaux $\cL_{ring}$ avec les axiomes des
-    corps \ref{defi:ring}.\\
+    corps (\cref{defi-ring}).\\
     On axiomatise les corps algébriquement clos en rajoutant, pour
     chaque $n \in \bNe$, l'axiome \[ \forall a_0, \ldots, a_{n-1}, \exists x
     [x^n+a_{n-1}\cdot x^{n-1} + \cdots + a_1 \cdot x + a_0 = 0].\]
@@ -371,7 +380,7 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
     algébriquement clos de caractéristique $n$ pour $n \in \bP \cup \{0\}$. 
 \end{defi}
 
-\begin{prop}[Elimination des quantificateurs]\label{prop:acf_elim}
+\begin{prop}[Elimination des quantificateurs]\label{prop-acf-elim}
     La théorie $\ACF_n$ admet l'élimination des quantificateurs
 \end{prop}
 
@@ -379,7 +388,7 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
 
 \end{proof}
 
-\begin{prop}[Complétude]\label{prop:acf_complet}
+\begin{prop}[Complétude]\label{prop-acf-complet}
     La théorie $\ACF_n$ est complète.
 \end{prop}
 
@@ -387,7 +396,7 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
 
 \end{proof}
 
-\begin{coro}[Principe de Lefschetz]\label{coro:Lefschetz}
+\begin{coro}[Principe de Lefschetz]\label{coro-Lefschetz}
     Soit $\varphi$ une phrase du l'language des anneaux. On a alors les
     équivalences suivantes
 
@@ -411,15 +420,15 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
 On montre que $1 \implies 2 \implies 3 \implies 1$ puis $3 \implies
 4 \implies 5 \implies 2$. \\
 Il est clair que $1 \implies 2$ et  $3 \implies 1$, $2 \implies 3$
-est une conséquence immédiate de la complétude \ref{prop:acf_complet}.\\
+est une conséquence immédiate de la complétude (\cref{prop-acf-complet}).\\
 $(3 \implies 4)$: On a $\ACF_0 \models \varphi$ donc par compacité
-\ref{th:compacite}, il existe $\Sigma \subset \ACF_0$ fini tel que $\Sigma
+(\cref{th-compacite}), il existe $\Sigma \subset \ACF_0$ fini tel que $\Sigma
 \models \varphi$. Comme $\Sigma$ est fini, l'ensemble $E= \{ p \in \bP \mid \neg
 \chi_p \in \Sigma$ aussi. En posant $M = \max(E)$ (et $M=0$ si $E = \emptyset)$,
 pour $p > M$, on a $ \ACF_p \models \Sigma$ et donc $\ACF_p \models \varphi$. \\
 $4 \implies 5$ est claire et enfin, \\
 $(5 \implies 2)$: Supposons que $\ACF_0 \not\models \varphi$,
-par \ref{prop:acf_complet} $\ACF_0$ est complète ainsi $\ACF_0 \models \neg
+par la \cref{prop-acf-complet} $\ACF_0$ est complète ainsi $\ACF_0 \models \neg
 \varphi$ donc par ce qui précède, $\ACF_p \models \neg\varphi$ pour $p$
 suffisamment grand ce qui contredit $4$ d'où le résultat.
 
