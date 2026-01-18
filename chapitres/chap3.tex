@@ -90,7 +90,7 @@ de la forme \[  (\bigwedge_{i=1}^{p} f_i(\overline{x},\overline{y})  =0 ) \wedge
 $f_i,g_i$ sont des polynômes de $\bZ[\overline{x},\overline{y}]$. Supposons que
 $L \models \exists \overline{x} \varphi(\overline{x},\overline{y})$. Alors,
 d'après la \cref{prop-sous-struct-existance}, alors $\overline{L} models
-\exists \overline{x} \varphi(\overline{x},\overline{y})$. Donc, comme $\ACF_n$
+\exists \overline{x} \varphi(\overline{x},\overline{y})$. Donc, comme $\ACF$
 admet l'élimination des quantificateur (\cref{theo-acf-elim}), il existe une
 formule $\theta(\overline{y})$ sans quantificateurs telle que $\ACF_n \vdash
 \forall \overline{y} [\exists \overline{x} \varphi(\overline{x},\overline{y})
@@ -106,7 +106,7 @@ des solutions, il n'y a pas besoin de chercher plus loin que dans un corps
 algébriquement clos, il ne donne cependant pas d'indication sur l'existence ou
 non de solutions. Pour cela, on a besoin du Nullstelensatz.
 
-\begin{theo}[Nullstelensatz faible]
+\begin{theo}[Nullstelensatz faible]\label{theo-Nullstelensatz-faible}
 Soit $K$ un corps algébriquement clos et $I$ un idéal de $K[\overline{x}]$.
 Alors $I$ est un idéal propre si et seulement si $V(I) \neq \emptyset$.
 \end{theo}
@@ -126,3 +126,11 @@ et donc par le \cref{theo-solution-systeme}, $K \models \exists \overline{x}
 \bigwedge_{i=1}^{k} f_i(\overline{x}) = 0$ et donc $V(I) \neq \emptyset$.
 \end{proof}
 
+\begin{theo}[Nullstelensatz]\label{theo-Nullstelensatz}
+Soit $K$ un corps algébriquement clos et $I$ un idéal de $K[\overline{x}]$.
+Alors \[ I(V(I)) = \sqrt{I} \] 
+\end{theo}
+
+\begin{proof}
+    \todo[inline]{preuve Nullstelensatz fort}
+\end{proof}
