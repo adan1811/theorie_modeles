@@ -389,12 +389,28 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
 
 \todo[inline]{ACFn ou simplement ACF?}
 
-\begin{theo}[Elimination des quantificateurs]\label{prop-acf-elim}
-    La théorie $\ACF_n$ admet l'élimination des quantificateurs
+
+
+\todo[inline]{def dans le chap 1 ou pas?}
+
+\begin{defi}[Elimination des quantificateurs]\label{def-quant-elim}
+On dit qu'une théorie $T$ a l'\kw{élimination des quantificateurs} si pour toute
+formule $\varphi$, il existe une formule sans-quantificateurs $\theta$ telle que
+$T \models \varphi \leftrightarrow \theta$. \\
+Plus précisément, une $\cL$-théorie
+$T$ a l'\kw{élimination des quantificateurs} dans $\cL$ si pour toute
+$\cL$-formule $\varphi(x_1, \ldots, x_n)$, il existe une $\cL$-formule
+$\theta(x_1, \ldots, x_m)$ sans quantificateurs, où $n \le m$ telle que \[ T
+\models \forall x_1 \cdots \forall x_m ( ( \varphi(x_1, \ldots, x_n)
+\leftrightarrow \theta(x_1, \ldots, x_m)) \] 
+\end{defi}
+
+\begin{theo}[Elimination des quantificateurs]\label{theo-acf-elim}
+    La théorie $\ACF_n$ a l'élimination des quantificateurs
 \end{theo}
 
 \begin{proof}
-\todo[inline]{preuve}
+\todo[inline]{preuve élimination des quantificateurs}
 \end{proof}
 
 \begin{prop}[Complétude]\label{prop-acf-complet}
@@ -402,7 +418,16 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
 \end{prop}
 
 \begin{proof}
-\todo[inline]{preuve}
+On montre le résultat pour $\ACF_p$, la preuve pour $\ACF_0$ est identique en
+remplaçant $\bF_p$ par $\bQ$. \\
+Soient $K,L$ tels que $K,L \models \ACF_p$ et $\varphi$ une phrase dans le
+langage des anneaux. Par l'élimination des quantificateurs, il existe une phrase
+$\theta$ telle que $\ACF_n \models \varphi \leftrightarrow \theta$. Par le
+\cref{lemm-sous-struct-sans-quant}, $K \models \theta \models \leftrightarrow
+\bF_p \models \theta \iff L \models \theta$ et par donc $K \models \varphi
+\leftrightarrow K \models \theta \leftrightarrow L \models \theta
+\leftrightarrow L \models \varphi$ et donc $K$ et $L$ sont équivalentes et
+$\ACF_p$ est complète.
 \end{proof}
 
 \begin{coro}[Principe de Lefschetz]\label{coro-Lefschetz}
