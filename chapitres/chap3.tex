@@ -17,13 +17,39 @@ toute famille $(f_1, \ldots, f_n)$ de polynômes en $n$ variables de degré
 inférieur ou égal à $d$, si l'application associée est injective, alors elle est surjective.
 \end{lemm}
 
+\begin{proof}
+Construisons la phrase pour l'exemple $n=3$ et $d=2$, la construction générale
+est la même.
+
+Un polynôme $P$ en $3$ variables de degré $\le 2$ est une combinaison linéaire des $10$ monômes suivants:
+    \[ 1, \quad x_1, x_2, x_3, \quad x_1^2, x_2^2, x_3^2, \quad x_1x_2, x_1x_3, x_2x_3 \]
+    Une application polynomiale $f: K^3 \to K^3$ est définie par un triplet de polynômes $(f_1, f_2, f_3)$.
+    Chacun nécessitant $10$ coefficients, l'application est donc entièrement déterminée
+    par un tuple de $3 \times 10 = 30$ coefficients.
+    Considérons 30 variables (au sens logique) que nous noterons globalement par
+    le vecteur $\overline{c}$. 
+    Pour chaque composante $k \in \{1,2,3\}$, on peut écrire formellement le terme polynomial associé :
+    \[ f_k(\overline{c}, \overline{x}) = \sum_{\delta \le 2} c_{k,\delta} \cdot \overline{x}^\delta \]
+
+    L'injectivité s'exprime par la formule:
+    \[ \Inj(\overline{c}): \forall \overline{x} \forall \overline{y} \left( \left[ \bigwedge_{k=1}^3 f_k(\overline{c}, \overline{x}) = f_k(\overline{c}, \overline{y}) \right] \longrightarrow (\overline{x} = \overline{y}) \right) \]
+    La surjectivité s'exprime par la formule:
+    \[  \Surj(\overline{c}) :\forall \overline{z} \exists \overline{w} \left( \bigwedge_{k=1}^3 f_k(\overline{c}, \overline{w}) = z_k \right) \]
+
+    Et on a alors:
+    \[ \varphi_{3,2} : \forall \overline{c} \left( \Inj(\overline{c}) \longrightarrow
+    \Surj(\overline{c}) \right) \]
+    
+    qui est bien une formule de longueur finie du premier ordre dans le langage des anneaux.
+\end{proof}
+
 \begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck}
 Soit $f : \bC^n \rightarrow \bC^n$ une application polynomiale. Si $f$ est
 injective, alors elle est bijective. 
 \end{theo}
 
 \begin{proof}
-D'après le \cref{lem-phrase-corps} et par principe de Lefschetz (\cref{coro-Lefschetz}), il suffit de
+D'après le \cref{lemm-phrase-corps} et par principe de Lefschetz (\cref{coro-Lefschetz}), il suffit de
 montrer le résultat
 pour $\Fpalg$ pour tout $p \in \bP$. Par le \cref{theo-structure-corps-fini}, toute partie finie de $\Fpalg$ est contenue dans
 un sous-corps fini de $\Fpalg$. Soit $f = (f_1, \ldots, f_n) : \Fpalg^n
@@ -39,6 +65,39 @@ qui est injective et non surjective, ce qui est absurde car $K$ est fini.
 Pour tout quadruplet d'entiers $(n, m, d, \delta)$, il existe une phrase $\varphi_{n,m,d,\delta}$ dans le langage des anneaux qui exprime la propriété suivante :
 Pour tout corps $K$, pour toute variété algébrique $V \subset K^n$ définie par $m$ équations de degré au plus $\delta$, et pour toute application polynomiale $f: V \to V$ définie par des polynômes de degré au plus $d$, si $f$ est injective alors elle est surjective.
 \end{lemm}
+
+\begin{proof}
+Illustrons la construction de la phrase $\Phi_{n,m,d,s}$ dans un cas simple :
+    \begin{itemize}
+        \item $n=2$ (Dimension ambiante: le plan $K^2$).
+        \item $m=1$ (La variété $V$ est définie par $1$ équation).
+        \item $d=2$ (L'équation est de degré $\le 2$, c'est une conique).
+        \item $\delta=1$ (L'application $f$ est polynomiale de degré $\le 1$, c'est une application affine).
+    \end{itemize}
+
+    \textbf{Coefficients:}
+    \begin{itemize}
+        \item La variété $V$ est définie par l'annulation d'un polynôme $P$ de degré $\le 2$ en $2$ variables. Il y a $6$ monômes ($1, x_1, x_2, x_1^2, x_2^2, x_1x_2$). On note $\overline{a}$ le vecteur des $6$ coefficients de $P$.
+        On définit l'appartenance à $V$ par la formule:
+        \[ x \in V_{\overline{a}} \iff P(\overline{a},\overline{x}) = 0 \]
+        
+        \item L'application $f$ est définie par $2$ polynômes $(f_1, f_2)$ de degré $\le 1$. Chaque polynôme a $3$ coefficients ($c_0 + c_1x_1 + c_2x_2$). On note $\overline{c}$ le vecteur des $2 \times 3 = 6$ coefficients définissant $f$.
+    \end{itemize}
+
+    \textbf{Conditions sur les coefficients}
+    Contrairement au cas affine (\cref{lemm-phrase-corps}), n'importe quel choix
+    de coefficients $\overline{c}$ ne convient pas, il faut que $f$ envoie bien
+    les points de $V$ dans $V$. On introduit une formule de "Stabilité":
+    \[ \text{Stable}(\overline{a}, \overline{c}) : \forall \bar{x} \left( P(\overline{a}, \bar{x})=0 \longrightarrow P(\overline{a}, f(\overline{c}, \bar{x})) = 0 \right) \]
+
+    \textbf{Injectivité et Surjectivité restreintes à $V$}
+    On veut que les quantificateurs ne portent que sur les points de $V$, on
+    utilise donc la formule d'appartenance introduite précédemment
+    \[ \text{Inj}_V(\overline{a}, \overline{c}) : \forall \bar{x} \forall \bar{y} \left( [\bar{x} \in V_{\overline{a}} \wedge \bar{y} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{x}) = f(\overline{c}, \bar{y})] \longrightarrow \bar{x} = \bar{y} \right) \]
+    \[ \text{Surj}_V(\overline{a}, \overline{c}) : \forall \bar{z} \left( \bar{z} \in V_{\overline{a}} \longrightarrow \exists \bar{w} [\bar{w} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{w}) = \bar{z}] \right) \]
+
+    On a donc \[ \varphi_{2,1,2,1} : \forall \overline{a} \forall \overline{c} \left[ (\text{Stable}(\overline{a}, \overline{c}) \wedge \text{Inj}_V(\overline{a}, \overline{c})) \longrightarrow \text{Surj}_V(\overline{a}, \overline{c}) \right] \]
+\end{proof}
 
 \begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck-variete}
 Soit $K$ un corps algébriquement clos, $V$ une variété algébrique sur $K$ et $f
