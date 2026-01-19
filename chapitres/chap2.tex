@@ -8,9 +8,9 @@ Pour des raisons de convenances, on rappelle ici le langage et les axiomes pour
 les anneaux (unitaires et commutatifs) et les corps qui avaient été donné plus haut.
 
 \begin{defi}[Anneaux, corps] \label{defi-ring}
-Le language naturel des anneaux est $\cL_{ring} = (+,\cdot,-,0,1)$.
+Le langage naturel des anneaux est $\cL_{ring} = (+,\cdot,-,0,1)$.
 
-On a les axiomes des groupes abéliens (dans le language des groupes additifs
+On a les axiomes des groupes abéliens (dans le langage des groupes additifs
 $\cL_{agp} =(+,-,0))$
 
 \begin{enumerate}[label=\textbf{R\arabic*}]
@@ -20,7 +20,7 @@ $\cL_{agp} =(+,-,0))$
     \item $\forall x,y [x+y = y+x]$.
 \end{enumerate}
 
-Ensuite les axiomes de monoïde commutatif (dans le language $\cL_{mon} = (\cdot,
+Ensuite les axiomes de monoïde commutatif (dans le langage $\cL_{mon} = (\cdot,
 1))$
 
 \begin{enumerate}[label=\textbf{R\arabic*},start=5]
@@ -58,7 +58,7 @@ par la suite. On donne certaines démonstrations, on pourra trouver les autres
 dans n'importe quel livre d'algèbre, par exemple dans~\cite{Berhuy_2025}.
 
 \begin{defi}[Anneau intègre]
-Un anneau est \kw{intègre} si il est sans diviseur de zéro, c'est à dire si
+Un anneau non trivial est \kw{intègre} si il  est sans diviseur de zéro, c'est à dire si
 c'est un modèle pour la phrase \[ \forall x,y [x \cdot y = 0 \implies (x=0
 \vee y=0) ]. \]
 \end{defi}
@@ -126,7 +126,7 @@ $I = f^{-1}(J)$ est un idéal de $A$. En particulier, $\ker(f)$ est un idéal de
 \begin{defi}[Idéal premier, principal, maximal]
 Un idéal $I$ d'une anneau $A$ est :
 \begin{itemize}
-    \item \kw{premier} si $\forall a,b \in A, (ab \in I \implies a \in I \vee b
+    \item \kw{premier} si $\forall a,b \in A, ab \in I \implies (a \in I \vee b
     \in I)$
     \item \kw{principal} si $\exists a \in A, I = (a)$.
     \item \kw{maximal} si $I \neq A$ et pour tout idéal $J$ tel que $I \subset J
@@ -259,7 +259,7 @@ annulateur} de $V$ est l'ensemble \[ I(V) := \{ f \in K[x] \mid f(V) =
 \end{defi}  
 
 
-\begin{prop}[K[X] est principal]
+\begin{prop}
 Soit $K$ un corps et $I$ un idéal de $K[X]$, alors $I$ est engendré par un
 unique polynôme unitaire $P$ et $I$ est premier si et seulement si
 $P$ est irréductible.
@@ -380,7 +380,7 @@ On a maintenant tous les outils algébriques nécessaires et pouvons revenir à 
 théorie des modèles. On va définir la théorie des corps algébriquement clos (ACF).
 
 \begin{defi}[Théorie des corps algébriquement clos]
-    On se place dans le language des anneaux $\cL_{ring}$ avec les axiomes des
+    On se place dans le langage des anneaux $\cL_{ring}$ avec les axiomes des
     corps (\cref{defi-ring}).\\
     On axiomatise les corps algébriquement clos en rajoutant, pour
     chaque $n \in \bNe$, l'axiome \[ \forall a_0, \ldots, a_{n-1}, \exists x
@@ -442,7 +442,7 @@ $\ACF_p$ est complète.
 \end{proof}
 
 \begin{coro}[Principe de Lefschetz]\label{coro-Lefschetz}
-    Soit $\varphi$ une phrase du l'language des anneaux. On a alors les
+    Soit $\varphi$ une phrase du l'langage des anneaux. On a alors les
     équivalences suivantes
 
     \begin{enumerate}[label= (\roman*)]
