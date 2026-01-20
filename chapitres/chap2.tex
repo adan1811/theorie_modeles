@@ -247,6 +247,8 @@ d'évaluation) $ev_a : K[X] \implies K(a)$ tel que $\forall b \in K,
 ev_a(b)=b$ et $ev_a(X) = a$.
 \end{lemm}
 
+
+\todo[inline]{redondant avec idéal d'une variété? a del?}
 \begin{defi}[Idéal annulateur]
 Le noyau du morphisme d'évaluation $ev_a$ du lemme précédent est appelé
 \kw{idéal anulteur} et noté $I(a)$, on a donc \[ I(a) := \{ f \in K[x] \mid f(a) =
@@ -499,7 +501,7 @@ $\theta(x_1, \ldots, x_m)$ sans quantificateurs, où $n \le m$ telle que \[ T
 \leftrightarrow \theta(x_1, \ldots, x_m)) \] 
 \end{defi}
 
-\begin{theo}[Elimination des quantificateurs]\label{theo-acf-elim}
+\begin{theo}[Théorème de Tarski]\label{theo-acf-elim}
     La théorie $\ACF$ a l'élimination des quantificateurs
 \end{theo}
 
@@ -564,4 +566,46 @@ suffisamment grand ce qui contredit $4$ d'où le résultat.
 \end{proof}
 
 \section{Ensembles définissables, variétés}
-\todo[inline]{.}
+
+Dans cette section, on fixe un corps algébriquement clos $K$ et un entier $n \ge
+1$. Le \cref{theo-acf-elim} montre que tous les ensembles définissables de $K^n$
+sont définissables sans quantificateurs. Dans cette section, on précise ce que
+sont les ensembles définissables sont, leur lien avec les variétés affines et
+plus généralement avec les ensembles constructibles.
+
+\todo[inline]{blabla}
+
+\begin{defi}[Variété affine]
+Soit $S \subset K[\overline{x}]$, on note $V(S)$ le sous ensemble de $K^n$
+formé des zéros communs à tous les éléments de $S$. C'est à dire: 
+\[ V(S) = \{ \overline{a} \in K^n \mid P(\overline{a} ) = 0,  \forall P \in S \} .\]
+Les sous-ensembles de $K^n$ de ce type sont les sous-variétés algébrique affine de
+$K^n$.
+Dans la suite on utilisera simplement \kw{variété} pour les qualifier.
+\end{defi}
+
+\begin{defi}[Idéal d'une variété]
+Soit $V \subset K^n$, on appelle idéal de $V$, et on note $I(V)$ l'ensemble des
+polynômes nuls sur $V$. C'est à dire:
+\[ I(V) = \{ P \in  K[\overline{x}] \mid P(\overline{a}) = 0, \forall \overline{a} \in V \}.\]
+\end{defi}
+
+On a les propriétés immédiates suivantes:
+
+\begin{lemm}\label{lemm-variete-trivial}
+\todo[inline]{mettre ce qui sert}
+\end{lemm}
+
+\begin{prop}
+Soit $V \subset K^n$ une variété, alors il existe un ensemble $E$ fini de
+polynômes tel que $V = V(E)$.
+\end{prop}
+
+\begin{proof}
+    Supposons $V=V(P)$, alors par le \cref{lemm-variete-trivial}, on a $ V =
+    V(I(V(P)))$ et par le \cref{theo-base-Hilbert}, l'idéal $I(V(P))$ est
+    engendré par un ensemble fini $E$ de polynômes d'où le résultat.
+\end{proof}
+
+
+
