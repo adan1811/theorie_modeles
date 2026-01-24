@@ -463,8 +463,8 @@ de cardinal $p^k$ à isomorphisme près et de plus, $\Fpalg = \bigcup_{k
 
 On a maintenant tous les outils algébriques nécessaires et pouvons revenir à la
 théorie des modèles. On commence par définir la théorie des corps
-algébriquement clos (ACF). Puis on montre successivement qu'elle admet
-l'élimination des quantificateurs, la complétude ainsi que le principe de
+algébriquement clos (ACF). On admettra qu'elle admet
+l'élimination des quantificateurs puis on démontre la complétude ainsi que le principe de
 Lefschetz qui nous seront indispensables pour la suite. On étudie ensuite les
 ensembles définissables de la théorie et leur lien avec les variétés algébriques.
 
@@ -505,9 +505,14 @@ $\theta(x_1, \ldots, x_m)$ sans quantificateurs, où $n \le m$ telle que \[ T
     La théorie $\ACF$ a l'élimination des quantificateurs
 \end{theo}
 
-\begin{proof}
-\todo[inline]{preuve élimination des quantificateurs}
-\end{proof}
+\begin{rema}
+La démonstration de ce théorème étant très technique, nous choisissons de
+l'admettre et de nous concentrer sur ses conséquences. Signalons cependant que contrairement
+aux preuves modernes de ce résultat qui utilisent des
+résultats puissants de théorie des modèles, la preuve originale de Tarski (voir \cite{Tarski_1951}) est
+elle constructive et fournit un algorithme explicite, basé sur le résultant pour
+éliminer un à un les quantificateurs.
+\end{rema}
 
 \begin{prop}[Complétude]\label{prop-acf-complet}
     La théorie $\ACF_n$ est complète.
