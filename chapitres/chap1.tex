@@ -81,7 +81,7 @@ on obtient une $\mathcal{L}$-structure notée $\mathcal{M}'\upharpoonright_{\mat
 est une réduction de $\mathcal{M}'$, et $\mathcal{M}'$ une expansion de $\mathcal{M}'\upharpoonright_{\mathcal{L}}$.
 \end{defi}
 
-\begin{defi}{Plongement, sous-structure, extension}
+\begin{defi}{Plongement, sous-structure, extension}\label{plongement}
     Soit $\cM, \cN$ des $\cL$-structures, un $\cL$-plongement $\eta : \cM \rightarrow \cN$ (ou simplement \kw{plongement})
     est une fonction injective $\eta : M \rightarrow N$ qui préserve les
     interprétations de tous les symboles de $\cL$, plus précisément :
@@ -231,53 +231,83 @@ des combinaisons de symboles de notre langage restreint, nous pourrons les utili
 dans nos formules sans avoir à traiter leurs cas spécifiques lors des preuves par induction.
 \end{rema}
 
-\begin{theo}\label{Equivalence et isomorphisme}
+\begin{defi}[Structures élémentairement équivalentes]
+On dit que deux $\cL$-structures $\cM$ et $\cN$ sont élémentairement équivalentes, et on note $\cM \equiv \cN$, si
+pour toute $\cL$-phrases $\phi$, on a
+\begin{align*}
+\cM \models \phi \iff \cN \models \phi
+\end{align*}
+\end{defi}
+
+\begin{theo}\label{isomorphisme}
 Soient $\mathcal{M}$ et $\mathcal{N}$ deux $\mathcal{L}$-structures. Supposons qu'il existe $j: \mathcal{M} \rightarrow \mathcal{N}$ un isomorphisme,
 alors $\mathcal{M} \equiv \mathcal{N}$.
 \end{theo}
 
-\begin{proof}
-Nous commençons par montrer par induction sur les termes que pour $t$ un $\mathcal{L}$-terme, muni de variables libres dans $\overline{v} = (v_1,\dots,v_n)$,
-et $\overline{a}=(a_1,\dots,a_n) \in M^n$, on a $j(t^{\mathcal{M}}(\overline{a}))
-= t^{\mathcal{N}}(j(\overline{a}))$, en notant $j(\overline{a})=(j(a_1),\dots,j(a_n))$.
-\end{proof}
+La démonstration suivante donne une première mise en oeuvre du raisonnement par induction.
 
 \begin{proof}
-    (On détaille cette preuve évidente car le même principe de preuve va apparaître
-    à plusieurs reprises.) \\
-    On procède par récurrence sur la construction des termes. \\
+Nous commençons par montrer par induction que les définitions \ref{plongement} et \ref{defi-terme} suffisent à ce que les termes se comportent bien
+sous plongement quelconque, i.e pour $t$ un $\mathcal{L}$-terme, muni de variables libres dans $\overline{v} = (v_1,\dots,v_n)$,
+et $\overline{a}=(a_1,\dots,a_n) \in M^n$, on a $j(t^{\mathcal{M}}(\overline{a}))
+= t^{\mathcal{N}}(j(\overline{a}))$, en notant $j(\overline{a})=(j(a_1),\dots,j(a_n))$\\[0.5cm]
     Si $t=c$ avec $c$ constante, on a 
     \begin{align*}
-    \eta(t^{\cM}(\overline{a})) &= \eta(c^{\cM}) && \text{par la Définition~\ref{defi-terme},} \\
-    &= \eta(c^{\cN}) && \text{par définition d'un plongement,} \\
-    &= t^{\cN}(\eta(\overline{a}))  && \text{encore par~\ref{defi-terme}}
+    j(t^{\cM}(\overline{a})) &= j(c^{\cM})\\
+    &= c^{\cN} && \text{par définition d'un plongement,} \\
+    &= t^{\cN}(j(\overline{a}))
     \end{align*}
-    Si $t=x_i$, alors en utilisant~\ref{defi-terme} deux fois, on a \[
-    t^{\cM}(\overline{a})  = \eta(a_i) = t^{\cN}(\eta(\overline{a}))\]
+    Si $t=v_i$,\[
+    j(t^{\cM}(\overline{a}))  = j(a_i) = t^{\cN}(j(\overline{a}))\]
     Si $t=f(t_1, \ldots, t_r)$, alors
     \begin{align*}
-    \eta(t^{\cM}) &= \eta(f^{\cM}(t_1^{\cM}(\overline{a}),\ldots, t_r^{\cM}(\overline{a}))) \\
-    & = f^{\cN}(\eta(t_1^{\cM}(\overline{a}),\ldots,t_r^{\cM}(\overline{a}))) && \text{par définition d'un plongement,} \\
-    & = f^{\cN}(t_1^{\cN}(\eta(\overline{a})),\ldots, t_r^{\cN}(\eta(\overline{a}))) && \text{par hypothèse de récurrence,} \\
-    & = t^{\cN}(\eta(\overline{a})).
+    j(t^{\cM}(\overline{a})) &= j(f^{\cM}(t_1^{\cM}(\overline{a}),\ldots, t_r^{\cM}(\overline{a}))) \\
+    & = f^{\cN}(j(t_1^{\cM}(\overline{a}),\ldots,t_r^{\cM}(\overline{a}))) && \text{par définition d'un plongement,} \\
+    & = f^{\cN}(t_1^{\cN}(j(\overline{a})),\ldots, t_r^{\cN}(j(\overline{a}))) && \text{par hypothèse de récurrence,} \\
+    & = t^{\cN}(j(\overline{a})).
     \end{align*}
 
+Nous terminons la preuve par induction sur les formules.\\[0.5cm]
+Si $\phi(\overline{v}): t_1 = t_2$,
+\begin{align*}
+\mathcal{M} \models \phi(\overline{a}) &\iff t_1^{\mathcal{M}}(\overline{a}) = t_2^{\mathcal{M}}(\overline{a})\\
+&\iff j(t_1^{\mathcal{M}}(\overline{a})) = j(t_2^{\mathcal{M}}(\overline{a})) && \text{par injectivité de j}\\
+&\iff t_1^{\mathcal{N}}(j(\overline{a})) = t_2^{\mathcal{N}}(j(\overline{a}))\\
+&\iff \mathcal{N} \models j(\phi(\overline{a}))
+\end{align*}
+Si $\phi(\overline{v}): \mathcal{R}(t_1,\dots,t_n)$,
+\begin{align*}
+\mathcal{M} \models \phi(\overline{a}) &\iff (t_1^{\mathcal{M}}(\overline{a}),\dots,t_n^{\mathcal{M}}(\overline{a})) \in \mathcal{R}^{\mathcal{M}}\\
+&\iff (j(t_1^{\mathcal{M}}(\overline{a})),\dots,j(t_n^{\mathcal{M}}(\overline{a}))) \in \mathcal{R}^{\mathcal{N}}\\
+&\iff (t_1^{\mathcal{N}}(j(\overline{a})),\dots,t_n^{\mathcal{N}}(j(\overline{a}))) \in \mathcal{R}^{\mathcal{N}}\\
+&\iff \mathcal{N} \models \phi(j(\overline{a}))
+\end{align*}
+Si $\phi: \neg\psi$, pour $\psi$ une certaine $\mathcal{L}$-formule,
+\begin{align*}
+\mathcal{M} \models \phi(\overline{a}) &\iff \mathcal{M} \not\models \psi(\overline{a})\\
+&\iff \mathcal{N} \not\models \psi(j(\overline{a})) && \text{par induction sur } \psi\\
+&\iff \mathcal{N} \models \phi(j(\overline{a}))
+\end{align*}
+Si $\phi: \psi \wedge \theta$,
+\begin{align*}
+\mathcal{M} \models \phi(\overline{a}) &\iff \mathcal{M} \models \psi(\overline{a}) \text{ et } \mathcal{M} \models \theta(\overline{a})\\
+&\iff \mathcal{N} \models \psi(j(\overline{a})) \text{ et } \mathcal{N} \models \theta(j(\overline{a})) && \text{par induction sur }\psi\text{ et }\theta\\
+\end{align*}
+Si $\phi(\overline{v}): \exists w \text{ } \psi(\overline{v},w)$,
+\begin{align*}
+\mathcal{M} \models \phi(\overline{a}) &\iff \mathcal{M} \models \psi(\overline{a},b) \text{, pour un certain b dans M,}\\
+&\iff \mathcal{N} \models \psi(j(\overline{a}),c) \text{, pour un certain c dans N,  car j est surjective,}\\
+&\iff \mathcal{N} \models \phi(j(\overline{a}))
+\end{align*}
 \end{proof}
 
-\todo[inline]{reprendre cette preuve en adaptant les notations et en alignant tous les cas à gauche}
-
-\section{Ensembles définissables,quantificateurs}
+\section{Ensembles définissables}
 \begin{defi}[Ensembles définissables]
-Soit $\mathcal{M} = (M,\dots)$ une $\mathcal{L}$-structure. On dit qu'un 
-sous-ensemble $X \subseteq M^n$ est \kw{définissable} s'il existe une 
-$\mathcal{L}$-formule $\phi(v_1,\dots,v_n,w_1,\dots,w_m)$ et $\overline{b}
-\in M^m$ tels que $X= \{ \overline{a} \in M^n \mid \mathcal{M} \models 
-\phi(\overline{a},\overline{b}) \}$. On dit que 
-$\phi(\overline{v},\overline{b})$ \kw{définit} $X$. Soit $A \subseteq 
-M$, on dit que $X$ est \kw{$A$-définissable}, ou \kw{définissable 
-sur $A$}, si le paramètre choisi peut être pris dans $A$, c'est-à-dire s'il
-existe une formule $\phi(\overline{v},w_1,\dots,w_l)$ et $\overline{b} \in 
-A^l$, tels que $\phi(\overline{v},\overline{b})$ définit X.
+Soit $\mathcal{M} = (M,\dots)$ une $\mathcal{L}$-structure. On dit qu'un sous-ensemble $X \subseteq M^n$ est \kw{définissable} s'il existe une 
+$\mathcal{L}$-formule $\phi(v_1,\dots,v_n,w_1,\dots,w_m)$ et $\overline{b} \in M^m$ tels que $X= \{ \overline{a} \in M^n \mid \mathcal{M} \models 
+\phi(\overline{a},\overline{b}) \}$. On dit que $\phi(\overline{v},\overline{b})$ \kw{définit} $X$. Soit $A \subseteq 
+M$, on dit que $X$ est \kw{$A$-définissable}, ou \kw{définissable sur $A$}, si le paramètre choisi peut être pris dans $A$, c'est-à-dire s'il
+existe une formule $\phi(\overline{v},w_1,\dots,w_l)$ et $\overline{b} \in A^l$, tels que $\phi(\overline{v},\overline{b})$ définit X.
 \end{defi}
 
 \begin{exem}
@@ -290,21 +320,36 @@ $U_n$ est alors définissable via la formule
 Nous précisons que $U_n$ est $\kw{0-définissable}$, c'est à dire que la formule $\phi$ qui la définit n'a pas de paramètre.
 \end{exem}
 
-\begin{prop}
+La fin de cette section illustre un premier exemple de résultat en Théorie des Modèles applicable à l'Algèbre.
+
+\begin{prop}\label{pointwise}
 Soit $\mathcal{M}$ une $\mathcal{L}$-structure. Si $X \subset M^n$ est $A$-définissable, alors tout $\mathcal{L}$-automorphisme $\sigma$
-qui fixe point par point $A$ (i.e pour tout $a \in A$, $\sigma(a) = A$), laisse $X$ invariant (i.e $\sigma(X)=X$)
+qui fixe point par point $A$ (i.e pour tout $a \in A$, $\sigma(a) = a$), laisse $X$ invariant (i.e $\sigma(X)=X$)
 \end{prop}
 
 \begin{proof}
-Soit $\overline{a} \in A$ et $\psi(\overline{v}, \overline{a})$ la $\mathcal{L}$-formule définissant $X$.
+Soit $\overline{a} \in A$ et $\phi(\overline{v}, \overline{a})$ la $\mathcal{L}$-formule définissant $X$.
 Soient $\sigma$ un automorphisme de $\mathcal{M}$ tel que $\sigma(\overline{a}) = \overline{a}$ et $\overline{b} \in M^n$.
+Nous avons, 
+\begin{align*}
+\mathcal{M} \models \phi(\overline{b}, \overline{a}) &\iff \mathcal{M} \models \phi(\sigma(\overline{b}), \sigma(\overline{a})) 
+&& \text{par Théorème } \ref{isomorphisme}\\
+&\iff \mathcal{M} \models \phi(\sigma(\overline{b}), \overline{a})
+\end{align*}
+On obtient bien $\bbar \in X \iff \sigma(\bbar) \in X$.
 \end{proof}
-
-Il est typique d'utiliser ce résulat pour sa contraposée, nous donnons un exemple.
 
 \begin{coro}
 Les nombres réels $\mathbb{R}$ en tant que sous-ensemble du corps des complexes $\mathbb{C}$ n'est pas définissable.
 \end{coro}
+
+\begin{proof}
+Supposons par l'absurde que $\mathbb{R}$ soit définissable sur $A \subset \mathbb{C}$, en particulier on peut prendre $A$ fini.
+$A$ étant fini, sa cloture algébrique est dénombrable: par des arguments de cardinalité, on peut choisir $r,\text{ }s \in \mathbb{C}$ 
+algébriquement indépendant sur A et tel que $r \in \mathbb{R}$, $s \not\in \mathbb{R}$.
+On a alors l'existence d'un automorphisme $\sigma$ de $\mathbb{C}$ tel que pour tout $x \in A, \sigma(x)=x$ et $\sigma(r)=s$,
+ainsi $\sigma(\mathbb{R}) \neq \mathbb{R}$ et par contraposée de la proposition \ref{pointwise}, $\mathbb{R}$ n'est pas définissable sur $\mathbb{C}$.
+\end{proof}
 
 \begin{rema}
 Bien que la topologie singulière de $\mathbb{R}$ nous pousserait à croire qu'il occupe une place particulière dans $\mathbb{C}$, la Théorie des Modèles
@@ -312,6 +357,8 @@ illustre ici que le langage pur des corps est "aveugle" façe à nos intuitions 
 \end{rema}
 
 \section{Théories et axiomes}
+
+\section{Ultrafiltres et Théorème de Compacité}
 
 \section{Le Théorème de Compacité}
 
