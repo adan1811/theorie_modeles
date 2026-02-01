@@ -198,14 +198,8 @@ et donc par le \cref{theo-solution-systeme}, $K \models \exists \overline{x}
 \end{proof}
 
 
-\begin{lemm}
-Soit $I$ un idéal de $K[\overline{x}]$, alors $V(\sqrt{I}) = V(I)$.
-\end{lemm}
 
-\begin{proof}
-C'est immédiat par intégrité de $K[\overline{x}]$.
-\end{proof}
-
+\todo[inline]{Si tu veux parler de localisation il va falloir introduire et motiver tout ça! Pareil tu parles d'anneau Noetherien, si c'est juste pour dire que I est de type fini, il y a déjà le théorème de la base de Hilbert.}
 \begin{theo}[Nullstelensatz]\label{theo-Nullstelensatz}
 Soit $K$ un corps algébriquement clos et $I$ un idéal de $K[\overline{x}]$.
 Alors \[ I(V(I)) = \sqrt{I} \] 
@@ -235,4 +229,26 @@ f(\xbar) = 0\\
 Impliquant $1=0$, ceci achève la preuve par l'absurde et $V(J) = \emptyset$.
 On invoque le théorème \ref{theo-Nullstelensatz-faible} pour conclure que $J$ n'est pas idéal propre, i.e $J=\mathbb{K}[\xbar,T]$,
 or $J=(P_1,\dots,P_m,1-Tf)$, donc l'égalité (1) se vérifie.
+\end{proof}
+
+
+\begin{proof}
+    On utilise l'astuce de Rabinowitsch.
+    Soit $f \in I(V(I))$,
+ on considère l'anneau de polynômes à $n+1$ variables $K[\overline{x}, Y]$ et l'idéal $J$ engendré par les polynômes de $I$ et par le polynôme $1 - Y f(\bar{x})$.
+    \[ J = (I, 1 - Y f) \subset K[\overline{x}, Y] \]
+
+    Soit $(\abar,b) \in V(J)$, on a $f(\abar) = 0$ et $1 - b f(\abar) = 0$ ce
+    qui est absurde, donc $V(J) = \emptyset$ donc d'après le Nullstelensatz
+    faible (\cref{theo-Nullstelensatz-faible}), $J$ n'est pas propre donc $J = K[\bar{x}, Y]$ et $1 \in J$.
+    Il existe ainsi des polynômes $A_1, \dots, A_m, B \in K[\bar{x}, Y]$ et $P_1, \dots, P_m \in I$ tels que :
+    \[ 1 = \sum_{i=1}^m P_i(\bar{x}) A_i(\bar{x}, Y) + (1 - Y f(\bar{x})) B(\bar{x}, Y) \]
+    
+    Considérons le corps des fractions rationnelles $K(\bar{x})$ et évaluons l'expression en $Y = 1/f(\bar{x})$.
+    Le terme de droite s'annule donc
+    \[ 1 = \sum_{i=1}^m P_i(\bar{x}) A_i(\bar{x}, \frac{1}{f(\bar{x})}) \]
+    En multipliant cette équation par une puissance $f^k$ suffisamment grande, on obtient une relation dans $K[\bar{x}]$ de la forme :
+    \[ f^k = \sum_{i=1}^m P_i(\bar{x}) Q_i(\bar{x}) \]
+    avec $Q_i \in K[\overline{x}]$ donc  $f^k \in I$.
+    L'inclusion réciproque est immédiate par intégrité de $K[\overline{x}]$.
 \end{proof}
