@@ -420,10 +420,24 @@ $T_0$ est insatisfaisable.
 Une $\mathcal{L}$-théorie $T$ est dite complète si pour toute $\mathcal{L}$-phrase $\phi$, on a soit $T \models \phi$, soit $T \models \neg\phi$.
 \end{defi}
 
+\begin{defi}
+Soient $\kappa$ un cardinal infini et $T$ une $\cL$-théorie satisfaite par des modèles de cardinalité $\kappa$.
+On dit que $T$ est $\kappa$-catégorique si les modèles de $T$ de cardinalité $\kappa$ sont deux à deux isomorphes.
+\end{defi}
+
+
 \begin{prop}
-
-
+Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est $\kappa$-catégorique pour tout cardinal $\kappa$ indénombrable.
 \end{prop}
+
+\begin{theo}[Test de Vaught]
+Soit $T$ une $\cL$-théorie satisfaisable, sans modèles finis, et $\kappa$-catégorique pour un certain cardinal infini $\kappa > \lvert \cL \rvert$.
+Alors $T$ est complète.
+\end{theo}
+
+\begin{coro}
+Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est complète.
+\end{coro}
 
 \todo[inline]{}\label{lemm-sous-struct-sans-quant}
 \todo[inline]{}\label{prop-sous-struct-existance}
