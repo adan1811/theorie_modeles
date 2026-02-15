@@ -145,12 +145,12 @@ quantificateurs (\cref{theo-acf-elim}), on peut étendre ce résultat à des
 systèmes d'équations polynomiales en plusieurs variables de la manière suivante.
 
 
-\begin{theo}\label{theo-solution-systeme}
+\begin{lemm}\label{lemm-solution-systeme}
 Soit $K$ un corps algébriquement clos, si un système \kw{fini} d'équations
 polynomiales (et/ou de négations d'équations polynomiales) à
 coefficients dans $K$ admet une solution dans une extension $L$ de $K$, alors il
 admet une solution dans $K$.
-\end{theo}
+\end{lemm}
 
 \begin{proof}
 Soit $\overline{c}$ un n-uplet qui contient les coordonnés de tous les
@@ -160,19 +160,19 @@ de la forme \[  (\bigwedge_{i=1}^{p} f_i(\overline{x},\overline{y})  =0 ) \wedge
 (\bigwedge_{i=1}^{q} g_i(\overline{x},\overline{y})  \neq 0 )  \] où les
 $f_i,g_i$ sont des polynômes de $\bZ[\overline{x},\overline{y}]$. Supposons que
 $L \models \exists \overline{x} \varphi(\overline{x},\overline{y})$. Alors,
-d'après la \cref{prop-sous-struct-existance}, alors $\overline{L} \models
+d'après la \cref{prop-sous-struct-existance}, $\overline{L} \models
 \exists \overline{x} \varphi(\overline{x},\overline{y})$. Donc, comme $\ACF$
 admet l'élimination des quantificateur (\cref{theo-acf-elim}), il existe une
 formule $\theta(\overline{y})$ sans quantificateurs telle que $\ACF_n \vdash
 \forall \overline{y} [\exists \overline{x} \varphi(\overline{x},\overline{y})
-\leftrightarrow \theta(\overline{y}) ]$. Ainsi on a $\ACF_n \models
+\leftrightarrow \theta(\overline{y}) ]$. Ainsi on a $\overline{L} \models
 \theta(\overline{c})$ et comme $\theta$ est sans quantificateur et $K$ une
 sous-structure de $\overline{L}$ d'après le \cref{lemm-sous-struct-sans-quant}
-on a $K \models \theta{\overline{c}}$ et finalement, comme $K \models \ACF_n$,
+on a $K \models \theta(\overline{c})$ et finalement, comme $K \models \ACF_n$,
 on a $K \models \exists \overline{x} \varphi(\overline{x},\overline{y})$.
 \end{proof} 
 
-Le théorème précédent affirme que pour savoir si un système d'équations admet
+Le lemme précédent affirme que pour savoir si un système d'équations admet
 des solutions, il n'y a pas besoin de chercher plus loin que dans un corps
 algébriquement clos, il ne donne cependant pas d'indication sur l'existence ou
 non de solutions. Pour cela, on a besoin du Nullstelensatz.
@@ -193,20 +193,18 @@ $f\in J$, et en particulier pour $f \in I$, on a $f(\overline{y}) = 0$.
 Ensuite, par le théorème de la base de Hilbert (\cref{theo-base-Hilbert}),
 l'idéal $I$ est engendré par un nombre fini de polynômes $f_1, \ldots, f_k$ et
 donc $L \models \exists \overline{x} \bigwedge_{i=1}^{k} f_i(\overline{x}) = 0$
-et donc par le \cref{theo-solution-systeme}, $K \models \exists \overline{x}
+et donc par le \cref{lemm-solution-systeme}, $K \models \exists \overline{x}
 \bigwedge_{i=1}^{k} f_i(\overline{x}) = 0$ et donc $V(I) \neq \emptyset$.
 \end{proof}
 
 
-
-\todo[inline]{Si tu veux parler de localisation il va falloir introduire et motiver tout ça! Pareil tu parles d'anneau Noetherien, si c'est juste pour dire que I est de type fini, il y a déjà le théorème de la base de Hilbert.}
 \begin{theo}[Nullstelensatz]\label{theo-Nullstelensatz}
 Soit $K$ un corps algébriquement clos et $I$ un idéal de $K[\overline{x}]$.
 Alors \[ I(V(I)) = \sqrt{I} \] 
 \end{theo}
 
 \begin{proof}
-Par théorème de la base de Hilbert, on a $\{P_1,\dots,P_m\}$ une famille finie tel que $I = (P_1,\dots,P_m)$
+Par théorème de la base de Hilbert, il existe une famille finie telle que $I = (f_1,\dots,f_m)$
     On utilise l'astuce de Rabinowitsch.
     Soit $f \in I(V(I))$,
  on considère l'anneau de polynômes à $n+1$ variables $K[\overline{x}, Y]$ et l'idéal $J$ engendré par les polynômes de $I$ et par le polynôme $1 - Y f(\bar{x})$.
@@ -224,6 +222,6 @@ Par théorème de la base de Hilbert, on a $\{P_1,\dots,P_m\}$ une famille finie
     En multipliant cette équation par une puissance $f^k$ suffisamment grande, on obtient une relation dans $K[\bar{x}]$ de la forme :
     \[ f^k = \sum_{i=1}^m P_i(\bar{x}) Q_i(\bar{x}) \]
     avec $Q_i \in K[\overline{x}]$ donc  $f^k \in I$.
-L'inclusion réciproque est immédiate: supposons $f \in \sqrt{I} \text{ et } n \in \mathbb{N}^* \text{ tel que } f^n \in I$,
-on a pour tout $\xbar \in V(I),\text{ }f^n(\xbar)=0$, d'où par intégrité, pour tout $\xbar \in V(I),\text{ }f(\xbar)=0$.\\
+L'inclusion réciproque est immédiate: supposons $f \in \sqrt{I} \text{ et } k \in \mathbb{N}^* \text{ tel que } f^k \in I$,
+on a pour tout $\xbar \in V(I),\text{ }f^k(\xbar)=0$, d'où par intégrité, pour tout $\xbar \in V(I),\text{ }f(\xbar)=0$.\\
 \end{proof}
