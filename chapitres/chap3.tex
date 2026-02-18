@@ -159,9 +159,9 @@ $\varphi(\overline{x},\overline{c})$ où $\varphi(\overline{x},\overline{y})$ se
 de la forme \[  (\bigwedge_{i=1}^{p} f_i(\overline{x},\overline{y})  =0 ) \wedge
 (\bigwedge_{i=1}^{q} g_i(\overline{x},\overline{y})  \neq 0 )  \] où les
 $f_i,g_i$ sont des polynômes de $\bZ[\overline{x},\overline{y}]$. Supposons que
-$L \models \exists \overline{x} \varphi(\overline{x},\overline{y})$. Alors,
+$L \models \exists \overline{x} \varphi(\overline{x},\overline{c})$. Alors,
 d'après la \cref{prop-sous-struct-existance}, $\overline{L} \models
-\exists \overline{x} \varphi(\overline{x},\overline{y})$. Donc, comme $\ACF$
+\exists \overline{x} \varphi(\overline{x},\overline{c})$. Donc, comme $\ACF$
 admet l'élimination des quantificateur (\cref{theo-acf-elim}), il existe une
 formule $\theta(\overline{y})$ sans quantificateurs telle que $\ACF_n \vdash
 \forall \overline{y} [\exists \overline{x} \varphi(\overline{x},\overline{y})
@@ -204,19 +204,21 @@ Alors \[ I(V(I)) = \sqrt{I} \]
 \end{theo}
 
 \begin{proof}
-Par théorème de la base de Hilbert, il existe une famille finie telle que $I = (f_1,\dots,f_m)$
+Par théorème de la base de Hilbert, il existe une famille finie telle que $I = (P_1,\dots,P_m)$
     On utilise l'astuce de Rabinowitsch.
     Soit $f \in I(V(I))$,
- on considère l'anneau de polynômes à $n+1$ variables $K[\overline{x}, Y]$ et l'idéal $J$ engendré par les polynômes de $I$ et par le polynôme $1 - Y f(\bar{x})$.
+    on considère l'anneau de polynômes à $n+1$ variables $K[\overline{x}, Y]$ et
+    l'idéal $J$ engendré par les $P_i$ et par le polynôme $1 - Y f(\bar{x})$.
     \[ J = (I, 1 - Y f) \subset K[\overline{x}, Y] \]
 
-    Soit $(\abar,b) \in V(J)$, on a $f(\abar) = 0$ et $1 - b f(\abar) = 0$ ce
+    Soit $(\abar,b) \in V(J)$, on a $P_i(\abar) = 0$ pour tout $i$ donc
+    $f(\abar) 0$  et $1 - b f(\abar) = 0$ ce
     qui est absurde, donc $V(J) = \emptyset$ donc d'après le Nullstelensatz
     faible (\cref{theo-Nullstelensatz-faible}), $J$ n'est pas propre donc $J = K[\bar{x}, Y]$ et $1 \in J$.
     Il existe ainsi des polynômes $A_1, \dots, A_m, B \in K[\bar{x}, Y]$ et $P_1, \dots, P_m \in I$ tels que :
     \[ 1 = \sum_{i=1}^m P_i(\bar{x}) A_i(\bar{x}, Y) + (1 - Y f(\bar{x})) B(\bar{x}, Y) \]
     
-    Considérons le corps des fractions rationnelles $K(\bar{x})$ et évaluons l'expression en $Y = 1/f(\bar{x})$.
+    Considérons le corps des fractions rationnelles $K(\bar{x})$ et évaluons l'expression en $Y = \frac{1}{f(\bar{x})}$.
     Le terme de droite s'annule donc
     \[ 1 = \sum_{i=1}^m P_i(\bar{x}) A_i(\bar{x}, \frac{1}{f(\bar{x})}) \]
     En multipliant cette équation par une puissance $f^k$ suffisamment grande, on obtient une relation dans $K[\bar{x}]$ de la forme :
