@@ -476,7 +476,7 @@ ensembles définissables de la théorie et leur lien avec les ensembles construc
 Pour axiomatiser les corps algébriquement clos, nous devons exprimer le fait que tout
 polynôme non constant admet une racine. Pour rester en logique du premier ordre,
 nous ne pouvons quantifier que sur les éléments du corps, et donc ni sur les
-polynômes ni sur leur degré. Pour pallier à ce problème, nous ajoutons un axiome
+polynômes ni sur leur degré. Pour pallier ce problème, nous ajoutons un axiome
 pour chaque degré $n \in \bNe$.
 
 \begin{defi}[Théorie des corps algébriquement clos]
@@ -527,7 +527,7 @@ On peut notamment l'interpréter sous les angles suivants:
     condition le polynôme $ax^2+bx+c$ admet-il une racine? Dans un corps
     algébriquement clos: il suffit que le polynôme ne soit pas une constante non
     nulle, la formule $\exists x, (ax^2+bx+c = 0)$ est donc équivalente à la
-    phrase sans quantificateurs $(a \neq 0) \vee (b \neq 0) \vee (c = 0)$.
+    formule sans quantificateurs $(a \neq 0) \vee (b \neq 0) \vee (c = 0)$.
     Le théorème de Tarski affirme que ce mécanisme se généralise à tout système
     d'équations.
 
@@ -561,7 +561,22 @@ résultat suivant:
     La théorie $\ACF$ est décidable (\cref{defi-decidable}).
 \end{coro}
 
-\todo[inline]{defi constructible}\label{defi-constructible}
+\begin{defi}{Ensemble constructible}\label{defi-constructible}
+    Soit $K$ un corps, un sous-ensemble $S \subset K^n$ est dit
+    \kw{constructible} 
+    s'il peut s'écrire comme une combinaison booléenne finie (unions,
+    intersections et passages au complémentaire) d'ensembles de la forme 
+    $\{ \overline{x} \in K^n \mid P(\overline{x}) = 0 \}$, où $P \in K[X_1, \dots, X_n]$.
+\end{defi}
+
+\begin{rema}
+On remarque le lien avec la logique du premier ordre. Dans le language des
+anneaux, une formule atomique est exactement l'ensemble des zéros d'un polynôme
+et par définition, une formule sans quantificateurs est exactement une
+combinaison booléenne finie de formules atomiques donc un sous-ensemble de $K^n$
+est constructible si et seulement si il est définissable par une formule sans
+quantificateurs à paramètres dans $K$.
+\end{rema}
 
 \begin{theo}[Théorème de Chevalley]
 Soit $m \in \bNe$, $S$ un ensemble constructible de $K^n$, et $f: K^n
@@ -571,11 +586,18 @@ En particulier, la projection de tout ensemble constructible est constructible.
 \end{theo}
 
 \begin{proof}
-    \todo[inline]{Preuve Chevalley}
+    Comme $S$ est constructible, il existe une formule sans quantificateurs
+    $\varphi$ telle que $\overline{x} \in S \iff \varphi(\overline{x})$ donc $\overline{y}
+    \in f(S) \iff \exists \overline{x} \in S, f(\overline{x}) = \overline{y}
+    \iff \exists \overline{x}, \varphi(\overline{x}) \wedge f(\overline{x}) =
+    y.$ Il suffit alors d'appliquer l'élimination des quantificateurs à cette
+    formule pour avoir le résultat.
 \end{proof}
 
-\todo[inline]{Complétude}
 
+Nous avons déjà démontré précédemment  (\cref{coro-acf-complete}) que la théorie
+$\ACF_n$ est complète mais nous pouvons aussi déduire le déduire résultat de
+l'élimination des quantificateurs.
 
 \begin{prop}[Complétude]\label{prop-acf-complet}
     La théorie $\ACF_n$ est complète.
