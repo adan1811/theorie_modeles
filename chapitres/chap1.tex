@@ -438,15 +438,66 @@ Soit $I$ un ensemble quelconque, un filtre sur $I$ est un sous-ensemble $\mathca
 Un filtre est un ultrafiltre s'il est un filtre maximal au sens de l'inclusion.
 \end{defi}
 
+\todo[inline]{rapide rappel produit cartesien}
 \todo[inline]{finir filtre et exemple}
+\todo[inline]{résultat sur structure de l'ultraproduit}
 
 \subsection{Ultraproduits}
 
-Soit $I$ un ensemble et $(A_i)_{i \in I}$ une famille d'ensembles non vide et $\mathcal{A} = \prod_{i \in I} A_i$ leur produit cartésien.
+\noindent Soit $I$ un ensemble d'indices, $(A_i)_{i \in I}$ une famille d'ensembles non vide et $\mathcal{A} = \prod_{i \in I} A_i$ leur produit cartésien.
+Soit $\mathcal{F}$ un filtre sur $I$. On définit une relation sur $\cA$ :
+\begin{align*}
+a \equiv_{\cF} b \text{ ssi } \{ i \in I \mid a(i) = b(i) \} \in \cF
+\end{align*}
+On vérifie que $\equiv_{\cF}$ est une relation d'équivalence. On note $a_{\cF}$ la classe de $a$ sur cette relation.
 
+\noindent On introduit alors la définition suivante, en gardant les mêmes notations :
 
-\todo[inline]{construction des ultraproduits, sa structure d'anneau}
-\todo[inline]{theoreme de Los et ce qu'il demande, l'admettre ? theoreme de compacité et ce qu'il demande }
+\begin{defi}[Ultraproduits]
+Le quotient $\cA / \cF = \{ a_{\cF} \mid a \in \cA \}$ est appellé \textbf{produit réduit} de $\cA$. Dans le cas où $\cF$ est un ultrafiltre,
+on appelle ce quotient un \textbf{ultraproduit}. Dans ce dernier cas, si $a \equiv_{\cF} b$, on dit que $a$ et $b$ sont égaux presque partout.
+\end{defi}
+
+\begin{defiprop}
+Soit $I$ un ensemble d'indices. Soient $(M_i)_{i \in I}$ une famille de $\cL$-structures et $\cM = \prod_{i \in I} A_i$ leur produit cartésien.
+Soit $\mathcal{U}$ un ultrafiltre sur $I$. L'ultraproduit 
+\end{defiprop}
+
+\noindent Nous admettons le résultat pivot suivant :
+
+\begin{theo}[Théorème de \L{}oś]
+Soient $I$ un ensemble d'indices et $(M_i)_{i \in I}$ une famille de $\cL$-structures. Soit $\mathcal{U}$ un ultrafiltre sur $I$.
+Alors pour $\phi(\xbar)$ une $\cL$-formule et $\abar \in \prod_{i \in I} M_i = \mathcal{M}$,\\on a
+\begin{align*}
+\mathcal{M}/\mathcal{U} \models \phi(\abar_{\mathcal{U}}) \iff \{ i \in I \mid M_i \models \phi(\abar(i)) \} \in \mathcal{U}
+\end{align*}
+où $\bar{a}_\mathcal{U}$ désigne la classe d'équivalence du tuple $\bar{a}$ dans l'ultraproduit.
+\end{theo}
+
+\begin{theo}[Théorème de compacité]
+Soit $T$ une $\cL$-théorie tel que tout sous-ensemble fini de $T$ est satisfiable, alors $T$ est satisfiable.
+\end{theo}
+
+\begin{proof}
+Soit $T$ une telle théorie. Pour chaque sous-ensemble fini $F$ de $T$, on appelle $\cM_F$ un modèle satisfaisant $F$.
+Soit $I$ l'ensemble des parties finies de $T$. Pour chaque axiome $\phi$ de $T$, soit $V(\phi) = \{F \in I \mid \phi \in F \}$
+l'ensemble des parties finies de $T$ ayant $\phi$ pour axiome. On remarque que la famille $\{V(\phi) \mid \phi \in T\}$ a la propriété 
+de l'intersection finie, en effet pour $T_0 = \{\phi_1,\dots,\phi_n\}$ une famille finie d'axiome, on a $T_0 \in V(\phi_1) \cap \dots \cap V(\phi_n)$ 
+car $T_0 \in V(\phi_1) \text{ via } \phi_1, T_0 \in V(\phi_2) \text{ via } \phi_2$ etc. Ainsi $\{V(\phi) \mid \phi \in T\}$ est contenue dans un filtre,
+donc un ultrafiltre $\mathcal{U}$. On pose $\cM = \prod_{F \in I} \cM_F / \mathcal{U}$ l'ultraproduit des $\cM_F$. On montre que $\cM$ est un modèle de $T$.
+Soit $\phi \in T$, on a $\cM \models \phi$ si et seulement si $J_{\phi} = \{ F \in I \mid \cM_F \models \phi \} \in \mathcal{U}$ par Théorème de \L{}oś.
+\begin{enumerate}
+\item Si $F \in V(\phi)$, alors trivialement $\cM_F \models \phi$, d'où $V(\phi) \subset J_{\phi}$.
+\item Or $V(\phi) \in \mathcal{U}$ par construction, et $\mathcal{U}$ est en particulier un filtre, d'où $J_\phi \in \mathcal{U}$.
+\end{enumerate}
+Nous avons construit un modèle de $T$: $\cM \models T$.
+\end{proof}
+
+\begin{rema}
+Le Théorème de \L{}oś et le quotient sur ultraproduit permettent ici une sorte de "passage à l'infini" par une propriété de "vrai presque partout" : 
+c'est exactement le sens de $J_  {\phi} \in \mathcal{U}$. Intuitivement, cela rappelle le concept de mesure : on ne garde ici que ce qui est "vrai presque partout"
+au sens de l'ultrafiltre, en laissant de côté les exceptions logiques locales.
+\end{rema}
 
 
 \section{Le Théorème de Compacité}
