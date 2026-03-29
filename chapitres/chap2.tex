@@ -187,33 +187,9 @@ De plus, deux corps algébriquement clos sont isomorphes si et seulement s'ils o
 Une $\mathcal{L}$-théorie $T$ est dite complète si pour toute $\mathcal{L}$-phrase $\phi$, on a soit $T \models \phi$, soit $T \models \neg\phi$.
 \end{defi}
 
-\begin{defi}[Categoricité]
-Soient $\kappa$ un cardinal infini et $T$ une $\cL$-théorie satisfaite par des modèles de cardinalité $\kappa$.
-On dit que $T$ est $\kappa$-catégorique si les modèles de $T$ de cardinalité $\kappa$ sont deux à deux isomorphes.
-\end{defi}
-
-\noindent Nous donnons un premier exemple de théorie $\kappa$-catégorique: la théorie au langage vide forçant ses modèles à être infini.
-
-\begin{prop}
-Soit $\cL = \emptyset$. Pour $n \in \mathbb{N^*}$, on définit la $\cL$-phrase
-\begin{align*}
-\phi_n = \exists x_1\dots\exists x_n(\bigwedge_{1\leq i < j \leq n} x_i \neq x_j)
-\end{align*}
-On définit la $\cL$-théorie $T_{\infty} = \{\phi_n,\text{ }n \in \mathbb{N^*}\}$.\\
-Alors pour tout cardinal $\kappa$, $T_{\infty}$ est $\kappa$-catégorique.
-\end{prop}
-
-\begin{proof}
-Soit $\kappa$ un cardinal infini. Soient $\cM$ et $\cN$ deux modèles de $T_{\infty}$ tel que $\lvert \cM \rvert = \lvert \cN \rvert = \kappa$.
-Puisque $\cL = \emptyset$, nos modèles sont simplement des ensembles. Or par un argument ensembliste, $M$ et $N$ étant de même cardinalité, il existe $\phi: M \longrightarrow N$ une bijection.
-$\phi$ étant une bijection entre structures vides, il n'y a aucun symbole à preserver et c'est un $\cL$-isomorphisme.
-\end{proof}
-
-\noindent Nous présentons le résultat suivant comme fait algébrique. Il est le pilier pour distinguer des modèles de $\ACF_p$ de même cardinalité via des invariants.
-
-\begin{coro}\label{acfcategorique}
+\begin{prop}\label{acfcategorique}
 Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est $\kappa$-catégorique pour tout cardinal $\kappa$ indénombrable.
-\end{coro}
+\end{prop}
 
 \begin{proof}
 Il est clair que deux modèles de $ACF_p$ sont tous deux de caractéristique $p$. De plus un corps algébriquement clos de degré de transcendance $\lambda$ a
@@ -223,40 +199,12 @@ de même cardinalité indénombrable sont isomorphes par théorème de Steinitz
 (\cref{theo-Steinitz}).
 \end{proof}
 
-\noindent Le Théorème de compacité assure qu'une théorie reste satisfiable tant que ses sous-ensembles finis le sont.
-Pour une théorie $T$ finiment satisfiable et à modèles infinis, on peut ajouter une infinité de symboles de constante et imposer qu'ils soient deux à deux distincts.
-Ceci crée une nouvelle théorie, toujours finiment satisfiables (toute partie finie de la nouvelle théorie ne demandent qu'un nombre fini de constantes, lesquelles peuvent 
-être choisies par des éléments distincts d'un modèle infini de $T$), et imposant par compacité l'existence de modèles à cardinalité aussi grande que l'on souhaite.
-Ce raisonnement fonde le résultat suivant :
-
-
-\begin{theo}[Löwenheim-Skolem ascendant]
-Soit $T$ une $\cL$-théorie satisfaite par des modèles infinis. Si $\kappa$ est un cardinal infini tel que $\kappa > \lvert \cL \rvert$, alors
-il existe un modèle de $T$ de cardinalité $\kappa$.
-\end{theo}
-
-\begin{theo}[Test de Vaught]
-Soit $T$ une $\cL$-théorie satisfiable, sans modèles finis, et $\kappa$-catégorique pour un certain cardinal infini $\kappa > \lvert \cL \rvert$.
-Alors $T$ est complète.
-\end{theo}
-
-\begin{proof}
-Supposons par l'absurde que $T$ n'est pas complète. Il existe alors une $\cL$-phrase $\phi$ telle que $T \not\models \phi$ et $T \not\models \neg\phi$.\\
-\textbf{Fait :} $T \not\models \phi$ si et seulement si $T \cup \{\neg\phi\}$ est satisfiable. En effet, si $T \models \phi$, alors $\neg\phi$ ne se satisfait dans aucun modèle de $T$,
-donc $T \cup \{\neg\phi\}$ est insatisfiable car un tel modèle devrait satisfaire à la fois $T$ et à la fois $\neg\phi$. Réciproquement, si $T \cup \{\neg\phi\}$ est insatisfiable,
-cela signifie qu'un modèle de $T$ ne peut pas aussi satisfaire à $\neg\phi$, donc un tel modèle satisfait nécessairement $\phi$ par définition de la satisfaisabilité d'une formule, d'où $T \models \phi$. \\
-Ainsi $T_0 = T \cup \{\phi\}$ et $T_1 = T \cup \{\neg\phi\}$ sont satisfiables.
-Par hypothèse $T$ n'a pas de modèles finis : ceci impose que les modèles de $T_0$ et $T_1$ soient infinis. Par Théorème de Löwenheim-Skolem ascendant, on a $\cM_0$ et $\cM_1$
-tout deux de cardinalité $\kappa > \lvert \cL \rvert$ tel que $\cM_0 \models T_0$ et $\cM_1 \models T_1$. Or ces deux modèles ne peuvent être élémentairement équivalent car ils divergent sur $\phi$.
-Par théorème~\ref{isomorphisme}, ces modèles ne sont pas isomorphes. Ceci contradit la $\kappa$-catégoricité de $T$.
-\end{proof}
-
 \begin{prop} \label{prop-acf-complet}
 Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est complète.
 \end{prop}
 
 \begin{proof}
-Immédiat par corollaire~\ref{acfcategorique} et Test de Vaught.
+C'est immédiat par corollaire~\ref{acfcategorique} et Test de Vaught~\ref{th-Vaught}.
 \end{proof}
 
 \section{Principe de Lefschetz}
