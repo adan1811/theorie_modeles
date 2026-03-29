@@ -1,225 +1,12 @@
-\chapter{Corps algébriquement clos}
 
-Dans cette partie, toutes les structures sont des anneaux considérés comme
-$\cL_{ring}$-structures donc plutôt que de noter $\cA_{ring}$ ou $\cA$, on
-désignera par la même lettre $A$ à la fois le modèle et le domaine. 
+\chapter{Complétude d'ACF et conséquences}
 
-Pour des raisons de convenances, on rappelle ici le langage et les axiomes pour
-les anneaux (unitaires et commutatifs) et les corps qui avaient été donné plus haut.
+\section{Intermède algébrique I}
 
-\begin{defi}[Anneaux, corps] \label{defi-ring}
-Le langage naturel des anneaux est $\cL_{ring} = (+,\cdot,-,0,1)$.
-
-On a les axiomes des groupes abéliens (dans le langage des groupes additifs
-$\cL_{agp} =(+,-,0))$
-
-\begin{enumerate}[label=\textbf{R\arabic*}]
-    \item $\forall x,y,z [(x+y)+z = x+(y+z)]$,
-    \item $\forall x [x+0 \wedge 0+x = x]$,
-    \item $\forall x [x+(-x)=0 \wedge (-x)+x=0]$,
-    \item $\forall x,y [x+y = y+x]$.
-\end{enumerate}
-
-Ensuite les axiomes de monoïde commutatif (dans le langage $\cL_{mon} = (\cdot,
-1))$
-
-\begin{enumerate}[label=\textbf{R\arabic*},start=5]
-    \item $\forall x,y,z [(x\cdot y)\cdot z = x\cdot(y\cdot z)]$,
-    \item $\forall x [x\cdot 1 \wedge 1\cdot x = x]$,
-    \item $\forall x,y [x\cdot y = y\cdot x]$.
-\end{enumerate}
-
-enfin, la distributivité et l'\textit{unitarité}
-
-\begin{enumerate}[label=\textbf{R\arabic*},start=8]
-    \item $\forall x,y,z [x \cdot (y+z) = (x \cdot y) + (x \cdot z)]$.
-    \item $0 \neq 1$,
-\end{enumerate}
-
-Ces huit phrases axiomatisent la théorie des anneaux commutatifs.
-
-On rajoute ensuite l'axiome
-
-\begin{enumerate}[label=\textbf{F\arabic*}]
-    \item $\forall x [x = 0 \vee \exists y [x\cdot y = 1]]$.
-\end{enumerate}
-
-pour obtenir les axiomes de la théorie des corps.
-
-\end{defi}
-
-\section{Propriétés de base}
-
-%\todo[inline]{A la fin, supprimer les résultats qu'on a au final pas utilisé ...}
-
-On rappelle ensuite quelques définitions et propriétés qui nous seront utiles
-par la suite. On donne certaines démonstrations, et on essaye d'utiliser la
-théorie des modèles quand cela semble raisonnable. On pourra trouver les autres démonstrations
+On rappelle ici quelques définitions et propriétés qui nous seront utiles
+par la suite. On pourra trouver les démonstrations
 dans n'importe quel livre d'algèbre, par exemple dans~\cite{Berhuy_2025}.
 
-
-% \begin{defi}[Anneau intègre]
-% Un anneau non trivial est \kw{intègre} si il  est sans diviseur de zéro, c'est à dire si
-% c'est un modèle pour la phrase \[ \forall x,y [x \cdot y = 0 \implies (x=0
-% \vee y=0) ]. \]
-% \end{defi}
-
-% \begin{prop}
-%     Si $A$ est un anneau intègre, il possède un corps des fractions $K_A$ qui
-%     vérifie la propriété universelle suivante:
-%     Pour tout plongement $f : A \inj{} F$ de $A$ dans un corps $F$, il existe un
-%     unique plongement $\tilde{f} : K_A \inj{} F$ tel que le diagramme suivant commute.
-
-%     % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQBGclVqMWbANIB9Tjz7Y8BIqOHj6zVohAAxbuJhQA5vCKgAZgCcIAWyRkQOCElEgGdAEYwGABX4VIQ8YSxwQai0pXSwI5zosBjYACwgIAGtuXhAbezdqFyQAJmoGLDAdECg6OGTjOM8ff0DBNgZQ8MjJSoAdHpgADyw4HDgAAgBCPrwGWGBLLjicBKTdVIysq1sHRCdCxBKJbTZLBu9fAOVW3WssE2TO+MSUtMyuCi4gA
-%     \[
-%     \begin{tikzcd}
-%     A \arrow[r, "i", hook] \arrow[rd, "f"', hook] & K_A \arrow[d, "\exists !\tilde{f}", dashed, hook] \\
-%                                                 & F                                                
-%     \end{tikzcd}
-%     \]
-% \end{prop}
-
-% \begin{exem}
-% On note $A[X_1, \ldots, X_n]$ l'anneau des polynômes à coefficients dans $A$ en
-% $n$ indéterminées dans un anneau $A$. Si $A$ est intègre, $A[X_1, \ldots, X_n]$
-% également. Si $A$ est un corps, le corps des fractions de $A[X_1, \ldots, X_n]$
-% est noté $A(X_1, \ldots, X_n)$ et on l'appelle le corps des fractions
-% rationnelles.
-% \end{exem}
-
-% \begin{defi}[Morphisme d'anneaux, noyau]
-% Un \kw{(homo)morphisme d'anneaux} est une application $f$ entre deux anneaux $A$ et
-% $B$ qui respecte la structure d'anneau, c'est à dire:
-% \begin{enumerate}[label= (\roman*)]
-%     \item $f(a+b) = f(a) + f(b), \forall a,b \in A$.
-%     \item $f(a \cdot b) = f(a) \cdot f(b), \forall a,b \in A$.
-%     \item $f(1_A) = 1_B$.
-% \end{enumerate}
-
-% Le noyau de $f$ est l'ensemble $\ker(f) = \{ a \in A \mid f(a) = 0 \} = f^{-1}({0})$.
-% \end{defi}
-
-% \begin{defi}[Idéal]
-% Un \kw{idéal} d'un anneau $A$ est un sous ensemble $I \subset A$ tel que:
-% \begin{enumerate}[label= (\roman*)]
-%     \item $I$ est un sous-groupe additif de $(A,+)$.
-%     \item $\forall a \in A, \forall x \in I, ax \in I$.
-% \end{enumerate}
-
-% L'\kw{idéal engendré} par un ensemble $J \subset A$ est l'intersection de tous
-% les idéaux de $A$ contenant $J$, on le note $(A)$
-
-% Si un idéal $I$ est tel que $I \subsetneq A$, on dit que l'idéal est \kw{propre}.
-% \end{defi}
-
-% \begin{prop}
-% Soit $f :A \implies B$ un morphisme d'anneaux et $J$ un idéal de $B$, alors
-% $I = f^{-1}(J)$ est un idéal de $A$. En particulier, $\ker(f)$ est un idéal de $A$.
-% \end{prop}
-
-% \begin{proof}
-%     On sait déjà que $I$ est une sous-groupe de $A$, ensuite pour $x\in I, a \in
-%     A$, on a $f(x) \in J$ donc \[ f(ax) = f(a)f(x) \in J \] car $J$ est un idéal
-%     et donc $ax \in J$ d'où le premier point.
-%     Comme $\{0\}$ est clairement un idéal, on a le second point. 
-% \end{proof}
-
-% \begin{defi}[Idéal premier, principal, maximal]
-% Un idéal $I$ d'une anneau $A$ est :
-% \begin{itemize}
-%     \item \kw{premier} si $\forall a,b \in A, ab \in I \implies (a \in I \vee b
-%     \in I)$
-%     \item \kw{principal} si $\exists a \in A, I = (a)$.
-%     \item \kw{maximal} si $I \neq A$ et pour tout idéal $J$ tel que $I \subset J
-%     \subset A$, on a $J = I \vee J = A$.
-% \end{itemize}
-
-% Si tout idéal de $A$ et principal, on dit que $A$ est un anneau \kw{principal}.
-% \end{defi}
-
-% \begin{defi}[Caractéristique,Sous-corps premier]
-% La \kw{caractéristique} d'un corps est, si il existe, le plus petit entier
-% strictement positif tel que $\underbrace{1+\cdots+1}_\text{p} = 0$, et $0$
-% sinon.
-% Le \kw{sous-corps premier} d'un corps $F$ est l'intersection de tous ses
-% sous-corps, c'est donc le sous-corps engendré par $1$.
-% Si $F$ est de caractéristique $p>0$, alors son sous-corps premier est
-% $\bZnZ{p}$, sinon c'est $\bQ$.
-% \end{defi}
-
-% \begin{prop}[Anneau quotient, propriété universelle]
-% Soit $I$ un idéal d'un anneau $A$; on note $\pi : A \implies A/I$ la
-% projection canonique et soit $f : A \implies B$ un morphisme d'anneau qui
-% d'annule sur $I$, alors il existe un unique morphisme $\overline{f} : A/I
-% \implies B$ tel que le diagramme suivant commute.
-% % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRRkAjFVqMWbdgHoAkt14gM2PASIjy4+s1aIQAIW7iYUAObwioAGYAnCAFskZEDghJNIABYw6UNjgA7hA+fgjUOlL6ADrRaFgg1Ax0AEYwDAAK-GpCILZYZl44ijb2ToiebkgATElYYHogUHRwPv4Rko2xMAAeWHA4cACEAASxEDQwtgz1MMCx9LZoXlhciSDJaZnZgmz5hcU8pY7O1FWItRK6bAt0SyvGXEA
-% \[
-% \begin{tikzcd}
-% A \arrow[d, "\pi"', two heads] \arrow[r, "f"]    & B \\
-% A/I \arrow[ru, "\exists! \overline{f}"', dashed] &  
-% \end{tikzcd}
-% \]
-
-% \end{prop}
-
-\begin{prop}\label{prop-quotient-ideal-maximal}
-Soit $I$ un idéal d'un anneau $A$, alors:
-\begin{enumerate}[label= (\roman*)]
-    \item $A/I$ est intègre si et seulement si $I$ est premier.
-    \item $A/I$ est un corps si et seulement si $I$ est maximal.
-\end{enumerate}
-En particulier, tout idéal maximal est premier.
-\end{prop}
-
-\begin{proof}
-\begin{enumerate}[label= (\roman*)]
-    \item Supposons $A/I$ intègre, il n'est donc pas trivial donc $I \neq A$.
-    Soit $a,b \in A$ tels que $ab \in I$, on a $\overline{ab} =
-    \overline{a}\overline{b} = \overline{0}$ donc par intégrité, $\overline{a}=
-    \overline{0} \vee \overline{b} = \overline{0}$ donc $a \in I \vee b \in I$
-    donc $I$ est premier. Réciproquement, si $I$ est premier, $I \neq A$ donc
-    $A/I$ n'est pas trivial. Soient $\overline{a},\overline{b} \in A/I$ tels que
-    $\overline{a} \cdot \overline{b} = \overline{0}$, alors $\overline{ab} =
-    \overline{0}$ donc $ab \in I$ donc comme $I$ est premier, $a \in I \vee b
-    \in I$ c'est à dire $\overline{a} = 0 \vee \overline{b} = 0$ donc $A/I$ est intègre.
-    \item Supposons que $A/I$ est un corps, comme précédemment on a $I \neq A$.
-    Soit $J$ un idéal de $A$ tel que $I \subset J \subset A$, supposons $I \neq
-    J$ et montrons qu'alors $J=A$. Soit $a \in J \backslash I$, on a $\overline{a} \neq
-    \overline{0}$ donc il existe $\overline{b}\in A/I$ tel que
-    $\overline{a}\overline{b} = 1$ et donc $\overline{1-ab} = \overline{0}$ donc
-    $ab-1 \in I \subset J$ et donc $1 = (1-ab) + ab \in J$ ainsi, $J$ contient un
-    élément inversible et donc $J=A$ et par suite, $I$ est maximal.
-    Réciproquement, si $I$ est maximal, $I \neq A$ et $A/I$ est non trivial.
-    Soit $\overline{a} \in (A/I) \backslash \{0\}$, soit $J = (a,I)$ l'idéal
-    engendré par $a \not\in I$ et $I$. On a $I \subsetneq J$ donc comme $I$ est
-    maximal, $J=A$ et particulier, $1 \in J$ donc il existe $b\in A, x\in I$
-    tels que $ab+x = 1$ donc $\overline{a}\cdot\overline{b} = \overline{1}$ et
-    $\overline{a}$ est inversible, ainsi $A/I$ est un corps.
-\end{enumerate}
-
-Comme un corps est un anneau intègre, par ce qui précède, tout idéal maximal est premier.
-
-\end{proof}
-
-\begin{theo}[Théorème de Krull]\label{theo-Krull}
-Soit $I$ un idéal propre d'un anneau commutatif $A$, alors il existe un idéal
-maximal de $A$ contenant $I$.
-\end{theo}
-
-\begin{defi}[Radical d'un idéal, idéal radiciel]\label{defi-ideal-radical}
-Soit $I$ un idéal d'un anneau commutatif $A$, on appelle \kw{radical} de $I$ et on
-note $\sqrt{I}$ l'ensemble des éléments de $A$ dont une puissance appartient à
-$I$ : \[ \sqrt{I} = \{ a \in A \mid \exists n \in \bNe , a^n \in I \}.\]
-
-Il est clair que $\sqrt{I}$ est un idéal de $A$, et qu'on a toujours $I \subset
-\sqrt{I}$. Si on a l'égalité $I = V(I)$, on dit que l'idéal $I$ est \kw{radiciel}.
-\end{defi}
-
-\section{Extensions de corps}
-
-Les corps algébriquement clos se manifestent comme des extensions de corps, on a
-donc besoin de quelques résultats les concernant. On commence par les extensions
-simples puis on passe aux extensions finies.
 
 \begin{defi}[Extension de corps]
 Soit $K$ un corps, une \kw{extension} de $K$ est un corps $L$ qui contient $K$
@@ -296,54 +83,12 @@ appelé \kw{polynome minimal} de $a$.
 \end{proof}
 
 
-% \begin{prop}[Classification des extensions simples]
-% Soit $K(a)/K$ une extension simple. De ce qui précède, on déduit que l'extension
-% est entièrement déterminée, à isomorphisme près, par le choix d'un polynôme
-% minimal de $a$ qui est irréductible. Donc classifier les extensions simples
-% revient à classifier les idéaux premiers de $K[X]$.
-% \end{prop}
-
-% \begin{exem}
-% Prenons $K=\bQ$ et $a = \sqrt{2} \in \bQ(\sqrt{2})$. Le polynôme minimal de
-% $\sqrt{2}$ est $X^2-2$. 
-% Prenons maintenant $a = \pi$, comme $\pi$ est transcendant, son polynôme minimal
-% est le polynôme nul et $I(\pi) = \{0\}$ donc $ev_{\pi}: \bQ[X] \implies
-% \bQ(\pi)$ est injectif et par suite, $\bQ(r) \simeq \bQ(X)$. 
-% \end{exem}
-
-% \begin{defi}[Extension de type fini]
-% Soit $L/K$ une extension de corps, si il existe $\overline{a} =
-% (a_1,\ldots,a_n) \in L^n$ tel que $L = K(\overline{a})$, on dit que l'extension
-% est \kw{de type fini}.
-% \end{defi}
-
-% \begin{prop}[Classification des extensions finies]
-% Soit $K(a_1,\ldots,a_n)/K$ une extension finie. Comme dans le cas simple, on a
-% $K(a_1,\ldots,a_n) \simeq K[X_1,\ldots,X_n]/I(a_1,\ldots,a_n)$ donc pour classifier
-% les extensions finies, il suffit de classifier les idéaux premiers de
-% $K[X_1,\ldots,X_n]$ pour tout $n \in \bNe$.
-% \end{prop}
-
-\begin{theo}[Base de Hilbert]\label{theo-base-Hilbert}
-Soit $K$ un corps et $n\in \bNe$ alors tout idéal de $K[X_1, \ldots, X_n ]$ est
-engendré par un nombre fini de polynômes.
-\end{theo}
-
 \begin{defi}[Extension algébrique]
 Soit $L/K$ une extension de corps, si tout élément de $L$ est algébrique sur
 $K$, on dit que $L/K$ est une \kw{extension algébrique}.
 \end{defi}
 
-% \begin{prop}
-% Si $L/K$ est une extension algébrique finie et séparable, alors c'est une extension simple.
-% \end{prop}
-
-% \begin{lemm}
-% Si $L/K$ et  $K/F$ sont des extensions algébriques, alors $L/F$ également.
-% \end{lemm}
-
-
-\section{Clôture algébrique d'un corps}
+\section{Cloture algébrique d'un corps}
 
 \begin{defi}[Corps algébriquement clos,clôture algébrique]
 On dit qu'un corps $K$ est \kw{algébriquement clos} si tout polynôme non constant de
@@ -426,16 +171,6 @@ Tout corps admet une clôture algébrique.
     est immédiat que $\overline{K}$ que est une clôture algébrique de $K$.
 \end{proof}
 
-\begin{theo}[Théorème de Steinitz]
-Tout corps $K$ admet une clôture algébrique, unique à isomorphisme près. On la
-notera $\overline{K}$
-\end{theo}
-
-% \begin{proof}
-%     L'existence a été montrée par la \cref{prop-existence-cloture-algebrique}
-%     et on admettra l'unicité.
-% \end{proof}
-
 
 \begin{defi}[Indépendance algébrique, base de transcendance]
 Soit $L/K$ une extension de corps, un sous-ensemble $E \subset L$ est
@@ -452,11 +187,6 @@ transcendance d'une extension ont un même cardinal appelé le \kw{degré de
 transcendance} de l'extension.
 \end{prop}
 
-\begin{prop}\label{prop-alg-clos-isom}
-Deux corps algébriquement clos sont isomorphes si et seulement si ils ont même
-caractéristique et même degré de transcendance 
-\end{prop}
-
 \begin{theo}[Théorème de structure des corps finis]\label{theo-structure-corps-fini}
 Soit $p \in \bP, k \in \bNe$. 
 L'ensemble des racines du polynôme $P(X) = X^{p^k} - X$ dans $\Fpalg$
@@ -465,165 +195,91 @@ de cardinal $p^k$ à isomorphisme près et de plus, $\Fpalg = \bigcup_{k
 \ge 1} \bF_{p^k}$.
 \end{theo}
 
-    % \begin{proof}
-    % \todo[inline]{Preuve}
-    % \end{proof}
-
-\section{Théorie des corps algébriquement clos}
-
-On a maintenant tous les outils algébriques nécessaires et pouvons revenir à la
-théorie des modèles. On commence par définir la théorie des corps
-algébriquement clos (ACF). On admettra qu'elle admet
-l'élimination des quantificateurs puis on démontre la complétude ainsi que le principe de
-Lefschetz qui nous seront indispensables pour la suite. On étudie ensuite les
-ensembles définissables de la théorie et leur lien avec les ensembles constructibles.
-
-
-Pour axiomatiser les corps algébriquement clos, nous devons exprimer le fait que tout
-polynôme non constant admet une racine. Pour rester en logique du premier ordre,
-nous ne pouvons quantifier que sur les éléments du corps, et donc ni sur les
-polynômes ni sur leur degré. Pour pallier ce problème, nous ajoutons un axiome
-pour chaque degré $n \in \bNe$.
-
-\begin{defi}[Théorie des corps algébriquement clos]\label{defACF}
-    On se place dans le langage des anneaux $\cL_{ring}$ avec les axiomes des
-    corps (\cref{defi-ring}).\\
-    On axiomatise les corps algébriquement clos en rajoutant, pour
-    chaque $n \in \bNe$, l'axiome \[ \forall a_0, \ldots, a_{n-1}, \exists x
-    [x^n+a_{n-1}\cdot x^{n-1} + \cdots + a_1 \cdot x + a_0 = 0].\]
-
-    On note $ACF$ l'ensemble des axiomes des corps algébriquement clos. \\
-
-    On axiomatise la caractéristique $p \in \bP$ en notant $\chi_p : \underbrace{1 +
-    \cdots 1 = 0}_\text{p} $.
-
-    On pose alors \[ \ACF_p := \Th(ACF \cup \chi_p) \] la théorie des corps
-    algébriquement clos de caractéristique $p$ et \[ \ACF_0 := \Th(ACF \cup \{\neg
-    \chi_p \mid p \in \bP\}) \] la théorie des corps algébriquement clos de
-    caractéristique nulle. On notera $\ACF_n$ la théorie des corps
-    algébriquement clos de caractéristique $n$ pour $n \in \bP \cup \{0\}$. 
-\end{defi}
-
-%\todo[inline]{def dans le chap 1 ou pas?}
-
-\begin{defi}[Elimination des quantificateurs]\label{def-quant-elim}
-On dit qu'une théorie $T$ a l'\kw{élimination des quantificateurs} si pour toute
-formule $\varphi$, il existe une formule sans-quantificateurs $\theta$ telle que
-$T \models \varphi \leftrightarrow \theta$. \\
-Plus précisément, une $\cL$-théorie
-$T$ a l'\kw{élimination des quantificateurs} dans $\cL$ si pour toute
-$\cL$-formule $\varphi(x_1, \ldots, x_n)$, il existe une $\cL$-formule
-$\theta(x_1, \ldots, x_m)$ sans quantificateurs, où $n \le m$ telle que \[ T
-\models \forall x_1 \cdots \forall x_m ( \varphi(x_1, \ldots, x_n)
-\leftrightarrow \theta(x_1, \ldots, x_m)) \] 
-\end{defi}
-
-Le fait qu'une théorie admette l'élimination des quantificateurs va bien au-delà
-des aspects syntaxiques et a de nombreuses conséquences en particulier pour ces
-applications algébriques comme les nôtres, elle permet notamment de montrer
-aisément la complétude d'une théorie et facilite grandement l'étude des
-ensembles définissables. Elle permet également de réduire la décidabilité d'une
-théorie à une simple vérification algébrique. 
-
-On peut notamment l'interpréter sous les angles suivants:
-\begin{enumerate}[label= (\roman*)]
-    \item Angle algébrique: L'élimination des quantificateurs traduit que
-    l'existence de solutions à un système d'équations polynomiales dépend
-    uniquement de ses paramètres. Prenons un exemple élémentaire : à quelle
-    condition le polynôme $ax^2+bx+c$ admet-il une racine? Dans un corps
-    algébriquement clos: il suffit que le polynôme ne soit pas une constante non
-    nulle, la formule $\exists x, (ax^2+bx+c = 0)$ est donc équivalente à la
-    formule sans quantificateurs $(a \neq 0) \vee (b \neq 0) \vee (c = 0)$.
-    Le théorème de Tarski affirme que ce mécanisme se généralise à tout système
-    d'équations.
-
-    \item Angle géométrique: Géométriquement, le quantificateur existentiel
-    $(\exists)$ correspond à la projection d'un ensemble alors
-    que les formules sans quantificateurs correspondent aux ensembles
-    constructibles (\cref{defi-constructible}). Prenons encore une fois un
-    exemple simple dans le plan $\bC^2$ : Considérons l'hyperbole d'équation
-    $xy=1$, sa projection sur l'axe des abscisses est l'ensemble des $x$ qui
-    satisfont la formule $\exists y, xy= 1$. Géométriquement, on sait que cette
-    projection couvre tout l'axe sauf l'origine et donc que la formule $\exists y, xy= 1$ est
-    équivalente à la formule sans quantificateurs $x \neq 0$. Le théorème de
-    Chevalley généralise cette construction à la projection de tout ensemble constructible.
-\end{enumerate}
-
-\begin{theo}[Théorème de Tarski]\label{theo-acf-elim}
-    La théorie $\ACF$ a l'élimination des quantificateurs
+\begin{theo}[Théorème de Steinitz]\label{theo-Steinitz}
+Tout corps $K$ admet une clôture algébrique, unique à isomorphisme près. On la notera $\overline{K}$.
+De plus, eux corps algébriquement clos sont isomorphes si et seulement s'ils ont même caractéristique et même degré de transcendance.
 \end{theo}
 
-La démonstration de ce théorème étant très technique, nous choisissons de
-l'admettre et de nous concentrer sur ses conséquences. Signalons cependant que contrairement
-aux preuves modernes de ce résultat qui utilisent des
-résultats puissants de théorie des modèles, la preuve originale de Tarski (voir \cite{Tarski_1951}) est
-elle constructive et fournit donne une méthode effective basée sur le résultant pour
-éliminer un à un les quantificateurs. Ainsi, en partant d'une phrase on
-peut obtenir algorithmiquement une phrase sans quantificateurs équivalente dont
-la valeur de vérité est alors facilement vérifiable. On a donc établi le
-résultat suivant:
 
-\begin{coro}[Décidabilité de $ACF_n$]
-    On dit qu'une théorie $T$ est \kw{décidable} si il existe un algorithme qui pour
-    toute phrase $\varphi$ en entrée, décide si $T \models \varphi$.
+\section{Complétude, categoricité et test de Vaught}
 
-    La théorie $\ACF$ est décidable.
-\end{coro}
-
-\begin{defi}[Ensemble constructible]\label{defi-constructible}
-    Soit $K$ un corps, un sous-ensemble $S \subset K^n$ est dit
-    \kw{constructible} 
-    s'il peut s'écrire comme une combinaison booléenne finie (unions,
-    intersections et passages au complémentaire) d'ensembles de la forme 
-    $\{ \overline{x} \in K^n \mid P(\overline{x}) = 0 \}$, où $P \in K[X_1, \dots, X_n]$.
+\begin{defi}[Théorie complète]
+Une $\mathcal{L}$-théorie $T$ est dite complète si pour toute $\mathcal{L}$-phrase $\phi$, on a soit $T \models \phi$, soit $T \models \neg\phi$.
 \end{defi}
 
-\begin{rema}
-On remarque le lien avec la logique du premier ordre. Dans le language des
-anneaux, une formule atomique est exactement l'ensemble des zéros d'un polynôme
-et par définition, une formule sans quantificateurs est exactement une
-combinaison booléenne finie de formules atomiques donc un sous-ensemble de $K^n$
-est constructible si et seulement si il est définissable par une formule sans
-quantificateurs à paramètres dans $K$.
-\end{rema}
+\begin{defi}[Categoricité]
+Soient $\kappa$ un cardinal infini et $T$ une $\cL$-théorie satisfaite par des modèles de cardinalité $\kappa$.
+On dit que $T$ est $\kappa$-catégorique si les modèles de $T$ de cardinalité $\kappa$ sont deux à deux isomorphes.
+\end{defi}
 
-\begin{theo}[Théorème de Chevalley]
-Soit $m \in \bNe$, $S$ un ensemble constructible de $K^n$, et $f: K^n
-\rightarrow K^m$ une fonction \kw{polynomiale}, alors $f(S) \subset K^m$ est
-constructible.
-En particulier, la projection de tout ensemble constructible est constructible.
-\end{theo}
+\noindent Nous donnons un premier exemple de théorie $\kappa$-catégorique: la théorie au langage vide forçant ses modèles à être infini.
 
-\begin{proof}
-    Comme $S$ est constructible, il existe une formule sans quantificateurs
-    $\varphi$ telle que $\overline{x} \in S \iff \varphi(\overline{x})$ donc $\overline{y}
-    \in f(S) \iff \exists \overline{x} \in S, f(\overline{x}) = \overline{y}
-    \iff \exists \overline{x}, \varphi(\overline{x}) \wedge f(\overline{x}) =
-    y.$ Il suffit alors d'appliquer l'élimination des quantificateurs à cette
-    formule pour avoir le résultat.
-\end{proof}
-
-
-Nous avons déjà démontré précédemment  (\cref{coro-acf-complete}) que la théorie
-$\ACF_n$ est complète mais nous pouvons aussi déduire le déduire résultat de
-l'élimination des quantificateurs.
-
-\begin{prop}[Complétude]\label{prop-acf-complet}
-    La théorie $\ACF_n$ est complète.
+\begin{prop}
+Soit $\cL = \emptyset$. Pour $n \in \mathbb{N^*}$, on définit la $\cL$-phrase
+\begin{align*}
+\phi_n = \exists x_1\dots\exists x_n(\bigwedge_{1\leq i < j \leq n} x_i \neq x_j)
+\end{align*}
+On définit la $\cL$-théorie $T_{\infty} = \{\phi_n,\text{ }n \in \mathbb{N^*}\}$.\\
+Alors pour tout cardinal $\kappa$, $T_{\infty}$ est $\kappa$-catégorique.
 \end{prop}
 
 \begin{proof}
-On montre le résultat pour $\ACF_p$, la preuve pour $\ACF_0$ est identique en
-remplaçant $\bF_p$ par $\bQ$. \\
-Soient $K,L$ tels que $K,L \models \ACF_p$ et $\varphi$ une phrase dans le
-langage des anneaux. Par l'élimination des quantificateurs, il existe une phrase
-$\theta$ telle que $\ACF_p \models \varphi \leftrightarrow \ACF_p \models
-\theta$. On a $K \models \theta \iff
-\bF_p \models \theta \iff L \models \theta$ et donc $K \models \varphi
-\iff K \models \theta \iff L \models \theta
-\iff L \models \varphi$ ainsi $K$ et $L$ sont équivalentes et
-$\ACF_p$ est complète.
+Soit $\kappa$ un cardinal infini. Soient $\cM$ et $\cN$ deux modèles de $T_{\infty}$ tel que $\lvert \cM \rvert = \lvert \cN \rvert = \kappa$.
+Puisque $\cL = \emptyset$, nos modèles sont simplement des ensembles. Or par un argument ensembliste, $M$ et $N$ étant de même cardinalité, il existe $\phi: M \longrightarrow N$ une bijection.
+$\phi$ étant une bijection entre structures vides, il n'y a aucun symbole à preserver et c'est un $\cL$-isomorphisme.
 \end{proof}
+
+\noindent Nous présentons le résultat suivant comme fait algébrique. Il est le pilier pour distinguer des modèles de $\ACF_p$ de même cardinalité via des invariants.
+
+\begin{coro}\label{acfcategorique}
+Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est $\kappa$-catégorique pour tout cardinal $\kappa$ indénombrable.
+\end{coro}
+
+\begin{proof}
+Il est clair que deux modèles de $ACF_p$ sont tous deux de caractéristique $p$. De plus un corps algébriquement clos de degré de transcendance $\lambda$ a
+une cardinalité égale à $\max(\lambda, \aleph_0)$. Ainsi soit $\kappa > \aleph_0$ et un corps algébriquement clos de cardinalité $\kappa$, alors le 
+degré de transcendance est aussi égal à $\kappa$. Ainsi deux modèles de $ACF_p$
+de même cardinalité indénombrable sont isomorphes par théorème de Steinitz
+(\cref{theo-Steinitz}).
+\end{proof}
+
+\noindent Le Théorème de compacité assure qu'une théorie reste satisfiable tant que ses sous-ensembles finis le sont.
+Pour une théorie $T$ finiment satisfiable et à modèles infinis, on peut ajouter une infinité de symboles de constante et imposer qu'ils soient deux à deux distincts.
+Ceci crée une nouvelle théorie, toujours finiment satisfiables (toute partie finie de la nouvelle théorie ne demandent qu'un nombre fini de constantes, lesquelles peuvent 
+être choisies par des éléments distincts d'un modèle infini de $T$), et imposant par compacité l'existence de modèles à cardinalité aussi grande que l'on souhaite.
+Ce raisonnement fonde le résultat suivant :
+
+
+\begin{theo}[Löwenheim-Skolem ascendant]
+Soit $T$ une $\cL$-théorie satisfaite par des modèles infinis. Si $\kappa$ est un cardinal infini tel que $\kappa > \lvert \cL \rvert$, alors
+il existe un modèle de $T$ de cardinalité $\kappa$.
+\end{theo}
+
+\begin{theo}[Test de Vaught]
+Soit $T$ une $\cL$-théorie satisfiable, sans modèles finis, et $\kappa$-catégorique pour un certain cardinal infini $\kappa > \lvert \cL \rvert$.
+Alors $T$ est complète.
+\end{theo}
+
+\begin{proof}
+Supposons par l'absurde que $T$ n'est pas complète. Il existe alors une $\cL$-phrase $\phi$ telle que $T \not\models \phi$ et $T \not\models \neg\phi$.\\
+\textbf{Fait :} $T \not\models \phi$ si et seulement si $T \cup \{\neg\phi\}$ est satisfiable. En effet, si $T \models \phi$, alors $\neg\phi$ ne se satisfait dans aucun modèle de $T$,
+donc $T \cup \{\neg\phi\}$ est insatisfiable car un tel modèle devrait satisfaire à la fois $T$ et à la fois $\neg\phi$. Réciproquement, si $T \cup \{\neg\phi\}$ est insatisfiable,
+cela signifie qu'un modèle de $T$ ne peut pas aussi satisfaire à $\neg\phi$, donc un tel modèle satisfait nécessairement $\phi$ par définition de la satisfaisabilité d'une formule, d'où $T \models \phi$. \\
+Ainsi $T_0 = T \cup \{\phi\}$ et $T_1 = T \cup \{\neg\phi\}$ sont satisfiables.
+Par hypothèse $T$ n'a pas de modèles finis : ceci impose que les modèles de $T_0$ et $T_1$ soient infinis. Par Théorème de Löwenheim-Skolem ascendant, on a $\cM_0$ et $\cM_1$
+tout deux de cardinalité $\kappa > \lvert \cL \rvert$ tel que $\cM_0 \models T_0$ et $\cM_1 \models T_1$. Or ces deux modèles ne peuvent être élémentairement équivalent car ils divergent sur $\phi$.
+Par théorème~\ref{isomorphisme}, ces modèles ne sont pas isomorphes. Ceci contradit la $\kappa$-catégoricité de $T$.
+\end{proof}
+
+\begin{prop}\label{prop-acf-complete}
+Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est complète.
+\end{prop}
+
+\begin{proof}
+Immédiat par corollaire~\ref{acfcategorique} et Test de Vaught.
+\end{proof}
+
+\section{Principe de Lefschetz}
 
 La complétude d'ACF est un résultat puissant qui va nous permettre de
 généraliser facilement des résultats démontrés sur des cas particuliers. En
@@ -671,79 +327,149 @@ par la \cref{prop-acf-complet} $\ACF_0$ est complète ainsi $\ACF_0 \models \neg
 suffisamment grand ce qui contredit $4$ d'où le résultat.
 \end{proof}
 
+\section{Théorème d'Ax-Grothendieck}
+
+Dans ce qui précède, nous avons introduit la théorie des modèles et établi
+certains résultats, notamment sur les corps algébriquement clos. Il est
+maintenant temps d'appliquer ces résultats et de démontrer que la puissance de
+la théorie des modèles permet de résoudre des problèmes concrets provenant
+d'autres branches des mathématiques.
+
+La première application que nous étudions, le \kw{théorème
+d'Ax-Grothendieck}, illustre la puissance du principe de transfert en
+transformant un problème difficile sur $\bC$ en un simple problème de comptage
+sur un corps fini. 
+
+On veut démontrer le théorème suivant: 
+
+\begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck}
+Soit $f : \bC^n \rightarrow \bC^n$ une application polynomiale. Si $f$ est
+injective, alors elle est bijective. 
+\end{theo}
+
+On va suivre le plan suivant :
+
+\begin{enumerate}[label= (\roman*)]
+\item On traduit l'énoncé en une formule du premier ordre dans le langage des anneaux.
+\item On invoque le principe de Lefschetz, pour démontrer le résultat sur $\bC$,
+il suffit de le montrer sur $\Fpalg$ pour tout $p \in \bP$.
+\item On se restreint à un sous-corps fini en raisonnant par l'absurde.
+\item Le résultat est évident sur un corps fini.
+
+\end{enumerate}
+
+% \todo[inline]{Reformuler si on passe les variétés en annexe}
+% On présente dans un premier temps le cas particulier de $\bC^n$ et sa preuve
+% détaillée avant de passer au cas général d'une variété algébrique sur un corps
+% algébriquement clos dont l'idée est la même.
 
 
 
 
-% Dans ce qui suit, on montre que l'élimination des quantificateurs possède
-% également une interprétation géométrique. En géométrie algébrique classique, on
-% étudie les variétés (lieux d'annulations de polynômes), mais en général, si on
-% utilise des opérations comme la projection (ce qui correspond au quantificateur
-% dans un énoncé logique),on sort a priori de ce cadre. Le but de cet
-% section est d'établir le dictionnaire entre objects de la logique (les formules)
-% et ceux de la géométrie (ensembles constructibles).
 
-% Dans cette section, on fixe un corps algébriquement clos $K$ et un entier $n \ge
-% 1$. 
+Pour traduire notre énoncé en logique du premier ordre, on va avoir besoin du lemme suivant: 
 
-% \section{Ensembles définissables et variétés}
+\begin{lemm} \label{lemm-phrase-corps}
+Pour tout couple $(n,d)$ d'entiers positifs, il existe une phrase
+$\varphi_{n,d}$ dans le langage des anneaux qui exprime que dans un corps $K$,
+toute famille $(f_1, \ldots, f_n)$ de polynômes en $n$ variables de degré
+inférieur ou égal à $d$, si l'application associée est injective, alors elle est surjective.
+\end{lemm}
 
-% \todo[inline]{Cette section est-elle hors sujet? mettre en annexe?}
+\begin{exem}
+Construisons la phrase pour l'exemple $n=3$ et $d=2$, la construction générale
+est la même.
 
-% \begin{defi}[Variété affine]
-% Soit $S \subset K[\overline{x}]$, on note $V(S)$ le sous ensemble de $K^n$
-% formé des zéros communs à tous les éléments de $S$. C'est à dire: 
-% \[ V(S) = \{ \overline{a} \in K^n \mid P(\overline{a} ) = 0,  \forall P \in S \} .\]
-% Les sous-ensembles de $K^n$ de ce type sont les sous-variétés algébrique affine de
-% $K^n$.
-% Dans la suite on utilisera simplement \kw{variété} pour les qualifier.
-% \end{defi}
+Un polynôme $P$ en $3$ variables de degré $\le 2$ est une combinaison linéaire des $10$ monômes suivants:
+    \[ 1, \quad x_1, x_2, x_3, \quad x_1^2, x_2^2, x_3^2, \quad x_1x_2, x_1x_3, x_2x_3 \]
+    Une application polynomiale $f: K^3 \to K^3$ est définie par un triplet de polynômes $(f_1, f_2, f_3)$.
+    Chacun nécessitant $10$ coefficients, l'application est donc entièrement déterminée
+    par un tuple de $3 \times 10 = 30$ coefficients.
+    Considérons 30 variables (au sens logique) que nous noterons globalement par
+    le vecteur $\overline{c} = (c_k,d)$. 
+    Pour chaque composante $k \in \{1,2,3\}$, on peut écrire formellement le terme polynomial associé :
+    \[ f_k(\overline{c}, \overline{x}) = \sum_{\delta \le 2} c_{k,\delta} \cdot \overline{x}^\delta \]
 
-% \begin{defi}[Idéal d'une variété]
-% Soit $V \subset K^n$, on appelle idéal de $V$, et on note $I(V)$ l'ensemble des
-% polynômes nuls sur $V$. C'est à dire:
-% \[ I(V) = \{ P \in  K[\overline{x}] \mid P(\overline{a}) = 0, \forall \overline{a} \in V \}.\]
-% \end{defi}
+    L'injectivité s'exprime par la formule:
+    \[ \Inj(\overline{c}): \forall \overline{x} \forall \overline{y} \left( \left[ \bigwedge_{k=1}^3 f_k(\overline{c}, \overline{x}) = f_k(\overline{c}, \overline{y}) \right] \longrightarrow (\overline{x} = \overline{y}) \right) \]
+    La surjectivité s'exprime par la formule:
+    \[  \Surj(\overline{c}) :\forall \overline{z} \exists \overline{w} \left( \bigwedge_{k=1}^3 f_k(\overline{c}, \overline{w}) = z_k \right) \]
 
-% On a les propriétés immédiates suivantes:
+    Et on a alors:
+    \[ \varphi_{3,2} : \forall \overline{c} \left( \Inj(\overline{c}) \longrightarrow
+    \Surj(\overline{c}) \right) \]
+    
+    qui est bien une formule de longueur finie du premier ordre dans le langage des anneaux.
+\end{exem}
 
-% \begin{lemm}\label{lemm-variete-trivial}
-% \todo[inline]{mettre ce qui sert}
+\begin{proof}
+D'après le \cref{lemm-phrase-corps} et par principe de Lefschetz (\cref{coro-Lefschetz}), il suffit de
+montrer le résultat
+pour $\Fpalg$ pour tout $p \in \bP$. Par le \cref{theo-structure-corps-fini}, toute partie finie de $\Fpalg$ est contenue dans
+un sous-corps fini de $\Fpalg$. Soit $f = (f_1, \ldots, f_n) : \Fpalg^n
+\rightarrow \Fpalg^n$ ,  une application polynomiale injective. Supposons qu'il
+existe $y \in \Fpalg^n$ qui n'est pas dans l'image de $f$. Soit $K$ le sous-corps de $\Fpalg$ qui contient toutes les composantes de $y$ et tous les
+coefficients des $f_i$. $f$ induit alors une application $K^n \rightarrow K^n$
+qui est injective et non surjective ce qui est absurde car $K$ est fini d'après le
+\cref{theo-structure-corps-fini}.
+\end{proof}
+
+
+% \begin{lemm} \label{lemm-phrase-variete}
+% Pour tout quadruplet d'entiers $(n, m, d, \delta)$, il existe une phrase $\varphi_{n,m,d,\delta}$ dans le langage des anneaux qui exprime la propriété suivante :
+% Pour tout corps $K$, pour toute variété algébrique $V \subset K^n$ définie par $m$ équations de degré au plus $\delta$, et pour toute application polynomiale $f: V \to V$ définie par des polynômes de degré au plus $d$, si $f$ est injective alors elle est surjective.
 % \end{lemm}
 
-% \begin{prop}
-% Soit $V \subset K^n$ une variété, alors il existe un ensemble $E$ fini de
-% polynômes tel que $V = V(E)$.
-% \end{prop}
+% \begin{exem}
+% Illustrons la construction de la phrase $\phi_{n,m,d,s}$ dans un cas simple :
+%     \begin{itemize}
+%         \item $n=2$ (Dimension ambiante: le plan $K^2$).
+%         \item $m=1$ (La variété $V$ est définie par $1$ équation).
+%         \item $d=2$ (L'équation est de degré $\le 2$, c'est une conique).
+%         \item $\delta=1$ (L'application $f$ est polynomiale de degré $\le 1$, c'est une application affine).
+%     \end{itemize}
+
+%     \textbf{Coefficients:}
+%     \begin{itemize}
+%         \item La variété $V$ est définie par l'annulation d'un polynôme $P$ de degré $\le 2$ en $2$ variables. Il y a $6$ monômes ($1, x_1, x_2, x_1^2, x_2^2, x_1x_2$). On note $\overline{a}$ le vecteur des $6$ coefficients de $P$.
+%         On définit l'appartenance à $V$ par la formule:
+%         \[ x \in V_{\overline{a}} \iff P(\overline{a},\overline{x}) = 0 \]
+        
+%         \item L'application $f$ est définie par $2$ polynômes $(f_1, f_2)$ de degré $\le 1$. Chaque polynôme a $3$ coefficients ($c_0 + c_1x_1 + c_2x_2$). On note $\overline{c}$ le vecteur des $2 \times 3 = 6$ coefficients définissant $f$.
+%     \end{itemize}
+
+%     \textbf{Conditions sur les coefficients}
+%     Contrairement au cas affine (\cref{lemm-phrase-corps}), n'importe quel choix
+%     de coefficients $\overline{c}$ ne convient pas, il faut que $f$ envoie bien
+%     les points de $V$ dans $V$. On introduit une formule de "Stabilité":
+%     \[ \text{Stable}(\overline{a}, \overline{c}) : \forall \bar{x} \left( P(\overline{a}, \bar{x})=0 \longrightarrow P(\overline{a}, f(\overline{c}, \bar{x})) = 0 \right) \]
+
+%     \textbf{Injectivité et Surjectivité restreintes à $V$}
+%     On veut que les quantificateurs ne portent que sur les points de $V$, on
+%     utilise donc la formule d'appartenance introduite précédemment
+%     \[ \text{Inj}_V(\overline{a}, \overline{c}) : \forall \bar{x} \forall \bar{y} \left( [\bar{x} \in V_{\overline{a}} \wedge \bar{y} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{x}) = f(\overline{c}, \bar{y})] \longrightarrow \bar{x} = \bar{y} \right) \]
+%     \[ \text{Surj}_V(\overline{a}, \overline{c}) : \forall \bar{z} \left( \bar{z} \in V_{\overline{a}} \longrightarrow \exists \bar{w} [\bar{w} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{w}) = \bar{z}] \right) \]
+
+%     On a donc \[ \varphi_{2,1,2,1} : \forall \overline{a} \forall \overline{c} \left[ (\text{Stable}(\overline{a}, \overline{c}) \wedge \text{Inj}_V(\overline{a}, \overline{c})) \longrightarrow \text{Surj}_V(\overline{a}, \overline{c}) \right] \]
+% \end{exem}
+
+% \begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck-variete}
+% Soit $K$ un corps algébriquement clos, $V$ une variété algébrique sur $K$ et $f
+% : V \rightarrow V$ une application polynomiale. Si $f$ est
+% injective, alors elle est bijective. 
+% \end{theo}
 
 % \begin{proof}
-%     Supposons $V=V(P)$, alors par le \cref{lemm-variete-trivial}, on a $ V =
-%     V(I(V(P)))$ et par le \cref{theo-base-Hilbert}, l'idéal $I(V(P))$ est
-%     engendré par un ensemble fini $E$ de polynômes d'où le résultat.
+% La preuve suit exactement le même schéma que pour le cas affine $V=\bC^n$ (\cref{theo-Ax-Grothendieck}).
+% Par le lemme et par principe de Lefschetz, il suffit de démontrer le résultat pour $K=\Fpalg$.
+
+% La seule adaptation nécessaire concerne la construction du sous-corps fini. Si
+% l'on suppose qu'il existe $y \in V$ hors de l'image de $f$,
+% on considère le sous-corps fini $k \subset \Fpalg$ engendré par: les
+% coefficients de l'application $f$ et les coordonnées de $y$ (comme
+% précédemment) ET les coefficients des polynômes définissant la variété $V$.
+
+% Alors l'ensemble des points rationnels $V(k) = V \cap k^n$ est fini (car inclus dans $k^n$).
+% Par stabilité, $f$ induit une application $f: V(k) \to V(k)$ injective et non
+% surjective, ce qui est exclu.
 % \end{proof}
-
-% \begin{defi}[Ensemble constructible]
-%     Un sous-ensemble de $K^n$ est dit \kw{constructible} s'il est une
-%     combinaison booléenne finie 
-%     (union, intersection, complémentaire) de variétés.
-% \end{defi}
-
-% Ainsi, les ensembles constructibles sont exactement les sous-ensembles de $K^n$
-% qui sont les définissables sans quantificateurs avec paramètres dans $K$, et comme $\ACF$ élimine les
-% quantificateurs (\cref{theo-acf-elim}), ce sont exactement les ensembles définissables.
-
-% \begin{prop}[Dictionnaire Logique-Géométrie]\label{prop-dict-logic-geom}
-%     Tout sous ensemble de $K^n$ définissable dans le langage des anneaux avec paramètres dans $K$ est une union \kw{finie} d'ensembles de
-%     la forme $V \backslash W$ avec $V,W$ des variétés de $K^n$.
-% \end{prop}
-
-% \begin{proof}
-% \todo[inline]{preuve lien}
-% \end{proof}
-
-% \begin{prop}[Projection]
-% \todo[inline]{projection}
-% \end{prop}
-
-
-

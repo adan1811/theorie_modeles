@@ -1,158 +1,165 @@
-\chapter{Applications}
+\chapter{Elimination des quantificateurs et géométrie}
 
-Dans ce qui précède, nous avons introduit la théorie des modèles et établi
-certains résultats, notamment sur les corps algébriquement clos. Il est
-maintenant temps d'appliquer ces résultats et de démontrer que la puissance de
-la théorie des modèles permet de résoudre des problèmes concrets provenant
-d'autres branches des mathématiques.
+\section{Intermède algébrique II}
 
-Dans ce chapitre, nous allons exposer deux applications classiques donc les
-démonstrations par la théorie des modèles illustrent efficacement les principes
-que nous avons établi dans les chapitres précédents. Le premier, le \kw{théorème
-d'Ax-Grothendieck}, illustre la puissance du principe de transfert en
-transformant un problème difficile sur $\bC$ en un simple problème de comptage
-sur un corps fini. Le second, le \kw{Nullstelensatz} de Hilbert, montre comment
-l'élimination des quantificateurs permet de simplifier les questions d'existence
-de solutions à des systèmes d'équations.
+Reprenons notre intermède algébrique avec les résultats suivant sur les idéaux.
 
-\section{Ax-Grothendieck}
+\begin{prop}\label{prop-quotient-ideal-maximal}
+Soit $I$ un idéal d'un anneau $A$, alors:
+\begin{enumerate}[label= (\roman*)]
+    \item $A/I$ est intègre si et seulement si $I$ est premier.
+    \item $A/I$ est un corps si et seulement si $I$ est maximal.
+\end{enumerate}
+En particulier, tout idéal maximal est premier.
+\end{prop}
 
-On veut démontrer le théorème suivant: 
-
-\begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck}
-Soit $f : \bC^n \rightarrow \bC^n$ une application polynomiale. Si $f$ est
-injective, alors elle est bijective. 
+\begin{theo}[Théorème de Krull]\label{theo-Krull}
+Soit $I$ un idéal propre d'un anneau commutatif $A$, alors il existe un idéal
+maximal de $A$ contenant $I$.
 \end{theo}
 
-On va suivre le plan suivant :
+\begin{defi}[Radical d'un idéal, idéal radiciel]\label{defi-ideal-radical}
+Soit $I$ un idéal d'un anneau commutatif $A$, on appelle \kw{radical} de $I$ et on
+note $\sqrt{I}$ l'ensemble des éléments de $A$ dont une puissance appartient à
+$I$ : \[ \sqrt{I} = \{ a \in A \mid \exists n \in \bNe , a^n \in I \}.\]
 
+Il est clair que $\sqrt{I}$ est un idéal de $A$, et qu'on a toujours $I \subset
+\sqrt{I}$. Si on a l'égalité $I = V(I)$, on dit que l'idéal $I$ est \kw{radiciel}.
+\end{defi}
+
+\begin{theo}[Base de Hilbert]\label{theo-base-Hilbert}
+Soit $K$ un corps et $n\in \bNe$ alors tout idéal de $K[X_1, \ldots, X_n ]$ est
+engendré par un nombre fini de polynômes.
+\end{theo}
+
+\section{Elimination des quantificateurs}
+
+\begin{defi}[Elimination des quantificateurs]\label{def-quant-elim}
+On dit qu'une théorie $T$ a l'\kw{élimination des quantificateurs} si pour toute
+formule $\varphi$, il existe une formule sans-quantificateurs $\theta$ telle que
+$T \models \varphi \leftrightarrow \theta$. \\
+Plus précisément, une $\cL$-théorie
+$T$ a l'\kw{élimination des quantificateurs} dans $\cL$ si pour toute
+$\cL$-formule $\varphi(x_1, \ldots, x_n)$, il existe une $\cL$-formule
+$\theta(x_1, \ldots, x_m)$ sans quantificateurs, où $n \le m$ telle que \[ T
+\models \forall x_1 \cdots \forall x_m ( \varphi(x_1, \ldots, x_n)
+\leftrightarrow \theta(x_1, \ldots, x_m)) \] 
+\end{defi}
+
+
+Le fait qu'une théorie admette l'élimination des quantificateurs va bien au-delà
+des aspects syntaxiques et a de nombreuses conséquences en particulier pour ces
+applications algébriques comme les nôtres, elle permet notamment de montrer
+aisément la complétude d'une théorie et facilite grandement l'étude des
+ensembles définissables. Elle permet également de réduire la décidabilité d'une
+théorie à une simple vérification algébrique. 
+
+On peut notamment l'interpréter sous les angles suivants:
 \begin{enumerate}[label= (\roman*)]
-\item On traduit l'énoncé en une formule du premier ordre dans le langage des anneaux.
-\item On invoque le principe de Lefschetz, pour démontrer le résultat sur $\bC$,
-il suffit de le montrer sur $\Fpalg$ pour tout $p \in \bP$.
-\item On se restreint à un sous-corps fini en raisonnant par l'absurde.
-\item Le résultat est évident sur un corps fini.
+    \item Angle algébrique: L'élimination des quantificateurs traduit que
+    l'existence de solutions à un système d'équations polynomiales dépend
+    uniquement de ses paramètres. Prenons un exemple élémentaire : à quelle
+    condition le polynôme $ax^2+bx+c$ admet-il une racine? Dans un corps
+    algébriquement clos: il suffit que le polynôme ne soit pas une constante non
+    nulle, la formule $\exists x, (ax^2+bx+c = 0)$ est donc équivalente à la
+    formule sans quantificateurs $(a \neq 0) \vee (b \neq 0) \vee (c = 0)$.
+    Le théorème de Tarski affirme que ce mécanisme se généralise à tout système
+    d'équations.
 
+    \item Angle géométrique: Géométriquement, le quantificateur existentiel
+    $(\exists)$ correspond à la projection d'un ensemble alors
+    que les formules sans quantificateurs correspondent aux ensembles
+    constructibles (\cref{defi-constructible}). Prenons encore une fois un
+    exemple simple dans le plan $\bC^2$ : Considérons l'hyperbole d'équation
+    $xy=1$, sa projection sur l'axe des abscisses est l'ensemble des $x$ qui
+    satisfont la formule $\exists y, xy= 1$. Géométriquement, on sait que cette
+    projection couvre tout l'axe sauf l'origine et donc que la formule $\exists y, xy= 1$ est
+    équivalente à la formule sans quantificateurs $x \neq 0$. Le théorème de
+    Chevalley généralise cette construction à la projection de tout ensemble constructible.
 \end{enumerate}
 
-% \todo[inline]{Reformuler si on passe les variétés en annexe}
-% On présente dans un premier temps le cas particulier de $\bC^n$ et sa preuve
-% détaillée avant de passer au cas général d'une variété algébrique sur un corps
-% algébriquement clos dont l'idée est la même.
+\begin{theo}[Théorème de Tarski]\label{theo-acf-elim}
+    La théorie $\ACF$ a l'élimination des quantificateurs
+\end{theo}
 
+La démonstration de ce théorème étant très technique, nous choisissons de
+l'admettre et de nous concentrer sur ses conséquences. Signalons cependant que contrairement
+aux preuves modernes de ce résultat qui utilisent des
+résultats puissants de théorie des modèles, la preuve originale de Tarski (voir \cite{Tarski_1951}) est
+elle constructive et fournit donne une méthode effective basée sur le résultant pour
+éliminer un à un les quantificateurs. Ainsi, en partant d'une phrase on
+peut obtenir algorithmiquement une phrase sans quantificateurs équivalente dont
+la valeur de vérité est alors facilement vérifiable. On a donc établi le
+résultat suivant:
 
+\begin{coro}[Décidabilité de $ACF_n$]
+    On dit qu'une théorie $T$ est \kw{décidable} si il existe un algorithme qui pour
+    toute phrase $\varphi$ en entrée, décide si $T \models \varphi$.
 
+    La théorie $\ACF$ est décidable.
+\end{coro}
 
+\begin{defi}[Ensemble constructible]\label{defi-constructible}
+    Soit $K$ un corps, un sous-ensemble $S \subset K^n$ est dit
+    \kw{constructible} 
+    s'il peut s'écrire comme une combinaison booléenne finie (unions,
+    intersections et passages au complémentaire) d'ensembles de la forme 
+    $\{ \overline{x} \in K^n \mid P(\overline{x}) = 0 \}$, où $P \in K[X_1, \dots, X_n]$.
+\end{defi}
 
-Pour traduire notre énoncé en logique du premier ordre, on va avoir besoin du lemme suivant: 
+\begin{rema}
+On remarque le lien avec la logique du premier ordre. Dans le language des
+anneaux, une formule atomique est exactement l'ensemble des zéros d'un polynôme
+et par définition, une formule sans quantificateurs est exactement une
+combinaison booléenne finie de formules atomiques donc un sous-ensemble de $K^n$
+est constructible si et seulement si il est définissable par une formule sans
+quantificateurs à paramètres dans $K$.
+\end{rema}
 
-\begin{lemm} \label{lemm-phrase-corps}
-Pour tout couple $(n,d)$ d'entiers positifs, il existe une phrase
-$\varphi_{n,d}$ dans le langage des anneaux qui exprime que dans un corps $K$,
-toute famille $(f_1, \ldots, f_n)$ de polynômes en $n$ variables de degré
-inférieur ou égal à $d$, si l'application associée est injective, alors elle est surjective.
-\end{lemm}
-
-\begin{exem}
-Construisons la phrase pour l'exemple $n=3$ et $d=2$, la construction générale
-est la même.
-
-Un polynôme $P$ en $3$ variables de degré $\le 2$ est une combinaison linéaire des $10$ monômes suivants:
-    \[ 1, \quad x_1, x_2, x_3, \quad x_1^2, x_2^2, x_3^2, \quad x_1x_2, x_1x_3, x_2x_3 \]
-    Une application polynomiale $f: K^3 \to K^3$ est définie par un triplet de polynômes $(f_1, f_2, f_3)$.
-    Chacun nécessitant $10$ coefficients, l'application est donc entièrement déterminée
-    par un tuple de $3 \times 10 = 30$ coefficients.
-    Considérons 30 variables (au sens logique) que nous noterons globalement par
-    le vecteur $\overline{c} = (c_k,d)$. 
-    Pour chaque composante $k \in \{1,2,3\}$, on peut écrire formellement le terme polynomial associé :
-    \[ f_k(\overline{c}, \overline{x}) = \sum_{\delta \le 2} c_{k,\delta} \cdot \overline{x}^\delta \]
-
-    L'injectivité s'exprime par la formule:
-    \[ \Inj(\overline{c}): \forall \overline{x} \forall \overline{y} \left( \left[ \bigwedge_{k=1}^3 f_k(\overline{c}, \overline{x}) = f_k(\overline{c}, \overline{y}) \right] \longrightarrow (\overline{x} = \overline{y}) \right) \]
-    La surjectivité s'exprime par la formule:
-    \[  \Surj(\overline{c}) :\forall \overline{z} \exists \overline{w} \left( \bigwedge_{k=1}^3 f_k(\overline{c}, \overline{w}) = z_k \right) \]
-
-    Et on a alors:
-    \[ \varphi_{3,2} : \forall \overline{c} \left( \Inj(\overline{c}) \longrightarrow
-    \Surj(\overline{c}) \right) \]
-    
-    qui est bien une formule de longueur finie du premier ordre dans le langage des anneaux.
-\end{exem}
+\begin{theo}[Théorème de Chevalley]
+Soit $m \in \bNe$, $S$ un ensemble constructible de $K^n$, et $f: K^n
+\rightarrow K^m$ une fonction \kw{polynomiale}, alors $f(S) \subset K^m$ est
+constructible.
+En particulier, la projection de tout ensemble constructible est constructible.
+\end{theo}
 
 \begin{proof}
-D'après le \cref{lemm-phrase-corps} et par principe de Lefschetz (\cref{coro-Lefschetz}), il suffit de
-montrer le résultat
-pour $\Fpalg$ pour tout $p \in \bP$. Par le \cref{theo-structure-corps-fini}, toute partie finie de $\Fpalg$ est contenue dans
-un sous-corps fini de $\Fpalg$. Soit $f = (f_1, \ldots, f_n) : \Fpalg^n
-\rightarrow \Fpalg^n$ ,  une application polynomiale injective. Supposons qu'il
-existe $y \in \Fpalg^n$ qui n'est pas dans l'image de $f$. Soit $K$ le sous-corps de $\Fpalg$ qui contient toutes les composantes de $y$ et tous les
-coefficients des $f_i$. $f$ induit alors une application $K^n \rightarrow K^n$
-qui est injective et non surjective ce qui est absurde car $K$ est fini d'après le
-\cref{theo-structure-corps-fini}.
+    Comme $S$ est constructible, il existe une formule sans quantificateurs
+    $\varphi$ telle que $\overline{x} \in S \iff \varphi(\overline{x})$ donc $\overline{y}
+    \in f(S) \iff \exists \overline{x} \in S, f(\overline{x}) = \overline{y}
+    \iff \exists \overline{x}, \varphi(\overline{x}) \wedge f(\overline{x}) =
+    y.$ Il suffit alors d'appliquer l'élimination des quantificateurs à cette
+    formule pour avoir le résultat.
 \end{proof}
 
 
-% \begin{lemm} \label{lemm-phrase-variete}
-% Pour tout quadruplet d'entiers $(n, m, d, \delta)$, il existe une phrase $\varphi_{n,m,d,\delta}$ dans le langage des anneaux qui exprime la propriété suivante :
-% Pour tout corps $K$, pour toute variété algébrique $V \subset K^n$ définie par $m$ équations de degré au plus $\delta$, et pour toute application polynomiale $f: V \to V$ définie par des polynômes de degré au plus $d$, si $f$ est injective alors elle est surjective.
-% \end{lemm}
+Nous avons déjà démontré précédemment  (\cref{prop-acf-complet}) que la théorie
+$\ACF_n$ est complète mais nous pouvons aussi déduire le déduire résultat de
+l'élimination des quantificateurs.
 
-% \begin{exem}
-% Illustrons la construction de la phrase $\phi_{n,m,d,s}$ dans un cas simple :
-%     \begin{itemize}
-%         \item $n=2$ (Dimension ambiante: le plan $K^2$).
-%         \item $m=1$ (La variété $V$ est définie par $1$ équation).
-%         \item $d=2$ (L'équation est de degré $\le 2$, c'est une conique).
-%         \item $\delta=1$ (L'application $f$ est polynomiale de degré $\le 1$, c'est une application affine).
-%     \end{itemize}
+\begin{prop}[Complétude]
+    La théorie $\ACF_n$ est complète.
+\end{prop}
 
-%     \textbf{Coefficients:}
-%     \begin{itemize}
-%         \item La variété $V$ est définie par l'annulation d'un polynôme $P$ de degré $\le 2$ en $2$ variables. Il y a $6$ monômes ($1, x_1, x_2, x_1^2, x_2^2, x_1x_2$). On note $\overline{a}$ le vecteur des $6$ coefficients de $P$.
-%         On définit l'appartenance à $V$ par la formule:
-%         \[ x \in V_{\overline{a}} \iff P(\overline{a},\overline{x}) = 0 \]
-        
-%         \item L'application $f$ est définie par $2$ polynômes $(f_1, f_2)$ de degré $\le 1$. Chaque polynôme a $3$ coefficients ($c_0 + c_1x_1 + c_2x_2$). On note $\overline{c}$ le vecteur des $2 \times 3 = 6$ coefficients définissant $f$.
-%     \end{itemize}
+\begin{proof}
+On montre le résultat pour $\ACF_p$, la preuve pour $\ACF_0$ est identique en
+remplaçant $\bF_p$ par $\bQ$. \\
+Soient $K,L$ tels que $K,L \models \ACF_p$ et $\varphi$ une phrase dans le
+langage des anneaux. Par l'élimination des quantificateurs, il existe une phrase
+$\theta$ telle que $\ACF_p \models \varphi \leftrightarrow \ACF_p \models
+\theta$. On a $K \models \theta \iff
+\bF_p \models \theta \iff L \models \theta$ et donc $K \models \varphi
+\iff K \models \theta \iff L \models \theta
+\iff L \models \varphi$ ainsi $K$ et $L$ sont équivalentes et
+$\ACF_p$ est complète.
+\end{proof}
 
-%     \textbf{Conditions sur les coefficients}
-%     Contrairement au cas affine (\cref{lemm-phrase-corps}), n'importe quel choix
-%     de coefficients $\overline{c}$ ne convient pas, il faut que $f$ envoie bien
-%     les points de $V$ dans $V$. On introduit une formule de "Stabilité":
-%     \[ \text{Stable}(\overline{a}, \overline{c}) : \forall \bar{x} \left( P(\overline{a}, \bar{x})=0 \longrightarrow P(\overline{a}, f(\overline{c}, \bar{x})) = 0 \right) \]
+\section{Nullstelensatz}
 
-%     \textbf{Injectivité et Surjectivité restreintes à $V$}
-%     On veut que les quantificateurs ne portent que sur les points de $V$, on
-%     utilise donc la formule d'appartenance introduite précédemment
-%     \[ \text{Inj}_V(\overline{a}, \overline{c}) : \forall \bar{x} \forall \bar{y} \left( [\bar{x} \in V_{\overline{a}} \wedge \bar{y} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{x}) = f(\overline{c}, \bar{y})] \longrightarrow \bar{x} = \bar{y} \right) \]
-%     \[ \text{Surj}_V(\overline{a}, \overline{c}) : \forall \bar{z} \left( \bar{z} \in V_{\overline{a}} \longrightarrow \exists \bar{w} [\bar{w} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{w}) = \bar{z}] \right) \]
-
-%     On a donc \[ \varphi_{2,1,2,1} : \forall \overline{a} \forall \overline{c} \left[ (\text{Stable}(\overline{a}, \overline{c}) \wedge \text{Inj}_V(\overline{a}, \overline{c})) \longrightarrow \text{Surj}_V(\overline{a}, \overline{c}) \right] \]
-% \end{exem}
-
-% \begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck-variete}
-% Soit $K$ un corps algébriquement clos, $V$ une variété algébrique sur $K$ et $f
-% : V \rightarrow V$ une application polynomiale. Si $f$ est
-% injective, alors elle est bijective. 
-% \end{theo}
-
-% \begin{proof}
-% La preuve suit exactement le même schéma que pour le cas affine $V=\bC^n$ (\cref{theo-Ax-Grothendieck}).
-% Par le lemme et par principe de Lefschetz, il suffit de démontrer le résultat pour $K=\Fpalg$.
-
-% La seule adaptation nécessaire concerne la construction du sous-corps fini. Si
-% l'on suppose qu'il existe $y \in V$ hors de l'image de $f$,
-% on considère le sous-corps fini $k \subset \Fpalg$ engendré par: les
-% coefficients de l'application $f$ et les coordonnées de $y$ (comme
-% précédemment) ET les coefficients des polynômes définissant la variété $V$.
-
-% Alors l'ensemble des points rationnels $V(k) = V \cap k^n$ est fini (car inclus dans $k^n$).
-% Par stabilité, $f$ induit une application $f: V(k) \to V(k)$ injective et non
-% surjective, ce qui est exclu.
-% \end{proof}
-
-
-\section{Nullstellensatz}
+L'application que nous proposons dans ce chapitre est le célèbre
+kw{Nullstelensatz} de Hilbert qui permet d'illustrer comment
+l'élimination des quantificateurs permet de simplifier les questions d'existence
+de solutions à des systèmes d'équations.
 
 La définition d'un corps algébriquement clos demande que chaque polynôme non
 constant admette une racine dans le corps, mais grâce à l'élimination des
