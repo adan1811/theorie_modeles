@@ -133,20 +133,20 @@
 
     \pause
     \begin{block}{1. De l'Algèbre vers la Géométrie: l'ensemble des zéros communs}
-        Soit $S \subset k[\bar{x}]$ un ensemble de polynômes. L'ensemble de leurs zéros communs est:
-        \[ V(S) = \{ x \in k^n \mid \forall f \in S, f(x) = 0 \} \]
+        Soit $I \subset k[\bar{x}]$ un ensemble de polynômes. L'ensemble de leurs zéros communs est:
+        \[ V(I) = \{ x \in k^n \mid \forall f \in I, f(x) = 0 \} \]
         
     \end{block}
     \pause
     \begin{block}{2. De la Géométrie vers l'Algèbre: l'idéal annulateur}
-        Soit $X \subset k^n$ un ensemble de points. L'ensemble des polynômes s'annulant sur $X$ est:
-        \[ I(X) = \{ f \in k[\bar{x}] \mid \forall x \in X, f(x) = 0 \} \]
+        Soit $V \subset k^n$ un ensemble de points. L'ensemble des polynômes s'annulant sur $V$ est:
+        \[ I(V) = \{ f \in k[\bar{x}] \mid \forall x \in V, f(x) = 0 \} \]
     \end{block}
 \end{frame}
 
 % 
 \begin{frame}{Une correspondance parfaite?}
-    On vérifie facilement que $V(I(X)) = X$. \\
+    On vérifie facilement que $V(I(V)) = V$. \\
     \vspace{0.5cm}
     \textbf{Question :} A-t-on $I(V(I)) = I$ pour tout idéal $I$?
 
@@ -170,7 +170,7 @@
 
     \pause
     \begin{theorem}[Nullstellensatz de Hilbert]
-        Soit $k$ un corps algébriquement clos et $I$ un idéal de $K[\bar{x}]$. Alors:
+        Soit $k$ un corps algébriquement clos et $I$ un idéal de $k[\bar{x}]$. Alors:
         \[ I(V(I)) = \sqrt{I} \]
     \end{theorem}
     \pause
@@ -183,7 +183,7 @@
     \pause
     \vspace{0.3cm}
     Soit $f \in I(V(I))$. On introduit une nouvelle variable $Y$ et l'idéal :
-    \[ J = (I, 1 - Yf) \subset K[\overline{x}, Y] \]
+    \[ J = (I, 1 - Yf) \subset k[\overline{x}, Y] \]
     
     \pause
     \begin{enumerate}
