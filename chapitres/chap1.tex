@@ -371,7 +371,15 @@ existe une formule $\phi(\overline{v},w_1,\dots,w_l)$ et $\overline{b} \in A^l$,
 \end{defi}
 
 \begin{exem}
-On se munit du langage des anneaux $\mathcal{L}_{ring} = \{0, 1, +, \times\}$ et de son modèle $\mathbb{C}$, le corps des nombres complexes.
+Soient le langage des anneaux $\mathcal{L}_{ring} = \{0, 1, +, \times\}$ et son modèle $\mathbb{R}$, le corps des nombres réels.
+Le sous-ensemble $[\pi, +\infty [{}$ est $\{\pi\}$-définissable via la formule :
+\begin{align*}
+\phi(x, \pi) : \exists y, x = y \times y + \pi
+\end{align*}
+\end{exem}
+
+\begin{exem}
+Soient $\mathcal{L}_{ring}$ et son modèle $\mathbb{C}$, le corps des nombres complexes.
 Pour $n \in \mathbb{N}^*$, on définit les racines n-ième de l'unité $U_n = \{z \in \mathbb{C}, z^n = 1 \}$.
 $U_n$ est alors définissable via la formule 
 \begin{align*}
@@ -484,9 +492,14 @@ Lemme de Zorn sont remplis: un tel ensemble possède un élément maximal.
 \end{proof}
 
 \begin{exem}
-Un filtre $\cF$ sur $I$ est dit principal s'il existe $X_0 \subset I, X_0 \ne \emptyset$, tel que $\cF = \{ Y \subset I \mid X_0 \subset Y \}$.
-Un filtre principal $\cF$ est un ultrafiltre sur $I$ si et seulement s'il est généré par un élément, c'est à dire s'il existe $x_0 \in I$
-tel que $\cF = \{ X \subset I \mid \{x_0\} \in X \}$.
+Un filtre $\cF$ sur $I$ est dit principal s'il existe $X_0 \subset I, X_0 \ne \emptyset$, tel que 
+\[ \cF = \{ Y \subset I \mid X_0 \subset Y \} \]
+Un filtre principal $\cF$ est un ultrafiltre sur $I$ si et seulement s'il est généré par un élément, c'est-à-dire s'il existe $x_0 \in I$
+tel que
+\[ \cF = \{ X \subset I \mid x_0 \in X \} \]
+Soit $I$ un ensemble infini, on définit
+\[ \cF_{\text{ Fréchet }} = \{ X \subset I \mid I \setminus X \text{ est fini } \} \] C'est un filtre,
+appelé filtre de Fréchet. Un ultrafiltre $\mathcal{U}$ est non principal si et seulement s'il contient le filtre de Fréchet.
 \end{exem}
 
 \subsection{Ultraproduits}
@@ -526,7 +539,7 @@ on a clairement $I_0 \subset I_1$, et $\mathcal{U}$ est stable par sur-ensemble,
 \end{proof}
 
 
-\begin{theo}[Théorème de \L{}oś]
+\begin{theo}[Théorème de \L{}oś]\label{Los}
 Soient $I$ un ensemble d'indices et $(M_i)_{i \in I}$ une famille de $\cL$-structures. Soit $\mathcal{U}$ un ultrafiltre sur $I$.
 Alors pour $\phi(\xbar)$ une $\cL$-formule et $\abar \in \prod_{i \in I} M_i = \mathcal{M}$,\\on a
 \begin{align*}
@@ -558,6 +571,31 @@ Soit $\phi \in T$, on a $\cM \models \phi$ si et seulement si $J_{\phi} = \{ F \
 \item Or $V(\phi) \in \mathcal{U}$ par construction, et $\mathcal{U}$ est stable par sur-ensemble, d'où $J_\phi \in \mathcal{U}$.
 \end{enumerate}
 Nous avons construit un modèle de $T$: $\cM \models T$.
+\end{proof}
+
+\noindent Proposons une seconde application du \hyperref[Los]{Théorème de \L{}oś}.
+
+\begin{prop}
+Soit $\mathcal{U}$ un ultrafiltre non principal sur l'ensemble des nombres premiers $\mathbb{P}$.
+Pour tout $p \in \mathbb{P}$, soit $\mathbb{F}^{\text{alg}}_p$ la cloture algébrique de $\mathbb{F}_p$ le corps à p éléments. 
+L'ultraproduit $\mathcal{M} = \prod_{p \in \mathbb{P}} \mathbb{F}^{\text{alg}}_p / \mathcal{U}$ est un corps algébriquement clos
+de caractéristique $0$.
+\end{prop}
+
+\begin{proof}
+Nous introduisons la théorie des corps algébriquement clos de caractéristique nulle $ACF_0$ dans la définition \ref{defACF}.
+Par le théorème de \L{}oś, il est nécessaire et suffisant que pour tout $\phi \in~ACF_0$,
+\[ \{p \in \mathbb{P} \mid \mathbb{F}^{\text{alg}}_p \models \phi \} \in \mathcal{U} \]
+Soit $\phi$ un axiome de la théorie des corps algébriquement clos, alors
+\[ \{p \in \mathbb{P} \mid \mathbb{F}^{\text{alg}}_p \models \phi \} = \mathbb{P} \]
+car pour tout $p \in \mathbb{P}$, $\mathbb{F}^{\text{alg}}_p$ est un corps algébriquement clos. Or $\mathbb{P} \in \mathcal{U}$, 
+donc par le théorème de \L{}oś, $\mathcal{M} \models \phi$ et $\mathcal{M}$ est un corps algébriquement clos. Soit $q \in \mathbb{P}$ fixé, on sait que 
+pour tout $p \in \mathbb{P}, \mathbb{F}^{\text{alg}}_p$ est de caractéristique $p$, donc $\mathbb{F}^{\text{alg}}_p \models \neg \chi_q$ si et seulement si
+$p \ne q$. D'où 
+\[ \{p \in \mathbb{P} \mid \mathbb{F}^{\text{alg}}_p \models \neg\chi_q \} = \mathbb{P} \setminus \{q\} \]
+Or $\mathcal{U}$ est un ultrafiltre non principal sur $\mathbb{P}$ donc contient le filtre de Fréchet $\cF_{\text{ Fréchet }} = \{ X \subset \mathbb{P} \mid \mathbb{P}
+\setminus X \text{ est fini } \}$.  Or $\{q\}$ est fini donc $\mathbb{P} \setminus \{q\} \in \cF_{\text{ Fréchet }} \subset \mathcal{U}$ donc $\cM \models \neg\chi_q$.
+Ceci conclut que $\mathcal{M}$ est un corps algébriquement clos de caractéristique nulle.
 \end{proof}
 
 \section{Complétude, catégoricité et test de Vaught}
