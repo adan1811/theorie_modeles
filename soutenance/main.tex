@@ -51,7 +51,8 @@ On peut alors écrire les formules :
 \begin{frame}{Théories et modèles}
 \begin{definition}
 Soit $\mathcal{L}$ un langage. Une $\mathcal{L}$-théorie $\mathcal{T}$ est un ensemble de $\mathcal{L}$-formules.
-Un modèle $\mathcal{M}$ de $\mathcal{T}$ est une structure \textbf{mathématique} où toutes les formules de $\mathcal{T}$ sont \textbf{vraies} dans $\mathcal{M}$.
+Un modèle $\mathcal{M}$ de $\mathcal{T}$ est une structure \textbf{mathématique} où toutes les formules de $\mathcal{T}$ sont \textbf{vraies} dans $\mathcal{M}$,
+et on note $\mathcal{M} \models \mathcal{T}$.
 \end{definition}
 \pause
 \begin{example}
@@ -89,7 +90,7 @@ pour tout $n \in \mathbb{N^*}$. Ceci donne la théorie des corps algébriquement
 \end{frame}
 
 \begin{frame}{Théorie des corps algébriquement clos}
-Soit $p \in \mathbb{P}$ et la $\mathcal{L}_{\text{ring}}$-formule $\chi_p : \underbrace{1 + \cdots 1 = 0}_\text{p}$.\\On définit :
+Soit $p \in \mathbb{P}$ et la $\mathcal{L}_{\text{ring}}$-formule $\chi_p : \underbrace{1 + \cdots + 1}_\text{p} = 0$.\\On définit :
 \begin{enumerate}
 \item $ACF_p = ACF \cup \chi_p$ la théorie des corps algébriquement clos de caractéristique $p$.
 \item $ACF_0 = ACF \cup \{\neg\chi_p \mid p \in \mathbb{P}\}$ la théorie des corps algébriquement clos de caractéristique nulle.
@@ -99,6 +100,7 @@ Soit $p \in \mathbb{P}$ et la $\mathcal{L}_{\text{ring}}$-formule $\chi_p : \und
   \section{De la complétude au théorème d'Ax-Grothendieck}
  % Def complétude, ACF complete
 \begin{frame}{Complétude}
+    Une $\mathcal{L}$-phrase est une $\mathcal{L}$-formule sans variable libre.
     \begin{definition}[Théorie complète]
         Une $\mathcal{L}$-théorie $T$ est dite \textbf{complète} si pour toute $\mathcal{L}$-phrase $\phi$, on a soit :
         \[ T \models \phi \quad \text{ou} \quad T \models \neg\phi \]
@@ -119,18 +121,13 @@ Soit $p \in \mathbb{P}$ et la $\mathcal{L}_{\text{ring}}$-formule $\chi_p : \und
         \centering
         \begin{tabular}{ll}
             \toprule
-            \textbf{Énoncé $\phi$ vrai sur...} & \textbf{Équivaut à...} \\
+            \textbf{$\mathcal{L}_{\text{ring}}$-phrase $\phi$ vrai sur...} & \textbf{Équivaut à...} \\
             \midrule
             Le corps $\mathbb{C}$ & Vrai sur tout $K \models ACF_0$ \\
             Tout $K \models ACF_0$ & Vrai sur $ACF_p$ pour $p \gg 0$ \\
             \bottomrule
         \end{tabular}
     \end{table}
-
-    \pause
-    \begin{exampleblock}{Idée de la preuve}
-        Si $ACF_0 \models \phi$, alors il existe un sous-ensemble fini d'axiomes $\Sigma \subset ACF_0$ tel que $\Sigma \models \phi$. Comme $\Sigma$ est fini, il n'exclut qu'un nombre fini de caractéristiques $p$.
-    \end{exampleblock}
 \end{frame}
 
 % Énoncé Ax-Grothendieck
@@ -278,4 +275,27 @@ Soit $p \in \mathbb{P}$ et la $\mathcal{L}_{\text{ring}}$-formule $\chi_p : \und
     \end{enumerate}
 \end{frame}
 
+\begin{frame}{Annexe : Principe de Lefschetz}
+\begin{exampleblock}{Esquisse de la preuve}
+Soit $\phi$ une $\mathcal{L}_{\text{ring}}$-phrase. Par hypothèse, $ACF_0 \models \phi$, donc il existe $\Sigma \subset ACF_0$ fini tel que $\Sigma \models \phi$,
+sinon :
+\pause
+\begin{enumerate}
+\item Pour tout $\Delta \subset ACF_0$ fini, $\Delta \not\models \phi$.
+\pause
+\item $\Delta \cup \{ \neg\phi \}$ est satisfiable.
+\pause
+\item $ACF_0 \cup \{ \neg\phi \}$ est finiment satisfiable donc satisfiable par \textbf{compacité}.
+\pause
+\item $ACF_0 \not\models \phi$.
+\end{enumerate}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Annexe : Principe de Lefschetz}
+\begin{exampleblock}{Esquisse de la preuve}
+$\Sigma$ ne peut empêcher qu'un nombre fini de caractéristiques positives. Il existe $p \in \mathbb{P}$ suffisament grand
+tel que $ACF_p \models \Sigma$, donc $ACF_p \models \phi$.
+\end{exampleblock}
+\end{frame}
 \end{document}
