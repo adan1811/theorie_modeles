@@ -342,7 +342,7 @@ Soit $\cL$ un langage.
 \begin{enumerate}
 \item Une $\cL$\kw{-théorie} $T$ est un ensemble de $\cL$-phrases (i.e un ensemble de $\cL$-formules sans variables libres), qu'on appelle \kw{axiomes}.
 \item On dit que $\cM$ est un \kw{modèle} de $T$, et on note $T \models \cM$, si l'on a $\cM \models \phi$ pour tout axiome $\phi \in T$.
-\item Une théorie $T$ est dite \kw{satisfaisable} s'il existe une $\cL$-structure $\cM$ tel que $\cM$ est un modèle de $T$.
+\item Une théorie $T$ est dite \kw{satisfiable} s'il existe une $\cL$-structure $\cM$ tel que $\cM$ est un modèle de $T$.
 \end{enumerate}
 \end{defi}
 
@@ -353,7 +353,7 @@ On axiomatise la structure de groupe via le langage $\cL = \{ \star , e \}$ et l
 \item $\forall x, x \star e = e \star x = x$
 \item $\forall x, \exists y, x \star y = y \star x = e$
 \end{enumerate}
-Cette théorie est satisfaisable: par exemple, $\mathbb{R}$ muni de la loi d'addition $+$ et du neutre $e_{\mathbb{R}} = 0$ en est un modèle.
+Cette théorie est satisfiable: par exemple, $\mathbb{R}$ muni de la loi d'addition $+$ et du neutre $e_{\mathbb{R}} = 0$ en est un modèle.
 \end{exem}
 
 \begin{exem}
@@ -388,7 +388,7 @@ $U_n$ est alors définissable via la formule
 Nous précisons que $U_n$ est $\kw{0-définissable}$, c'est à dire que la formule $\phi$ qui la définit n'a pas de paramètre.
 \end{exem}
 
-La fin de cette section illustre un premier exemple de résultat en Théorie des Modèles applicable à l'Algèbre.
+La fin de cette section illustre un premier exemple de résultat en théorie des modèles applicable à l'algèbre.
 
 \begin{prop}\label{pointwise}
 Soit $\mathcal{M}$ une $\mathcal{L}$-structure. Si $X \subset M^n$ est $A$-définissable, alors tout $\mathcal{L}$-automorphisme $\sigma$
@@ -401,7 +401,7 @@ Soient $\sigma$ un automorphisme de $\mathcal{M}$ tel que $\sigma(\overline{a}) 
 Nous avons, 
 \begin{align*}
 \mathcal{M} \models \phi(\overline{b}, \overline{a}) &\iff \mathcal{M} \models \phi(\sigma(\overline{b}), \sigma(\overline{a})) 
-&& \text{par Théorème } \ref{isomorphisme}\\
+&& \text{par théorème } \ref{isomorphisme}\\
 &\iff \mathcal{M} \models \phi(\sigma(\overline{b}), \overline{a})
 \end{align*}
 On obtient bien $\bbar \in X \iff \sigma(\bbar) \in X$.
@@ -420,18 +420,18 @@ ainsi $\sigma(\mathbb{R}) \neq \mathbb{R}$ et par contraposée de la proposition
 \end{proof}
 
 \begin{rema}
-Bien que la topologie singulière de $\mathbb{R}$ nous pousserait à croire qu'il occupe une place particulière dans $\mathbb{C}$, la Théorie des Modèles
+Bien que la topologie singulière de $\mathbb{R}$ nous pousserait à croire qu'il occupe une place particulière dans $\mathbb{C}$, la théorie des modèles
 illustre ici que le langage pur des corps est "aveugle" façe à nos intuitions sur la droite réelle.
 \end{rema}
 
-\section{Ultraproduits et Théorème de Compacité}
+\section{Ultraproduits et théorème de compacité}
 
 \noindent Cette section s'écarte du plan de Marker pour fournir une preuve sémantique du théorème de compacité fondée sur les ultraproduits.
 Tandis que l'approche syntaxique découle du théorème de complétude, nous proposons ici de construire un tel modèle satisfaisant $T$ en manipulant des familles de modèles.
 Nous commençons par énoncer le résultat.
 
 \begin{theo*}[Théorème de compacité]
-Soit $T$ une $\cL$-théorie. $T$ est satisfaisable si et seulement si tout sous-ensemble fini de $T$ est satisfaisable.
+Soit $T$ une $\cL$-théorie. $T$ est satisfiable si et seulement si tout sous-ensemble fini de $T$ est satisfiable.
 \end{theo*}
 
 \subsection{Ultrafiltres}
@@ -539,7 +539,7 @@ on a clairement $I_0 \subset I_1$, et $\mathcal{U}$ est stable par sur-ensemble,
 \end{proof}
 
 
-\begin{theo}[Théorème de \L{}oś]\label{Los}
+\begin{theo}[théorème de \L{}oś]\label{Los}
 Soient $I$ un ensemble d'indices et $(M_i)_{i \in I}$ une famille de $\cL$-structures. Soit $\mathcal{U}$ un ultrafiltre sur $I$.
 Alors pour $\phi(\xbar)$ une $\cL$-formule et $\abar \in \prod_{i \in I} M_i = \mathcal{M}$,\\on a
 \begin{align*}
@@ -551,11 +551,11 @@ où $\bar{a}_\mathcal{U}$ désigne la classe d'équivalence du tuple $\bar{a}$ d
 \begin{rema}
 Ce résultat pivot, que l'on admettra, repose entre autre sur la caractérisation des ultrafiltres données dans la proposition \ref{lemmelos}.
 Il permet une sorte de "passage à l'infini" de la satisfiabilité d'une formule si et seulement si
-cette formule est "vraie presque partout" au sens de l'ultrafiltre. Cette caractérisation est la clé du Théorème de compacité.
+cette formule est "vraie presque partout" au sens de l'ultrafiltre. Cette caractérisation est la clé du théorème de compacité.
 \end{rema}
 
 \begin{theo}[Théorème de compacité]\label{theo-compacite}
-Soit $T$ une $\cL$-théorie. $T$ est satisfaisable si et seulement si tout sous-ensemble fini de $T$ est satisfaisable.
+Soit $T$ une $\cL$-théorie. $T$ est satisfiable si et seulement si tout sous-ensemble fini de $T$ est satisfiable.
 \end{theo}
 
 \begin{proof}
@@ -565,7 +565,7 @@ l'ensemble des parties finies de $T$ ayant $\phi$ pour axiome. On remarque que l
 de l'intersection finie, en effet pour $T_0 = \{\phi_1,\dots,\phi_n\}$ une famille finie d'axiome, on a $T_0 \in V(\phi_1) \cap \dots \cap V(\phi_n)$ 
 car $T_0 \in V(\phi_1) \text{ via } \phi_1, T_0 \in V(\phi_2) \text{ via } \phi_2$ etc. Ainsi $\{V(\phi) \mid \phi \in T\}$ engendre un filtre,
 donc est contenue dans un ultrafiltre $\mathcal{U}$. On pose $\cM = \prod_{F \in I} \cM_F / \mathcal{U}$ l'ultraproduit des $\cM_F$. On montre que $\cM$ est un modèle de $T$.
-Soit $\phi \in T$, on a $\cM \models \phi$ si et seulement si $J_{\phi} = \{ F \in I \mid \cM_F \models \phi \} \in \mathcal{U}$ par Théorème de \L{}oś.
+Soit $\phi \in T$, on a $\cM \models \phi$ si et seulement si $J_{\phi} = \{ F \in I \mid \cM_F \models \phi \} \in \mathcal{U}$ par théorème de \L{}oś.
 \begin{enumerate}
 \item Si $F \in V(\phi)$, alors trivialement $\cM_F \models \phi$, d'où $V(\phi) \subset J_{\phi}$.
 \item Or $V(\phi) \in \mathcal{U}$ par construction, et $\mathcal{U}$ est stable par sur-ensemble, d'où $J_\phi \in \mathcal{U}$.
@@ -573,7 +573,7 @@ Soit $\phi \in T$, on a $\cM \models \phi$ si et seulement si $J_{\phi} = \{ F \
 Nous avons construit un modèle de $T$: $\cM \models T$.
 \end{proof}
 
-\noindent Proposons une seconde application du \hyperref[Los]{Théorème de \L{}oś}.
+\noindent Proposons une seconde application du \hyperref[Los]{théorème de \L{}oś}.
 
 \begin{prop}
 Soit $\mathcal{U}$ un ultrafiltre non principal sur l'ensemble des nombres premiers $\mathbb{P}$.
@@ -583,15 +583,15 @@ de caractéristique $0$.
 \end{prop}
 
 \begin{proof}
-Nous introduisons la théorie des corps algébriquement clos de caractéristique nulle $ACF_0$ dans la définition \ref{defACF}.
+Nous introduisons la théorie des corps algébriquement clos de caractéristique nulle $ACF_0$ et les énoncés $\chi_p$ spécifiant la caractéristique $p$ dans la définition \ref{defACF}.
 Par le théorème de \L{}oś, il est nécessaire et suffisant que pour tout $\phi \in~ACF_0$,
 \[ \{p \in \mathbb{P} \mid \mathbb{F}^{\text{alg}}_p \models \phi \} \in \mathcal{U} \]
 Soit $\phi$ un axiome de la théorie des corps algébriquement clos, alors
 \[ \{p \in \mathbb{P} \mid \mathbb{F}^{\text{alg}}_p \models \phi \} = \mathbb{P} \]
 car pour tout $p \in \mathbb{P}$, $\mathbb{F}^{\text{alg}}_p$ est un corps algébriquement clos. Or $\mathbb{P} \in \mathcal{U}$, 
 donc par le théorème de \L{}oś, $\mathcal{M} \models \phi$ et $\mathcal{M}$ est un corps algébriquement clos. Soit $q \in \mathbb{P}$ fixé, on sait que 
-pour tout $p \in \mathbb{P}, \mathbb{F}^{\text{alg}}_p$ est de caractéristique $p$, donc $\mathbb{F}^{\text{alg}}_p \models \neg \chi_q$ si et seulement si
-$p \ne q$. D'où 
+pour tout $p \in \mathbb{P}, \mathbb{F}^{\text{alg}}_p$ est de caractéristique $p$, donc $\mathbb{F}^{\text{alg}}_p \models \neg \chi_q$
+si et seulement si $p \ne q$. D'où 
 \[ \{p \in \mathbb{P} \mid \mathbb{F}^{\text{alg}}_p \models \neg\chi_q \} = \mathbb{P} \setminus \{q\} \]
 Or $\mathcal{U}$ est un ultrafiltre non principal sur $\mathbb{P}$ donc contient le filtre de Fréchet $\cF_{\text{ Fréchet }} = \{ X \subset \mathbb{P} \mid \mathbb{P}
 \setminus X \text{ est fini } \}$.  Or $\{q\}$ est fini donc $\mathbb{P} \setminus \{q\} \in \cF_{\text{ Fréchet }} \subset \mathcal{U}$ donc $\cM \models \neg\chi_q$.
@@ -627,9 +627,9 @@ Puisque $\cL = \emptyset$, nos modèles sont simplement des ensembles. Or par un
 $\phi$ étant une bijection entre structures sans symboles, c'est trivialement un $\cL$-isomorphisme.
 \end{proof}
 
-\noindent Le Théorème de compacité assure qu'une théorie reste satisfaisable tant que ses sous-ensembles finis le sont.
-Pour une théorie $T$ finiment satisfaisable et à modèles infinis, on peut ajouter une infinité de symboles de constante et imposer qu'ils soient deux à deux distincts.
-Ceci crée une nouvelle théorie, toujours finiment satisfaisable (toute partie finie de la nouvelle théorie ne demandent qu'un nombre fini de constantes, lesquelles peuvent 
+\noindent Le théorème de compacité assure qu'une théorie reste satisfiable tant que ses sous-ensembles finis le sont.
+Pour une théorie $T$ finiment satisfiable et à modèles infinis, on peut ajouter une infinité de symboles de constante et imposer qu'ils soient deux à deux distincts.
+Ceci crée une nouvelle théorie, toujours finiment satisfiable (toute partie finie de la nouvelle théorie ne demandent qu'un nombre fini de constantes, lesquelles peuvent 
 être choisies par des éléments distincts d'un modèle infini de $T$), et imposant par compacité l'existence de modèles à cardinalité aussi grande que l'on souhaite.
 Ce raisonnement fonde le résultat suivant:
 
@@ -640,17 +640,17 @@ il existe un modèle de $T$ de cardinalité $\kappa$.
 \end{theo}
 
 \begin{theo}[Test de Vaught]\label{th-Vaught}
-Soit $T$ une $\cL$-théorie satisfaisable, sans modèles finis, et $\kappa$-catégorique pour un certain cardinal infini $\kappa > \lvert \cL \rvert$.
+Soit $T$ une $\cL$-théorie satisfiable, sans modèles finis, et $\kappa$-catégorique pour un certain cardinal infini $\kappa > \lvert \cL \rvert$.
 Alors $T$ est complète.
 \end{theo}
 
 \begin{proof}
 Supposons par l'absurde que $T$ n'est pas complète. Il existe alors une $\cL$-phrase $\phi$ telle que $T \not\models \phi$ et $T \not\models \neg\phi$.\\
-\textbf{Fait :} $T \not\models \phi$ si et seulement si $T \cup \{\neg\phi\}$ est satisfaisable. En effet, si $T \models \phi$, alors $\neg\phi$ ne se satisfait dans aucun modèle de $T$,
-donc $T \cup \{\neg\phi\}$ est insatisfaisable car un tel modèle devrait satisfaire à la fois $T$ et à la fois $\neg\phi$. Réciproquement, si $T \cup \{\neg\phi\}$ est insatisfaisable,
+\textbf{Fait :} $T \not\models \phi$ si et seulement si $T \cup \{\neg\phi\}$ est satisfiable. En effet, si $T \models \phi$, alors $\neg\phi$ ne se satisfait dans aucun modèle de $T$,
+donc $T \cup \{\neg\phi\}$ est insatisfiable car un tel modèle devrait satisfaire à la fois $T$ et à la fois $\neg\phi$. Réciproquement, si $T \cup \{\neg\phi\}$ est insatisfiable,
 cela signifie qu'un modèle de $T$ ne peut pas aussi satisfaire à $\neg\phi$, donc un tel modèle satisfait nécessairement $\phi$ par définition de la satisfaisabilité d'une formule, d'où $T \models \phi$. \\
-Ainsi $T_0 = T \cup \{\phi\}$ et $T_1 = T \cup \{\neg\phi\}$ sont satisfaisables.
-Par hypothèse $T$ n'a pas de modèles finis : ceci impose que les modèles de $T_0$ et $T_1$ soient infinis. Par Théorème de Löwenheim-Skolem ascendant, on a $\cM_0$ et $\cM_1$
+Ainsi $T_0 = T \cup \{\phi\}$ et $T_1 = T \cup \{\neg\phi\}$ sont satisfiables.
+Par hypothèse $T$ n'a pas de modèles finis : ceci impose que les modèles de $T_0$ et $T_1$ soient infinis. Par théorème de Löwenheim-Skolem ascendant, on a $\cM_0$ et $\cM_1$
 tout deux de cardinalité $\kappa > \lvert \cL \rvert$ tel que $\cM_0 \models T_0$ et $\cM_1 \models T_1$. Or ces deux modèles ne peuvent être élémentairement équivalent car ils divergent sur $\phi$.
 Par théorème~\ref{isomorphisme}, ces modèles ne sont pas isomorphes. Ceci contradit la $\kappa$-catégoricité de $T$.
 \end{proof}
